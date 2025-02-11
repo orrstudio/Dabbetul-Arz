@@ -1,5 +1,5 @@
 #EXTM3U
-#EXTINF:-1 tvg-logo="" tvg-name="Hidayet Radiolari",RADİO NUR
+#EXTINF:-1 tvg-logo="https://github.com/orrstudio/Dabbetul-Arz/blob/master/assets/images/logos/nurtv.png" tvg-name="",RADİO NUR
 https://canli.hidayetradyolari.com/listen/radyo_nur/radio.mp3
-#EXTINF:-1 tvg-logo="" tvg-name="Hidayet Radiolari",MPL RADİO
+#EXTINF:-1 tvg-logo="https://github.com/orrstudio/Dabbetul-Arz/blob/master/assets/images/logos/mpl.png" tvg-name="",MPL RADİO
 https://canli.hidayetradyolari.com/listen/mpl_radyo/radio.mp3
