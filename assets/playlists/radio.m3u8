@@ -1,0 +1,5 @@
+#EXTM3U
+#EXTINF:-1 tvg-logo="" tvg-name="Hidayet Radiolari",RADİO NUR
+https://canli.hidayetradyolari.com/listen/radyo_nur/radio.mp3
+#EXTINF:-1 tvg-logo="" tvg-name="Hidayet Radiolari",MPL RADİO
+https://canli.hidayetradyolari.com/listen/mpl_radyo/radio.mp3
