@@ -209,20 +209,21 @@ export default function App() {
   const layoutWidths = isPortrait 
     ? {
         // В портретном режиме плеер занимает всю ширину,
-        // а список каналов либо не используется, либо можно задать как videoDimensions.width или null.
+        // а список каналов либо не используется, либо равен ширине плеера.
         playerWidth: videoDimensions.width,
-        listWidth: videoDimensions.width  // или можно задать: listWidth: undefined
+        listWidth: videoDimensions.width,
       }
     : {
-        // В горизонтальном режиме:
-        // На iOS плеер занимает 65%, а список – 20% (итого 85% или можно скорректировать)
-        // На Android плеер занимает 70%, а список – 30% (итого 100% экрана)
-        playerWidth: Platform.OS === 'ios' 
-          ? videoDimensions.width * 0.65 
-          : videoDimensions.width * 0.7,
-        listWidth: Platform.OS === 'ios' 
-          ? videoDimensions.width * 0.25 
-          : videoDimensions.width * 0.3,
+        playerWidth: Platform.OS === 'ios'
+          ? videoDimensions.width * 0.65  // для iOS
+          : Platform.OS === 'android'
+            ? videoDimensions.width * 0.64  // для Андроид
+            : videoDimensions.width * 0.65, // для web
+        listWidth: Platform.OS === 'ios'
+          ? videoDimensions.width * 0.25  // для iOS
+          : Platform.OS === 'android'
+            ? videoDimensions.width * 0.35  // для Андроид
+            : videoDimensions.width * 0.34, // для web
       };
 
   return (

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -10,12 +10,7 @@ import {
 } from 'react-native';
 import { VideoView, useVideoPlayer } from 'expo-video';
 
-interface ListItem {
-  id: string;
-  title: string;
-}
-
-const dummyData: ListItem[] = [
+const dummyData = [
   { id: '1', title: 'Item 1' },
   { id: '2', title: 'Item 2' },
   { id: '3', title: 'Item 3' },
@@ -23,11 +18,11 @@ const dummyData: ListItem[] = [
   { id: '5', title: 'Item 5' },
 ];
 
-const VideoScreen: FC = () => {
+const VideoScreen = () => {
   const { width, height } = useWindowDimensions();
-  const orientation: 'portrait' | 'landscape' = width < height ? 'portrait' : 'landscape';
+  const orientation = width < height ? 'portrait' : 'landscape';
 
-  const videoUrl: string = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+  const videoUrl = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
   const player = useVideoPlayer(videoUrl, (playerInstance) => {
     playerInstance.loop = true;
     playerInstance.play();
@@ -38,13 +33,13 @@ const VideoScreen: FC = () => {
       <SafeAreaView style={styles.container}>
         <View style={styles.portraitVideoContainer}>
           <VideoView
-            style={[styles.video, { width: width, height: width * 9 / 16 }]}
+            style={[styles.video, { width, height: (width * 9) / 16 }]}
             player={player}
             nativeControls
             allowsPictureInPicture
           />
         </View>
-        <Text style={styles.channelName}>Название канала</Text>
+        <Text style={styles.channelName}>Channel Name</Text>
         <FlatList
           data={dummyData}
           renderItem={({ item }) => <Text style={styles.listItem}>{item.title}</Text>}
@@ -54,10 +49,10 @@ const VideoScreen: FC = () => {
       </SafeAreaView>
     );
   } else {
-    const isIOS: boolean = Platform.OS === 'ios';
-    const videoWidth: number = width * 0.7;
-    const videoHeight: number = videoWidth * 9 / 16;
-    const listWidth: number = isIOS ? width * 0.2 : width * 0.3;
+    const isIOS = Platform.OS === 'ios';
+    const videoWidth = width * 0.7;
+    const videoHeight = (videoWidth * 9) / 16;
+    const listWidth = isIOS ? width * 0.2 : width * 0.3;
 
     return (
       <SafeAreaView style={styles.container}>
