@@ -275,9 +275,9 @@ const PlayerScreen = () => {
                     paddingVertical: 4,
                     borderRadius: 4
                   }}
-                  onPress={() => navigation.navigate('Profile')}
+                  onPress={() => navigation.navigate('SplashScreen')}
                 >
-                  <Text style={{ color: theme.activeChannelText }}>Профиль</Text>
+                  <Text style={{ color: theme.activeChannelText }}>Splash</Text>
                 </TouchableOpacity>
               </View>
             </View>

@@ -6,7 +6,7 @@ import * as NavigationBar from 'expo-navigation-bar';
 import HomeScreen from './src/screens/HomeScreen';
 import PlayerScreen from './src/screens/PlayerScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
-import ProfileScreen from './src/screens/ProfileScreen';
+import SplashScreen from './src/screens/SplashScreen';
 import BottomNavigation from './src/components/BottomNavigation';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
@@ -72,13 +72,11 @@ export default function App() {
             </MainLayout>
           )}
         </Stack.Screen>
-        <Stack.Screen name="Profile">
-          {(props) => (
-            <MainLayout hideBottomNavigation={true}>
-              <ProfileScreen {...props} />
-            </MainLayout>
-          )}
-        </Stack.Screen>
+        <Stack.Screen 
+          name="SplashScreen" 
+          component={SplashScreen} 
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

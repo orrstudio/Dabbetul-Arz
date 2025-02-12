@@ -28,9 +28,9 @@ const BottomNavigation = () => {
         <Ionicons name="settings-outline" size={24} color={theme.text} />
         <Text style={[styles.buttonText, { color: theme.text }]}>Настройки</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Profile')}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('SplashScreen')}>
         <Ionicons name="person-outline" size={24} color={theme.text} />
-        <Text style={[styles.buttonText, { color: theme.text }]}>Профиль</Text>
+        <Text style={[styles.buttonText, { color: theme.text }]}>Splash</Text>
       </TouchableOpacity>
     </View>
   );

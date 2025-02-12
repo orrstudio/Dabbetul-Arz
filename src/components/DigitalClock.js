@@ -16,36 +16,35 @@ const COLORS = [
 /**
  * DigitalClock
  * Компонент, отображающий цифровые часы в формате HH:MM.
- * Двоеточие мигает, переключаясь каждые 500 мс между цветом текста и черным,
+ * Двоеточие мигает, переключаясь каждые 500 мс,
  * имитируя мигание секундомера.
  *
  * @returns {JSX.Element} Элемент цифровых часов.
  */
 const DigitalClock = () => {
-  // Загружаем шрифт (хук вызывается всегда первым)
+  // Загружаем шрифт
   const [fontsLoaded] = useFonts({
     'DSEG7Classic-Bold': require('../../assets/fonts/DSEG7Classic-Bold.ttf'),
   });
-  
-  // Инициализируем остальные состояния
+
+  // Инициализация состояний
   const [currentTime, setCurrentTime] = useState(new Date());
   const [colonVisible, setColonVisible] = useState(true);
   const [colorIndex, setColorIndex] = useState(0);
   const currentColor = COLORS[colorIndex];
 
-  // Получаем ширину и высоту экрана, вычисляем динамический размер шрифта (21% от ширины)
+  // Получаем размеры экрана
   const { width, height } = useWindowDimensions();
   const dynamicFontSize = width * 0.21;
 
-  // Состояние для яркости часов (прозрачность)
+  // Состояние яркости часов и флаг загрузки настроек
   const [clockOpacity, setClockOpacity] = useState(1.0);
-  // Флаг, показывающий, что сохранённые настройки успешно загружены
   const [settingsLoaded, setSettingsLoaded] = useState(false);
 
   // Прозрачность даты – 70% от яркости часов
   const dateOpacity = clockOpacity * 0.7;
 
-  // Обновляем время каждую секунду
+  // Обновление времени каждую секунду
   useEffect(() => {
     const timeInterval = setInterval(() => {
       setCurrentTime(new Date());
@@ -53,7 +52,7 @@ const DigitalClock = () => {
     return () => clearInterval(timeInterval);
   }, []);
 
-  // Переключаем видимость двоеточия каждые 500 мс
+  // Переключение видимости двоеточия каждые 500 мс
   useEffect(() => {
     const colonInterval = setInterval(() => {
       setColonVisible(prev => !prev);
@@ -61,7 +60,7 @@ const DigitalClock = () => {
     return () => clearInterval(colonInterval);
   }, []);
 
-  // Загружаем сохранённые настройки при каждом фокусе экрана
+  // Загрузка сохранённых настроек при входе в экран
   useFocusEffect(
     React.useCallback(() => {
       const loadSettings = async () => {
@@ -78,7 +77,6 @@ const DigitalClock = () => {
         } catch (error) {
           console.log('Ошибка загрузки настроек:', error);
         } finally {
-          // Устанавливаем флаг, что загрузка завершена
           setSettingsLoaded(true);
         }
       };
@@ -86,7 +84,7 @@ const DigitalClock = () => {
     }, [])
   );
 
-  // Создаем panResponder для дискретных свайпов:
+  // Создание panResponder для дискретных свайпов
   const startXRef = useRef(0);
   const startYRef = useRef(0);
   const panResponder = useRef(
@@ -100,29 +98,24 @@ const DigitalClock = () => {
       onPanResponderRelease: (event, gestureState) => {
         const dx = gestureState.dx;
         const dy = gestureState.dy;
-        const threshold = 100; // увеличен порог, чтобы избежать ложных свайпов при обычном касании
+        const threshold = 100; // пороговое значение в пикселях
 
-        // Если движение меньше порога по обеим осям, считаем это обычным прикосновением и игнорируем
+        // Если движение слишком маленькое – игнорируем свайп
         if (Math.abs(dx) < threshold && Math.abs(dy) < threshold) {
           return;
         }
-
+        // Если горизонтальное движение больше вертикального – меняем цвет
         if (Math.abs(dx) >= Math.abs(dy) && Math.abs(dx) >= threshold) {
-          // Горизонтальный свайп: меняем цвет
           if (dx > 0) {
-            // свайп вправо
             setColorIndex(prev => (prev + 1) % COLORS.length);
           } else {
-            // свайп влево
             setColorIndex(prev => (prev - 1 + COLORS.length) % COLORS.length);
           }
         } else if (Math.abs(dy) >= threshold) {
-          // Вертикальный свайп: изменяем яркость (не зависит от расстояния)
+          // Вертикальный свайп – изменяем яркость на фиксированный шаг 5%
           if (dy > 0) {
-            // свайп вниз: уменьшаем яркость на 5%
             setClockOpacity(prev => Math.max(prev - 0.05, 0));
           } else {
-            // свайп вверх: увеличиваем яркость на 5%
             setClockOpacity(prev => Math.min(prev + 0.05, 1));
           }
         }
@@ -130,16 +123,17 @@ const DigitalClock = () => {
     })
   ).current;
 
-  // Форматируем часы и минуты с ведущим нулем
+  // Форматируем время
   const hours = currentTime.getHours();
   const minutes = currentTime.getMinutes();
   const formattedHours = hours < 10 ? `0${hours}` : `${hours}`;
   const formattedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
-  
-  // Форматируем дату: заменяем точки на " . " и вычисляем её динамический размер (5% от ширины)
+
+  // Форматируем дату (замена точек на пробел, точка, пробел)
   const formattedDate = currentTime.toLocaleDateString().replace(/\./g, ' . ');
   const dynamicDateFontSize = width * 0.05;
 
+  // Сохранение текущего индекса цвета при изменении
   useEffect(() => {
     const saveColorIndex = async () => {
       try {
@@ -150,9 +144,9 @@ const DigitalClock = () => {
     };
     saveColorIndex();
   }, [colorIndex]);
-  
+
+  // Сохранение яркости (clockOpacity) — только после загрузки настроек
   useEffect(() => {
-    // Сохраняем значение яркости только если настройки уже загружены
     if (!settingsLoaded) return;
 
     const saveClockOpacity = async () => {
