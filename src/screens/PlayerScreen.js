@@ -247,8 +247,8 @@ const PlayerScreen = () => {
           </View>
         ) : (
           Platform.OS !== 'web' ? (
-            <View style={{ flex: 1, flexDirection: 'row' }}>
-              <View style={{ width: '90%' }}>
+            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+              <View style={{ flex: 9, alignItems: 'flex-start' }}>
                 {currentChannel ? (
                   <VideoWindow 
                     currentChannel={currentChannel}
@@ -267,7 +267,7 @@ const PlayerScreen = () => {
                   </Text>
                 )}
               </View>
-              <View style={{ width: '10%', justifyContent: 'center', alignItems: 'center' }}>
+              <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <TouchableOpacity
                   style={{
                     backgroundColor: theme.activeChannelBackground,
