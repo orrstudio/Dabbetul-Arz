@@ -71,6 +71,9 @@ const PlayerScreen = () => {
   
   useLockOrientation();
 
+  const videoDimensions = useWindowDimensions();
+  const SYSTEM_TRAY_HEIGHT = 48; // Примерное значение высоты системного трейа, скорректируйте по необходимости
+
   useEffect(() => {
     loadPlaylist();
   }, []);
@@ -111,7 +114,6 @@ const PlayerScreen = () => {
     }
   };
 
-  const videoDimensions = useWindowDimensions();
   const windowHeight = videoDimensions.height;
   let channelListMaxHeight = windowHeight;
   if (isPortrait) {
@@ -247,7 +249,7 @@ const PlayerScreen = () => {
                 <VideoWindow 
                   currentChannel={currentChannel}
                   videoWidth={videoDimensions.width}
-                  videoHeight={videoDimensions.height}
+                  videoHeight={videoDimensions.height - SYSTEM_TRAY_HEIGHT}
                   player={player}
                   controls={true}
                 />
