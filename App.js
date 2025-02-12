@@ -13,8 +13,8 @@ import { Asset } from 'expo-asset';
 import { useWindowDimensions } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import HomeScreen from './screens/HomeScreen';
-import PlayerScreen from './screens/PlayerScreen';
+import HomeScreen from './src/screens/HomeScreen';
+import PlayerScreen from './src/screens/PlayerScreen';
 
 // Mapping путей к логотипам, как указано в плейлисте tv.m3u8,
 // для использования локальных изображений через require.

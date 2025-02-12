@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
-import { getThemeByName } from '../utils/theme';
-import { getPlayerStyles } from '../utils/getPlayerStyles';
+import { getThemeByName } from '../../utils/theme';
+import { getPlayerStyles } from '../../utils/getPlayerStyles';
 
 /**
  * HomeScreen - начальный экран приложения.

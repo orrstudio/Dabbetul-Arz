@@ -7,10 +7,10 @@ import * as FileSystem from 'expo-file-system';
 import { Asset } from 'expo-asset';
 import { useWindowDimensions } from 'react-native';
 import { useVideoPlayer } from 'expo-video';
-import useLockOrientation from '../hooks/useLockOrientation';
-import VideoWindow from '../components/VideoWindow';
-import { getPlayerStyles } from '../utils/getPlayerStyles';
-import { getThemeByName } from '../utils/theme';
+import useLockOrientation from '../../hooks/useLockOrientation';
+import VideoWindow from '../../components/VideoWindow';
+import { getPlayerStyles } from '../../utils/getPlayerStyles';
+import { getThemeByName } from '../../utils/theme';
 
 // Mapping путей к логотипам (обновлённые пути для расположения из папки screens)
 const channelLogos = {
