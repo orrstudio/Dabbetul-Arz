@@ -74,7 +74,7 @@ export default function App() {
         </Stack.Screen>
         <Stack.Screen name="Profile">
           {(props) => (
-            <MainLayout>
+            <MainLayout hideBottomNavigation={true}>
               <ProfileScreen {...props} />
             </MainLayout>
           )}

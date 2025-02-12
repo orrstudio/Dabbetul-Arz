@@ -11,6 +11,7 @@ import useLockOrientation from '../hooks/useLockOrientation';
 import VideoWindow from '../components/VideoWindow';
 import { getPlayerStyles } from '../utils/getPlayerStyles';
 import { getThemeByName } from '../utils/theme';
+import { useNavigation } from '@react-navigation/native';
 
 // Mapping путей к логотипам (обновлённые пути для расположения из папки screens)
 const channelLogos = {
@@ -73,6 +74,8 @@ const PlayerScreen = () => {
 
   const videoDimensions = useWindowDimensions();
   const SYSTEM_TRAY_HEIGHT = 48; // Примерное значение высоты системного трейа, скорректируйте по необходимости
+
+  const navigation = useNavigation();
 
   useEffect(() => {
     loadPlaylist();
@@ -244,24 +247,39 @@ const PlayerScreen = () => {
           </View>
         ) : (
           Platform.OS !== 'web' ? (
-            <View style={{ flex: 1 }}>
-              {currentChannel ? (
-                <VideoWindow 
-                  currentChannel={currentChannel}
-                  videoWidth={videoDimensions.width}
-                  videoHeight={videoDimensions.height - SYSTEM_TRAY_HEIGHT}
-                  player={player}
-                  controls={true}
-                />
-              ) : (
-                <Text style={{ 
-                  color: theme.text, 
-                  textAlign: 'center', 
-                  padding: 10
-                }}>
-                  Channels not loaded
-                </Text>
-              )}
+            <View style={{ flex: 1, flexDirection: 'row' }}>
+              <View style={{ width: '90%' }}>
+                {currentChannel ? (
+                  <VideoWindow 
+                    currentChannel={currentChannel}
+                    videoWidth={videoDimensions.width * 0.9}
+                    videoHeight={videoDimensions.height - SYSTEM_TRAY_HEIGHT}
+                    player={player}
+                    controls={true}
+                  />
+                ) : (
+                  <Text style={{ 
+                    color: theme.text, 
+                    textAlign: 'center', 
+                    padding: 10
+                  }}>
+                    Channels not loaded
+                  </Text>
+                )}
+              </View>
+              <View style={{ width: '10%', justifyContent: 'center', alignItems: 'center' }}>
+                <TouchableOpacity
+                  style={{
+                    backgroundColor: theme.activeChannelBackground,
+                    paddingHorizontal: 8,
+                    paddingVertical: 4,
+                    borderRadius: 4
+                  }}
+                  onPress={() => navigation.navigate('Profile')}
+                >
+                  <Text style={{ color: theme.activeChannelText }}>Профиль</Text>
+                </TouchableOpacity>
+              </View>
             </View>
           ) : (
             <View style={styles.landscapeContainer}>
