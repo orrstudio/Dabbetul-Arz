@@ -422,7 +422,7 @@ export default function App() {
                     textAlign: "center", 
                     padding: 10 
                   }}>
-                    Каналы не загружены
+                    Channels not loaded
                   </Text>
                 )}
               </View>
