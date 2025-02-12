@@ -3,8 +3,8 @@
    id="svg2"
    viewBox="0 0 768 768"
    version="1.1"
-   sodipodi:docname="flag-fr.svg"
-   inkscape:export-filename="flag-fr.png"
+   sodipodi:docname="flag-cn.svg"
+   inkscape:export-filename="flag-cn.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
    inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
@@ -41,7 +41,7 @@
        clipPathUnits="userSpaceOnUse">
       <rect
          id="rect3918"
-         fill-opacity=".67"
+         fill-opacity="0.67"
          ry="57"
          height="511"
          width="511"
@@ -62,22 +62,22 @@
     </linearGradient>
     <linearGradient
        id="linearGradient5122"
-       x1="342.19"
+       y2="523.41"
        xlink:href="#linearGradient3852-0"
        gradientUnits="userSpaceOnUse"
-       y1="705.76"
-       gradientTransform="matrix(1.1571,0,0,1.3167,-91.204,-253.99)"
        x2="358.08"
-       y2="523.41" />
+       gradientTransform="matrix(1.1571,0,0,1.3167,-91.204,-253.99)"
+       y1="705.76"
+       x1="342.19" />
     <linearGradient
        id="linearGradient5125"
-       x1="405.26"
+       y2="360.92"
        xlink:href="#linearGradient3852-0"
        gradientUnits="userSpaceOnUse"
-       y1="118.06"
-       gradientTransform="matrix(0.95303,0,0,0.86647,11.575,-4.5016)"
        x2="405.75"
-       y2="360.92" />
+       gradientTransform="matrix(0.95303,0,0,0.86647,11.575,-4.5016)"
+       y1="118.06"
+       x1="405.26" />
     <filter
        id="filter5740"
        x="-0.043531249"
@@ -115,7 +115,7 @@
   </defs>
   <g
      id="template-button"
-     transform="matrix(1.4790872,0,0,1.4790872,-182.86665,-183.9575)">&gt;
+     transform="matrix(1.4850385,0,0,1.4850385,-183.5632,-186.91071)">&gt;
   <g
    id="00"
    transform="translate(90,90)">
@@ -132,8 +132,8 @@
 </g>
 <g
    id="01"
-   transform="translate(128,128)"
-   clip-path="url(#clipPathFlag)">
+   clip-path="url(#clipPathFlag)"
+   transform="translate(128,128)">
   <rect
      id="mask"
      ry="57"
@@ -143,35 +143,51 @@
      x="0"
      fill="#0000ff" />
   <g
-     id="flag"
-     transform="matrix(0.48166,0,0,0.72249,0,2.4116e-6)">
+     id="flag">
     <rect
-       id="rect171"
+       id="rect149"
        fill-rule="evenodd"
-       height="708.65997"
-       width="1063"
+       height="512"
+       width="512"
        y="0"
        x="0"
        stroke-width="1pt"
-       fill="#ffffff" />
-    <rect
-       id="rect403"
+       fill="#ff3300" />
+    <path
+       id="path139"
+       d="m 266.19,534.45 -10.41,-7.43 -10.36,7.5 3.85,-12.19 -10.33,-7.53 12.78,-0.11 3.97,-12.16 4.05,12.13 12.79,0.02 -10.28,7.6 z"
        fill-rule="evenodd"
-       height="708.65997"
-       width="354.32999"
-       y="0"
-       x="0"
+       transform="matrix(6.2061,0,0,6.2061,-1415.4,-3060.2)"
        stroke-width="1pt"
-       fill="#00267f" />
-    <rect
-       id="rect135"
+       fill="#ffff00" />
+    <path
+       id="path138"
+       d="m 266.19,534.45 -10.41,-7.43 -10.36,7.5 3.85,-12.19 -10.33,-7.53 12.78,-0.11 3.97,-12.16 4.05,12.13 12.79,0.02 -10.28,7.6 z"
        fill-rule="evenodd"
-       height="708.65997"
-       width="354.32999"
-       y="0"
-       x="708.65997"
+       transform="matrix(1.63,0.55554,-0.55554,1.63,253.84,-925.67)"
        stroke-width="1pt"
-       fill="#f31830" />
+       fill="#ffff00" />
+    <path
+       id="path137"
+       d="m 266.19,534.45 -10.41,-7.43 -10.36,7.5 3.85,-12.19 -10.33,-7.53 12.78,-0.11 3.97,-12.16 4.05,12.13 12.79,0.02 -10.28,7.6 z"
+       fill-rule="evenodd"
+       transform="matrix(1.6793,0.38142,-0.38142,1.6793,95.09,-579.25)"
+       stroke-width="1pt"
+       fill="#ffff00" />
+    <path
+       id="path136"
+       d="m 266.19,534.45 -10.41,-7.43 -10.36,7.5 3.85,-12.19 -10.33,-7.53 12.78,-0.11 3.97,-12.16 4.05,12.13 12.79,0.02 -10.28,7.6 z"
+       fill-rule="evenodd"
+       transform="matrix(1.4007,1.0019,-1.0019,1.4007,603.91,-806.68)"
+       stroke-width="1pt"
+       fill="#ffff00" />
+    <path
+       id="path135"
+       d="m 266.19,534.45 -10.41,-7.43 -10.36,7.5 3.85,-12.19 -10.33,-7.53 12.78,-0.11 3.97,-12.16 4.05,12.13 12.79,0.02 -10.28,7.6 z"
+       fill-rule="evenodd"
+       transform="matrix(1.7221,-0.012142,0.012142,1.7221,-26.659,-602.32)"
+       stroke-width="1pt"
+       fill="#ffff00" />
   </g>
 </g>
 <g
@@ -180,13 +196,13 @@
   <path
      id="path3862-8"
      style="color:#000000;fill:url(#linearGradient5125)"
-     fill="url(#linearGradient5125)"
-     d="m 214.21,111.21 c -45.245,0.18809 -68.716,7.7308 -64.094,83.553 l 2.8252,46.345 c 47.474,5.5124 56.664,18.445 104.36,21.914 68.073,4.9513 67.937,5.4209 130.56,-14.384 62.628,-19.805 5.8248,-65.247 207.32,-57.82 4.6033,0.16968 17.314,-3.0527 27.462,-12.15 5.5817,-46.524 -2.7842,-69.143 -66.934,-68.876 z" />
+     d="m 214.21,111.21 c -45.245,0.18809 -68.716,7.7308 -64.094,83.553 l 2.8252,46.345 c 47.474,5.5124 56.664,18.445 104.36,21.914 68.073,4.9513 67.937,5.4209 130.56,-14.384 62.628,-19.805 5.8248,-65.247 207.32,-57.82 4.6033,0.16968 17.314,-3.0527 27.462,-12.15 5.5817,-46.524 -2.7842,-69.143 -66.934,-68.876 z"
+     fill="url(#linearGradient5125)" />
   <path
      id="path3079-9"
      style="color:#000000;fill:url(#linearGradient5122)"
-     fill="url(#linearGradient5122)"
-     d="m 531.03,495.17 c -31.605,19.022 -27.601,31.26 -37.913,32.573 -94.704,12.053 -145.98,-0.72701 -165.8,-12.061 -59.588,-34.078 -68.468,-13.014 -100.22,-16.574 -20.115,-2.2551 -59.245,12.984 -73.388,44.344 3.4722,27.608 18.111,32.098 44.281,31.986 l 356.06,-1.5268 c 69.692,-0.29885 56.335,-8.4926 65.543,-56.039 -14.772,-21.671 -13.157,9.109 -44.224,-30.717 z" />
+     d="m 531.03,495.17 c -31.605,19.022 -27.601,31.26 -37.913,32.573 -94.704,12.053 -145.98,-0.72701 -165.8,-12.061 -59.588,-34.078 -68.468,-13.014 -100.22,-16.574 -20.115,-2.2551 -59.245,12.984 -73.388,44.344 3.4722,27.608 18.111,32.098 44.281,31.986 l 356.06,-1.5268 c 69.692,-0.29885 56.335,-8.4926 65.543,-56.039 -14.772,-21.671 -13.157,9.109 -44.224,-30.717 z"
+     fill="url(#linearGradient5122)" />
   <rect
      id="rect5734"
      transform="translate(128,90)"
@@ -217,27 +233,6 @@
             <dc:title>Openclipart</dc:title>
           </cc:Agent>
         </dc:publisher>
-        <dc:title>gf</dc:title>
-        <dc:date>2011-08-21T12:01:03</dc:date>
-        <dc:description>country flag buttons (with ISO-3166-1 naming convention)</dc:description>
-        <dc:source>http://openclipart.org/detail/156397/gf-by-koppi</dc:source>
-        <dc:creator>
-          <cc:Agent>
-            <dc:title>koppi</dc:title>
-          </cc:Agent>
-        </dc:creator>
-        <dc:subject>
-          <rdf:Bag>
-            <rdf:li>ISO3166-1</rdf:li>
-            <rdf:li>button</rdf:li>
-            <rdf:li>clip art</rdf:li>
-            <rdf:li>clipart</rdf:li>
-            <rdf:li>country</rdf:li>
-            <rdf:li>flag</rdf:li>
-            <rdf:li>flags</rdf:li>
-            <rdf:li>squared</rdf:li>
-          </rdf:Bag>
-        </dc:subject>
       </cc:Work>
       <cc:License
          rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">

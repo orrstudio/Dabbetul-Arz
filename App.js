@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useColorScheme, StyleSheet, View, Platform, Dimensions, Text, TouchableOpacity, StatusBar, ScrollView } from 'react-native';
+import { useColorScheme, StyleSheet, View, Platform, Dimensions, Text, TouchableOpacity, StatusBar, ScrollView, Image } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { useEvent } from 'expo';
 import { useVideoPlayer, VideoView } from 'expo-video';
@@ -11,6 +11,43 @@ import VideoWindow from './components/VideoWindow';
 import * as FileSystem from 'expo-file-system';
 import { Asset } from 'expo-asset';
 import { useWindowDimensions } from 'react-native';
+
+// Mapping путей к логотипам, как указано в плейлисте tv.m3u8,
+// для использования локальных изображений через require.
+const channelLogos = {
+  "../assets/images/logos/mpl.png": require("./assets/images/logos/mpl.png"),
+  "../assets/images/logos/nurtv.png": require("./assets/images/logos/nurtv.png"),
+  "../assets/images/logos/hkhm.png": require("./assets/images/logos/hkhm.png"),
+  "../assets/images/logos/hkhz.png": require("./assets/images/logos/hkhz.png"),
+  "../assets/images/logos/klv7r.png": require("./assets/images/logos/klv7r.png"),
+  "../assets/images/logos/ibrahimlive_de.png": require("./assets/images/logos/ibrahimlive_de.png"),
+  "../assets/images/logos/ibrahimlive_en.png": require("./assets/images/logos/ibrahimlive_en.png"),
+  "../assets/images/logos/ibrahimlive_ru.png": require("./assets/images/logos/ibrahimlive_ru.png"),
+  "../assets/images/logos/ibrahimlive_ar.png": require("./assets/images/logos/ibrahimlive_ar.png"),
+  "../assets/images/logos/ibrahimlive_ku.png": require("./assets/images/logos/ibrahimlive_ku.png"),
+  "../assets/images/logos/ibrahimlive_fr.png": require("./assets/images/logos/ibrahimlive_fr.png"),
+  "../assets/images/logos/ibrahimlive_es.png": require("./assets/images/logos/ibrahimlive_es.png"),
+  "../assets/images/logos/ibrahimlive_zh.png": require("./assets/images/logos/ibrahimlive_zh.png"),
+  "../assets/images/logos/ibrahimlive_bg.png": require("./assets/images/logos/ibrahimlive_bg.png"),
+  "../assets/images/logos/ibrahimlive_nl.png": require("./assets/images/logos/ibrahimlive_nl.png"),
+  "../assets/images/logos/ibrahimlive_fa.png": require("./assets/images/logos/ibrahimlive_fa.png"),
+};
+
+// Mapping для флаговых иконок. Флаговое имя строится по коду языка, например flag-ar.png
+const flagIcons = {
+  "de": require("./assets/images/logos/flags/flag-de.png"),
+  "en": require("./assets/images/logos/flags/flag-en.png"),
+  "ru": require("./assets/images/logos/flags/flag-ru.png"),
+  "ar": require("./assets/images/logos/flags/flag-ar.png"),
+  "ku": require("./assets/images/logos/flags/flag-ku.png"),
+  "fr": require("./assets/images/logos/flags/flag-fr.png"),
+  "es": require("./assets/images/logos/flags/flag-es.png"),
+  "zh": require("./assets/images/logos/flags/flag-zh.png"),
+  "bg": require("./assets/images/logos/flags/flag-bg.png"),
+  "nl": require("./assets/images/logos/flags/flag-nl.png"),
+  "fa": require("./assets/images/logos/flags/flag-fa.png"),
+  "tr": require("./assets/images/logos/flags/flag-tr.png"),
+};
 
 // Функция для динамического импорта модуля expo-screen-orientation.
 async function getScreenOrientation() {
@@ -91,35 +128,77 @@ export default function App() {
       padding: 0,
     },
     currentChannelText: {
-      fontSize: 18,
+      fontSize: 14,
       fontWeight: 'bold',
       color: theme === "dark" ? "#fff" : "#000",
       textAlign: 'center',
       alignSelf: 'center',
-      marginTop: 3,
-      marginBottom: 3,
+      marginTop: 5,
+      marginBottom: 5,
       padding: 0,
       flexWrap: 'wrap',
     },
     channelList: {
-      padding: 3,
-      margin: 3,
+      paddingVertical: 0,
+      paddingHorizontal: 5,
+      marginHorizontal: 5,
     },
     channelItem: {
-      padding: 12,
-      marginBottom: 3,
+      padding: 0,
+      marginBottom: 5,
       backgroundColor: theme === "dark" ? "#333" : "#ddd",
-      borderRadius: 5,
+      borderRadius: 20,
+    },
+    channelRow: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingVertical: 5,
+      paddingHorizontal: 10,
+    },
+    leftIconContainer: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: 50,  // фиксированная ширина, совпадающая с размером channelIcon (iconStyle.width)
+    },
+    middleTextContainer: {
+      flex: 1,
+      justifyContent: 'center',
+    },
+    rightFlagContainer: {
+      justifyContent: 'center',
+      alignItems: 'flex-end',
+      width: 50,  // фиксированная ширина для флага (с запасом)
     },
     channelText: {
       fontSize: 16,
-      color: theme === "dark" ? "#fff" : "#000",
+      color: theme === "dark" ? "#ffd700" : "#000",
+      textAlign: 'left',
     },
     activeChannelItem: {
       backgroundColor: theme === "dark" ? "#555" : "#eee",
     },
     activeChannelText: {
+      fontSize: 20,
+      color: theme === "dark" ? "#fff" : "#000",
       fontWeight: 'bold',
+    },
+    activeIconStyle: {
+      width: 40,       // уменьшенная ширина
+      height: 40,      // уменьшенная высота
+      marginRight: 0,
+      resizeMode: 'contain',
+    },
+    iconStyle: {
+      width: 50,
+      height: 50,
+      marginRight: 8,
+      resizeMode: 'contain',
+    },
+    flagIconStyle: {
+      width: 40,
+      height: 40,
+      marginRight: 4,
+      resizeMode: 'contain',
     },
     landscapeContainer: {
       flexDirection: 'row',
@@ -134,18 +213,20 @@ export default function App() {
     },
     landscapeChannelList: {
       width: '100%',
-      padding: 3,
-      margin: 3,
+      paddingVertical: 0,
+      paddingHorizontal: 0,
+      marginVertical: 0,
+      marginHorizontal: 0,
     },
     landscapeChannelListContainer: {
       justifyContent: 'flex-start',
     },
     leftColumn: {
       flexDirection: 'column',
-      padding: 3,
+      padding: 0,
     },
     rightColumn: {
-      padding: 3,
+      padding: 0,
     },
   });
 
@@ -183,9 +264,12 @@ export default function App() {
         if (lines[i].startsWith('#EXTINF:')) {
           const info = lines[i];
           const title = info.substring(info.indexOf(',') + 1).trim();
+          // Извлекаем путь логотипа из атрибута tvg-logo
+          const logoMatch = info.match(/tvg-logo="([^"]+)"/);
+          const logo = logoMatch ? logoMatch[1] : null;
           const uri = lines[i + 1] ? lines[i + 1].trim() : '';
           if (uri) {
-            loadedChannels.push({ uri, metadata: { title } });
+            loadedChannels.push({ uri, metadata: { title, logo } });
           }
         }
       }
@@ -244,20 +328,26 @@ export default function App() {
                 />
               ) : (
                 <Text style={{ color: theme === "dark" ? "#fff" : "#000", textAlign: "center", padding: 10 }}>
-                  Каналы не загружены
+                  Channels not loaded
                 </Text>
               )}
             </View>
             <View style={styles.controls}>
               {currentChannel && (
-                <Text style={styles.currentChannelText}>
-                  {currentChannel.metadata.title}
-                </Text>
+                <View style={{ alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+                  <Text
+                    numberOfLines={1}
+                    ellipsizeMode="tail"
+                    style={[styles.currentChannelText, { textAlign: 'center' }]}
+                  >
+                    {currentChannel.metadata.title}
+                  </Text>
+                </View>
               )}
             </View>
             {channels.length > 0 && (
               <ScrollView contentContainerStyle={styles.channelList}>
-                {channels.map((channel) => (
+                {channels.map((channel, index) => (
                   <TouchableOpacity 
                     key={channel.uri} 
                     style={[
@@ -266,12 +356,48 @@ export default function App() {
                     ]}
                     onPress={() => handleChannelChange(channel)}
                   >
-                    <Text style={[
-                      styles.channelText,
-                      channel.uri === currentChannel.uri && styles.activeChannelText
-                    ]}>
-                      {channel.metadata.title}
-                    </Text>
+                    <View style={styles.channelRow}>
+                      <View style={styles.leftIconContainer}>
+                        {channel.metadata.logo && channelLogos[channel.metadata.logo] ? (
+                          <Image source={channelLogos[channel.metadata.logo]} style={styles.iconStyle} />
+                        ) : (
+                          <Image source={require('./assets/icon.png')} style={styles.iconStyle} />
+                        )}
+                      </View>
+                      <View style={styles.middleTextContainer}>
+                        <Text
+                          numberOfLines={1}
+                          ellipsizeMode="tail"
+                          style={[
+                            styles.channelText,
+                            channel.uri === currentChannel.uri && styles.activeChannelText
+                          ]}
+                        >
+                          {channel.metadata.title}
+                        </Text>
+                      </View>
+                      <View style={styles.rightFlagContainer}>
+                        {(() => {
+                          // Для первых 5 каналов отображаем турецкий флаг
+                          if (index < 5) {
+                            return (
+                              <Image source={flagIcons["tr"]} style={styles.flagIconStyle} />
+                            );
+                          }
+                          const logoFilename = channel.metadata.logo;
+                          const match = logoFilename && logoFilename.match(/ibrahimlive_([a-z]{2})\.png$/i);
+                          if (match) {
+                            const langCode = match[1].toLowerCase();
+                            if (flagIcons[langCode]) {
+                              return (
+                                <Image source={flagIcons[langCode]} style={styles.flagIconStyle} />
+                              );
+                            }
+                          }
+                          return null;
+                        })()}
+                      </View>
+                    </View>
                   </TouchableOpacity>
                 ))}
               </ScrollView>
@@ -302,9 +428,15 @@ export default function App() {
               </View>
               {currentChannel && (
                 <View style={styles.controls}>
-                  <Text style={styles.currentChannelText}>
-                    {currentChannel.metadata.title}
-                  </Text>
+                  <View style={{ alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+                    <Text
+                      numberOfLines={1}
+                      ellipsizeMode="tail"
+                      style={[styles.currentChannelText, { textAlign: 'center' }]}
+                    >
+                      {currentChannel.metadata.title}
+                    </Text>
+                  </View>
                 </View>
               )}
             </View>
@@ -314,7 +446,7 @@ export default function App() {
                   style={styles.landscapeChannelList}
                   contentContainerStyle={[styles.channelList, styles.landscapeChannelListContainer]}
                 >
-                  {channels.map((channel) => (
+                  {channels.map((channel, index) => (
                     <TouchableOpacity 
                       key={channel.uri} 
                       style={[
@@ -323,12 +455,48 @@ export default function App() {
                       ]}
                       onPress={() => handleChannelChange(channel)}
                     >
-                      <Text style={[
-                        styles.channelText,
-                        channel.uri === currentChannel.uri && styles.activeChannelText
-                      ]}>
-                        {channel.metadata.title}
-                      </Text>
+                      <View style={styles.channelRow}>
+                        <View style={styles.leftIconContainer}>
+                          {channel.metadata.logo && channelLogos[channel.metadata.logo] ? (
+                            <Image source={channelLogos[channel.metadata.logo]} style={styles.iconStyle} />
+                          ) : (
+                            <Image source={require('./assets/icon.png')} style={styles.iconStyle} />
+                          )}
+                        </View>
+                        <View style={styles.middleTextContainer}>
+                          <Text
+                            numberOfLines={1}
+                            ellipsizeMode="tail"
+                            style={[
+                              styles.channelText,
+                              channel.uri === currentChannel.uri && styles.activeChannelText
+                            ]}
+                          >
+                            {channel.metadata.title}
+                          </Text>
+                        </View>
+                        <View style={styles.rightFlagContainer}>
+                          {(() => {
+                            // Для первых 5 каналов отображаем турецкий флаг
+                            if (index < 5) {
+                              return (
+                                <Image source={flagIcons["tr"]} style={styles.flagIconStyle} />
+                              );
+                            }
+                            const logoFilename = channel.metadata.logo;
+                            const match = logoFilename && logoFilename.match(/ibrahimlive_([a-z]{2})\.png$/i);
+                            if (match) {
+                              const langCode = match[1].toLowerCase();
+                              if (flagIcons[langCode]) {
+                                return (
+                                  <Image source={flagIcons[langCode]} style={styles.flagIconStyle} />
+                                );
+                              }
+                            }
+                            return null;
+                          })()}
+                        </View>
+                      </View>
                     </TouchableOpacity>
                   ))}
                 </ScrollView>
