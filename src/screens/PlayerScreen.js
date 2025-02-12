@@ -241,63 +241,83 @@ const PlayerScreen = () => {
             )}
           </View>
         ) : (
-          <View style={styles.landscapeContainer}>
-            <View style={[styles.leftColumn, { width: layoutWidths.playerWidth }]}>
-              <View style={styles.landscapeVideoContainer}>
-                {currentChannel ? (
-                  <VideoWindow 
-                    currentChannel={currentChannel}
-                    videoWidth={layoutWidths.playerWidth}
-                    videoHeight={videoHeight}
-                    player={player}
-                    controls={true}
-                  />
-                ) : (
-                  <Text style={{ 
-                    color: theme.text, 
-                    textAlign: "center", 
-                    padding: 10 
-                  }}>
-                    Channels not loaded
-                  </Text>
-                )}
-              </View>
-              {Platform.OS === 'web' && currentChannel && (
-                <View style={styles.controls}>
-                  <View style={{ alignItems: 'center', justifyContent: 'center', width: '100%' }}>
-                    <Text
-                      numberOfLines={1}
-                      ellipsizeMode="tail"
-                      style={[styles.currentChannelText, { textAlign: 'center' }]}
-                    >
-                      {currentChannel.metadata.title}
-                    </Text>
-                  </View>
-                </View>
+          Platform.OS !== 'web' ? (
+            <View style={{ flex: 1 }}>
+              {currentChannel ? (
+                <VideoWindow 
+                  currentChannel={currentChannel}
+                  videoWidth={videoDimensions.width}
+                  videoHeight={videoDimensions.height}
+                  player={player}
+                  controls={true}
+                />
+              ) : (
+                <Text style={{ 
+                  color: theme.text, 
+                  textAlign: 'center', 
+                  padding: 10
+                }}>
+                  Channels not loaded
+                </Text>
               )}
             </View>
-            {Platform.OS === 'web' && (
+          ) : (
+            <View style={styles.landscapeContainer}>
+              <View style={[styles.leftColumn, { width: layoutWidths.playerWidth }]}>
+                <View style={styles.landscapeVideoContainer}>
+                  {currentChannel ? (
+                    <VideoWindow 
+                      currentChannel={currentChannel}
+                      videoWidth={layoutWidths.playerWidth}
+                      videoHeight={videoHeight}
+                      player={player}
+                      controls={true}
+                    />
+                  ) : (
+                    <Text style={{ 
+                      color: theme.text, 
+                      textAlign: 'center', 
+                      padding: 10
+                    }}>
+                      Channels not loaded
+                    </Text>
+                  )}
+                </View>
+                {currentChannel && (
+                  <View style={styles.controls}>
+                    <View style={{ alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+                      <Text
+                        numberOfLines={1}
+                        ellipsizeMode="tail"
+                        style={[styles.currentChannelText, { textAlign: 'center' }]}
+                      >
+                        {currentChannel.metadata.title}
+                      </Text>
+                    </View>
+                  </View>
+                )}
+              </View>
               <View style={[styles.rightColumn, { width: layoutWidths.listWidth }]}>
                 {channels.length > 0 && (
-                  <ScrollView 
+                  <ScrollView
                     style={[
-                      styles.landscapeChannelList, 
-                      { 
-                        maxHeight: channelListMaxHeight, 
-                        marginTop: 20, 
-                        marginBottom: 20, 
+                      styles.landscapeChannelList,
+                      {
+                        maxHeight: channelListMaxHeight,
+                        marginTop: 20,
+                        marginBottom: 20,
                         overflowY: 'auto'
                       }
                     ]}
                     contentContainerStyle={[
-                      styles.channelList, 
-                      styles.landscapeChannelListContainer, 
+                      styles.channelList,
+                      styles.landscapeChannelListContainer,
                       { flexGrow: 1 }
                     ]}
                   >
                     {channels.map((channel, index) => (
-                      <TouchableOpacity 
-                        key={channel.uri} 
+                      <TouchableOpacity
+                        key={channel.uri}
                         style={[
                           styles.channelItem,
                           channel.uri === currentChannel.uri && styles.activeChannelItem
@@ -327,18 +347,14 @@ const PlayerScreen = () => {
                           <View style={styles.rightFlagContainer}>
                             {(() => {
                               if (index < 5) {
-                                return (
-                                  <Image source={flagIcons["tr"]} style={styles.flagIconStyle} />
-                                );
+                                return <Image source={flagIcons["tr"]} style={styles.flagIconStyle} />;
                               }
                               const logoFilename = channel.metadata.logo;
                               const match = logoFilename && logoFilename.match(/ibrahimlive_([a-z]{2})\.png$/i);
                               if (match) {
                                 const langCode = match[1].toLowerCase();
                                 if (flagIcons[langCode]) {
-                                  return (
-                                    <Image source={flagIcons[langCode]} style={styles.flagIconStyle} />
-                                  );
+                                  return <Image source={flagIcons[langCode]} style={styles.flagIconStyle} />;
                                 }
                               }
                               return null;
@@ -350,8 +366,8 @@ const PlayerScreen = () => {
                   </ScrollView>
                 )}
               </View>
-            )}
-          </View>
+            </View>
+          )
         )}
       </SafeAreaView>
     </SafeAreaProvider>
