@@ -1,7 +1,7 @@
 // utils/theme.js
 
 export const darkTheme = {
-    background: "#191970",
+    background: "#111112",
     text: "#fff",
     channelBackground: "#333",
     activeChannelBackground: "#555",
