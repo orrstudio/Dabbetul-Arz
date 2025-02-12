@@ -262,7 +262,7 @@ const PlayerScreen = () => {
                   </Text>
                 )}
               </View>
-              {currentChannel && (
+              {Platform.OS === 'web' && currentChannel && (
                 <View style={styles.controls}>
                   <View style={{ alignItems: 'center', justifyContent: 'center', width: '100%' }}>
                     <Text
@@ -276,79 +276,81 @@ const PlayerScreen = () => {
                 </View>
               )}
             </View>
-            <View style={[styles.rightColumn, { width: layoutWidths.listWidth }]}>
-              {channels.length > 0 && (
-                <ScrollView 
-                  style={[
-                    styles.landscapeChannelList, 
-                    { 
-                      maxHeight: channelListMaxHeight, 
-                      marginTop: 20, 
-                      marginBottom: 20, 
-                      ...(Platform.OS === 'web' ? { overflowY: 'auto' } : {})
-                    }
-                  ]}
-                  contentContainerStyle={[
-                    styles.channelList, 
-                    styles.landscapeChannelListContainer, 
-                    { flexGrow: 1 }
-                  ]}
-                >
-                  {channels.map((channel, index) => (
-                    <TouchableOpacity 
-                      key={channel.uri} 
-                      style={[
-                        styles.channelItem,
-                        channel.uri === currentChannel.uri && styles.activeChannelItem
-                      ]}
-                      onPress={() => handleChannelChange(channel)}
-                    >
-                      <View style={styles.channelRow}>
-                        <View style={styles.leftIconContainer}>
-                          {channel.metadata.logo && channelLogos[channel.metadata.logo] ? (
-                            <Image source={channelLogos[channel.metadata.logo]} style={styles.iconStyle} />
-                          ) : (
-                            <Image source={require("../../assets/icon.png")} style={styles.iconStyle} />
-                          )}
-                        </View>
-                        <View style={styles.middleTextContainer}>
-                          <Text
-                            numberOfLines={1}
-                            ellipsizeMode="tail"
-                            style={[
-                              styles.channelText,
-                              channel.uri === currentChannel.uri && styles.activeChannelText
-                            ]}
-                          >
-                            {channel.metadata.title}
-                          </Text>
-                        </View>
-                        <View style={styles.rightFlagContainer}>
-                          {(() => {
-                            if (index < 5) {
-                              return (
-                                <Image source={flagIcons["tr"]} style={styles.flagIconStyle} />
-                              );
-                            }
-                            const logoFilename = channel.metadata.logo;
-                            const match = logoFilename && logoFilename.match(/ibrahimlive_([a-z]{2})\.png$/i);
-                            if (match) {
-                              const langCode = match[1].toLowerCase();
-                              if (flagIcons[langCode]) {
+            {Platform.OS === 'web' && (
+              <View style={[styles.rightColumn, { width: layoutWidths.listWidth }]}>
+                {channels.length > 0 && (
+                  <ScrollView 
+                    style={[
+                      styles.landscapeChannelList, 
+                      { 
+                        maxHeight: channelListMaxHeight, 
+                        marginTop: 20, 
+                        marginBottom: 20, 
+                        overflowY: 'auto'
+                      }
+                    ]}
+                    contentContainerStyle={[
+                      styles.channelList, 
+                      styles.landscapeChannelListContainer, 
+                      { flexGrow: 1 }
+                    ]}
+                  >
+                    {channels.map((channel, index) => (
+                      <TouchableOpacity 
+                        key={channel.uri} 
+                        style={[
+                          styles.channelItem,
+                          channel.uri === currentChannel.uri && styles.activeChannelItem
+                        ]}
+                        onPress={() => handleChannelChange(channel)}
+                      >
+                        <View style={styles.channelRow}>
+                          <View style={styles.leftIconContainer}>
+                            {channel.metadata.logo && channelLogos[channel.metadata.logo] ? (
+                              <Image source={channelLogos[channel.metadata.logo]} style={styles.iconStyle} />
+                            ) : (
+                              <Image source={require("../../assets/icon.png")} style={styles.iconStyle} />
+                            )}
+                          </View>
+                          <View style={styles.middleTextContainer}>
+                            <Text
+                              numberOfLines={1}
+                              ellipsizeMode="tail"
+                              style={[
+                                styles.channelText,
+                                channel.uri === currentChannel.uri && styles.activeChannelText
+                              ]}
+                            >
+                              {channel.metadata.title}
+                            </Text>
+                          </View>
+                          <View style={styles.rightFlagContainer}>
+                            {(() => {
+                              if (index < 5) {
                                 return (
-                                  <Image source={flagIcons[langCode]} style={styles.flagIconStyle} />
+                                  <Image source={flagIcons["tr"]} style={styles.flagIconStyle} />
                                 );
                               }
-                            }
-                            return null;
-                          })()}
+                              const logoFilename = channel.metadata.logo;
+                              const match = logoFilename && logoFilename.match(/ibrahimlive_([a-z]{2})\.png$/i);
+                              if (match) {
+                                const langCode = match[1].toLowerCase();
+                                if (flagIcons[langCode]) {
+                                  return (
+                                    <Image source={flagIcons[langCode]} style={styles.flagIconStyle} />
+                                  );
+                                }
+                              }
+                              return null;
+                            })()}
+                          </View>
                         </View>
-                      </View>
-                    </TouchableOpacity>
-                  ))}
-                </ScrollView>
-              )}
-            </View>
+                      </TouchableOpacity>
+                    ))}
+                  </ScrollView>
+                )}
+              </View>
+            )}
           </View>
         )}
       </SafeAreaView>

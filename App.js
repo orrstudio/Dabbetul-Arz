@@ -13,7 +13,7 @@ import { StatusBar } from 'expo-status-bar';
 
 const Stack = createStackNavigator();
 
-const MainLayout = ({ children }) => {
+const MainLayout = ({ children, hideBottomNavigation = false }) => {
   // Получаем отступы устройства (например, для устройств с вырезом или кнопкой "Домой")
   const insets = useSafeAreaInsets();
   // Предположим, что высота панели навигации равна 60 пикселям
@@ -21,14 +21,16 @@ const MainLayout = ({ children }) => {
 
   return (
     <View style={{ flex: 1 }}>
-      {/* Добавляем paddingBottom, чтобы контент не перекрывался нижней панелью */}
-      <View style={{ flex: 1, paddingBottom: bottomNavHeight + insets.bottom }}>
+      {/* При скрытии панели используем только нижний inset */}
+      <View style={{ flex: 1, paddingBottom: hideBottomNavigation ? insets.bottom : bottomNavHeight + insets.bottom }}>
         {children}
       </View>
-      {/* Абсолютное позиционирование панели навигации на всех платформах */}
-      <View style={{ position: 'absolute', bottom: 0, left: 0, right: 0 }}>
-        <BottomNavigation />
-      </View>
+      {/* Условное отображение панели навигации */}
+      {!hideBottomNavigation && (
+        <View style={{ position: 'absolute', bottom: 0, left: 0, right: 0 }}>
+          <BottomNavigation />
+        </View>
+      )}
     </View>
   );
 };
@@ -58,7 +60,7 @@ export default function App() {
         </Stack.Screen>
         <Stack.Screen name="Player">
           {(props) => (
-            <MainLayout>
+            <MainLayout hideBottomNavigation={true}>
               <PlayerScreen {...props} />
             </MainLayout>
           )}
