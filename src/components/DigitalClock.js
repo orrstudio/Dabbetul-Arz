@@ -19,9 +19,13 @@ const COLORS = [
  * Двоеточие мигает, переключаясь каждые 500 мс,
  * имитируя мигание секундомера.
  *
+ * @param {Object} [props]
+ * @param {number} [props.timeScale=0.21] Коэффициент для расчёта размера шрифта времени.
+ * @param {number} [props.dateScale=0.05] Коэффициент для расчёта размера шрифта даты.
+ * @param {boolean} [props.showDate=true] Управление отображением даты.
  * @returns {JSX.Element} Элемент цифровых часов.
  */
-const DigitalClock = () => {
+const DigitalClock = ({ timeScale = 0.21, dateScale = 0.05, showDate = true } = {}) => {
   // Загружаем шрифт
   const [fontsLoaded] = useFonts({
     'DSEG7Classic-Bold': require('../../assets/fonts/DSEG7Classic-Bold.ttf'),
@@ -35,7 +39,8 @@ const DigitalClock = () => {
 
   // Получаем размеры экрана
   const { width, height } = useWindowDimensions();
-  const dynamicFontSize = width * 0.21;
+  const dynamicFontSize = width * timeScale;
+  const dynamicDateFontSize = width * dateScale;
 
   // Состояние яркости часов и флаг загрузки настроек
   const [clockOpacity, setClockOpacity] = useState(1.0);
@@ -131,7 +136,6 @@ const DigitalClock = () => {
 
   // Форматируем дату (замена точек на пробел, точка, пробел)
   const formattedDate = currentTime.toLocaleDateString().replace(/\./g, ' . ');
-  const dynamicDateFontSize = width * 0.05;
 
   // Сохранение текущего индекса цвета при изменении
   useEffect(() => {
@@ -175,11 +179,13 @@ const DigitalClock = () => {
               {formattedMinutes}
             </Text>
           </View>
-          <View style={styles.bottomContainer}>
-            <Text style={[styles.dateText, { fontSize: dynamicDateFontSize, opacity: dateOpacity, color: currentColor }]}>
-              {formattedDate}
-            </Text>
-          </View>
+          {showDate && (
+            <View style={styles.bottomContainer}>
+              <Text style={[styles.dateText, { fontSize: dynamicDateFontSize, opacity: dateOpacity, color: currentColor }]}>
+                {formattedDate}
+              </Text>
+            </View>
+          )}
         </>
       )}
     </View>

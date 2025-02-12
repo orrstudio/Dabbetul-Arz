@@ -10,6 +10,7 @@ import SplashScreen from './src/screens/SplashScreen';
 import BottomNavigation from './src/components/BottomNavigation';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
+import { ClockSettingsProvider } from './src/contexts/ClockSettingsContext';
 
 const Stack = createStackNavigator();
 
@@ -47,37 +48,39 @@ export default function App() {
   }, []);
 
   return (
-    <NavigationContainer>
-      {/* Передаём проп style="light" для установки светлого (белого) стиля текста статус-бара */}
-      <StatusBar style="light" backgroundColor="#111112" />
-      <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Home">
-          {(props) => (
-            <MainLayout>
-              <HomeScreen {...props} />
-            </MainLayout>
-          )}
-        </Stack.Screen>
-        <Stack.Screen name="Player">
-          {(props) => (
-            <MainLayout hideBottomNavigation={true}>
-              <PlayerScreen {...props} />
-            </MainLayout>
-          )}
-        </Stack.Screen>
-        <Stack.Screen name="Settings">
-          {(props) => (
-            <MainLayout>
-              <SettingsScreen {...props} />
-            </MainLayout>
-          )}
-        </Stack.Screen>
-        <Stack.Screen 
-          name="SplashScreen" 
-          component={SplashScreen} 
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <ClockSettingsProvider>
+      <NavigationContainer>
+        {/* Передаём проп style="light" для установки светлого (белого) стиля текста статус-бара */}
+        <StatusBar style="light" backgroundColor="#111112" />
+        <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Home">
+            {(props) => (
+              <MainLayout>
+                <HomeScreen {...props} />
+              </MainLayout>
+            )}
+          </Stack.Screen>
+          <Stack.Screen name="Player">
+            {(props) => (
+              <MainLayout hideBottomNavigation={true}>
+                <PlayerScreen {...props} />
+              </MainLayout>
+            )}
+          </Stack.Screen>
+          <Stack.Screen name="Settings">
+            {(props) => (
+              <MainLayout>
+                <SettingsScreen {...props} />
+              </MainLayout>
+            )}
+          </Stack.Screen>
+          <Stack.Screen 
+            name="SplashScreen" 
+            component={SplashScreen} 
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </ClockSettingsProvider>
   );
 }

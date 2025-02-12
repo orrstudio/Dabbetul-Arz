@@ -12,6 +12,8 @@ import VideoWindow from '../components/VideoWindow';
 import { getPlayerStyles } from '../utils/getPlayerStyles';
 import { getThemeByName } from '../utils/theme';
 import { useNavigation } from '@react-navigation/native';
+import DigitalClock from '../components/DigitalClock';
+import TimeDisplay from '../components/TimeDisplay';
 
 // Mapping путей к логотипам (обновлённые пути для расположения из папки screens)
 const channelLogos = {
@@ -267,17 +269,13 @@ const PlayerScreen = () => {
                   </Text>
                 )}
               </View>
-              <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <TouchableOpacity
-                  style={{
-                    backgroundColor: theme.activeChannelBackground,
-                    paddingHorizontal: 8,
-                    paddingVertical: 4,
-                    borderRadius: 4
-                  }}
-                  onPress={() => navigation.navigate('SplashScreen')}
-                >
-                  <Text style={{ color: theme.activeChannelText }}>Splash</Text>
+              <View style={{ flex: 1, justifyContent: 'flex-end', alignItems: 'flex-end', paddingRight: 10, paddingBottom: 10 }}>
+                <TouchableOpacity onPress={() => navigation.navigate('SplashScreen')}>
+                  <View style={{ position: 'relative', right: -50, bottom: 10 }}>
+                    <View style={{ transform: [{ rotate: '-90deg' }], alignItems: 'flex-end' }}>
+                      <TimeDisplay timeScale={0.05} textColor={theme.text} style={{ marginRight: 0, marginBottom: 0 }} />
+                    </View>
+                  </View>
                 </TouchableOpacity>
               </View>
             </View>
