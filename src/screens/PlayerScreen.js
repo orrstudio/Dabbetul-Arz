@@ -14,38 +14,38 @@ import { getThemeByName } from '../../utils/theme';
 
 // Mapping путей к логотипам (обновлённые пути для расположения из папки screens)
 const channelLogos = {
-  "../assets/images/logos/mpl.png": require("../assets/images/logos/mpl.png"),
-  "../assets/images/logos/nurtv.png": require("../assets/images/logos/nurtv.png"),
-  "../assets/images/logos/hkhm.png": require("../assets/images/logos/hkhm.png"),
-  "../assets/images/logos/hkhz.png": require("../assets/images/logos/hkhz.png"),
-  "../assets/images/logos/klv7r.png": require("../assets/images/logos/klv7r.png"),
-  "../assets/images/logos/ibrahimlive_de.png": require("../assets/images/logos/ibrahimlive_de.png"),
-  "../assets/images/logos/ibrahimlive_en.png": require("../assets/images/logos/ibrahimlive_en.png"),
-  "../assets/images/logos/ibrahimlive_ru.png": require("../assets/images/logos/ibrahimlive_ru.png"),
-  "../assets/images/logos/ibrahimlive_ar.png": require("../assets/images/logos/ibrahimlive_ar.png"),
-  "../assets/images/logos/ibrahimlive_ku.png": require("../assets/images/logos/ibrahimlive_ku.png"),
-  "../assets/images/logos/ibrahimlive_fr.png": require("../assets/images/logos/ibrahimlive_fr.png"),
-  "../assets/images/logos/ibrahimlive_es.png": require("../assets/images/logos/ibrahimlive_es.png"),
-  "../assets/images/logos/ibrahimlive_zh.png": require("../assets/images/logos/ibrahimlive_zh.png"),
-  "../assets/images/logos/ibrahimlive_bg.png": require("../assets/images/logos/ibrahimlive_bg.png"),
-  "../assets/images/logos/ibrahimlive_nl.png": require("../assets/images/logos/ibrahimlive_nl.png"),
-  "../assets/images/logos/ibrahimlive_fa.png": require("../assets/images/logos/ibrahimlive_fa.png"),
+  "../assets/images/logos/mpl.png": require("../../assets/images/logos/mpl.png"),
+  "../assets/images/logos/nurtv.png": require("../../assets/images/logos/nurtv.png"),
+  "../assets/images/logos/hkhm.png": require("../../assets/images/logos/hkhm.png"),
+  "../assets/images/logos/hkhz.png": require("../../assets/images/logos/hkhz.png"),
+  "../assets/images/logos/klv7r.png": require("../../assets/images/logos/klv7r.png"),
+  "../assets/images/logos/ibrahimlive_de.png": require("../../assets/images/logos/ibrahimlive_de.png"),
+  "../assets/images/logos/ibrahimlive_en.png": require("../../assets/images/logos/ibrahimlive_en.png"),
+  "../assets/images/logos/ibrahimlive_ru.png": require("../../assets/images/logos/ibrahimlive_ru.png"),
+  "../assets/images/logos/ibrahimlive_ar.png": require("../../assets/images/logos/ibrahimlive_ar.png"),
+  "../assets/images/logos/ibrahimlive_ku.png": require("../../assets/images/logos/ibrahimlive_ku.png"),
+  "../assets/images/logos/ibrahimlive_fr.png": require("../../assets/images/logos/ibrahimlive_fr.png"),
+  "../assets/images/logos/ibrahimlive_es.png": require("../../assets/images/logos/ibrahimlive_es.png"),
+  "../assets/images/logos/ibrahimlive_zh.png": require("../../assets/images/logos/ibrahimlive_zh.png"),
+  "../assets/images/logos/ibrahimlive_bg.png": require("../../assets/images/logos/ibrahimlive_bg.png"),
+  "../assets/images/logos/ibrahimlive_nl.png": require("../../assets/images/logos/ibrahimlive_nl.png"),
+  "../assets/images/logos/ibrahimlive_fa.png": require("../../assets/images/logos/ibrahimlive_fa.png"),
 };
 
 // Mapping для флаговых иконок (обновлённые пути)
 const flagIcons = {
-  "de": require("../assets/images/logos/flags/flag-de.png"),
-  "en": require("../assets/images/logos/flags/flag-en.png"),
-  "ru": require("../assets/images/logos/flags/flag-ru.png"),
-  "ar": require("../assets/images/logos/flags/flag-ar.png"),
-  "ku": require("../assets/images/logos/flags/flag-ku.png"),
-  "fr": require("../assets/images/logos/flags/flag-fr.png"),
-  "es": require("../assets/images/logos/flags/flag-es.png"),
-  "zh": require("../assets/images/logos/flags/flag-zh.png"),
-  "bg": require("../assets/images/logos/flags/flag-bg.png"),
-  "nl": require("../assets/images/logos/flags/flag-nl.png"),
-  "fa": require("../assets/images/logos/flags/flag-fa.png"),
-  "tr": require("../assets/images/logos/flags/flag-tr.png"),
+  "de": require("../../assets/images/logos/flags/flag-de.png"),
+  "en": require("../../assets/images/logos/flags/flag-en.png"),
+  "ru": require("../../assets/images/logos/flags/flag-ru.png"),
+  "ar": require("../../assets/images/logos/flags/flag-ar.png"),
+  "ku": require("../../assets/images/logos/flags/flag-ku.png"),
+  "fr": require("../../assets/images/logos/flags/flag-fr.png"),
+  "es": require("../../assets/images/logos/flags/flag-es.png"),
+  "zh": require("../../assets/images/logos/flags/flag-zh.png"),
+  "bg": require("../../assets/images/logos/flags/flag-bg.png"),
+  "nl": require("../../assets/images/logos/flags/flag-nl.png"),
+  "fa": require("../../assets/images/logos/flags/flag-fa.png"),
+  "tr": require("../../assets/images/logos/flags/flag-tr.png"),
 };
 
 // Если требуется, функция для динамического импорта модуля expo-screen-orientation может быть здесь
@@ -80,10 +80,10 @@ const PlayerScreen = () => {
       let text;
       if (Platform.OS === 'web') {
         // Для web: require возвращает URL
-        const assetUrl = require('../assets/playlists/tv.m3u8');
+        const assetUrl = require("../../assets/playlists/tv.m3u8");
         text = await fetch(assetUrl).then(response => response.text());
       } else {
-        const asset = Asset.fromModule(require('../assets/playlists/tv.m3u8'));
+        const asset = Asset.fromModule(require("../../assets/playlists/tv.m3u8"));
         await asset.downloadAsync();
         const fileUri = asset.localUri || asset.uri;
         text = await FileSystem.readAsStringAsync(fileUri);
@@ -189,7 +189,7 @@ const PlayerScreen = () => {
                         {channel.metadata.logo && channelLogos[channel.metadata.logo] ? (
                           <Image source={channelLogos[channel.metadata.logo]} style={styles.iconStyle} />
                         ) : (
-                          <Image source={require('../assets/icon.png')} style={styles.iconStyle} />
+                          <Image source={require("../../assets/icon.png")} style={styles.iconStyle} />
                         )}
                       </View>
                       <View style={styles.middleTextContainer}>
@@ -286,7 +286,7 @@ const PlayerScreen = () => {
                           {channel.metadata.logo && channelLogos[channel.metadata.logo] ? (
                             <Image source={channelLogos[channel.metadata.logo]} style={styles.iconStyle} />
                           ) : (
-                            <Image source={require('../assets/icon.png')} style={styles.iconStyle} />
+                            <Image source={require("../../assets/icon.png")} style={styles.iconStyle} />
                           )}
                         </View>
                         <View style={styles.middleTextContainer}>
