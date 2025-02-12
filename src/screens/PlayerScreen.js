@@ -7,10 +7,10 @@ import * as FileSystem from 'expo-file-system';
 import { Asset } from 'expo-asset';
 import { useWindowDimensions } from 'react-native';
 import { useVideoPlayer } from 'expo-video';
-import useLockOrientation from '../../hooks/useLockOrientation';
-import VideoWindow from '../../components/VideoWindow';
-import { getPlayerStyles } from '../../utils/getPlayerStyles';
-import { getThemeByName } from '../../utils/theme';
+import useLockOrientation from '../hooks/useLockOrientation';
+import VideoWindow from '../components/VideoWindow';
+import { getPlayerStyles } from '../utils/getPlayerStyles';
+import { getThemeByName } from '../utils/theme';
 
 // Mapping путей к логотипам (обновлённые пути для расположения из папки screens)
 const channelLogos = {
@@ -112,6 +112,14 @@ const PlayerScreen = () => {
   };
 
   const videoDimensions = useWindowDimensions();
+  const windowHeight = videoDimensions.height;
+  let channelListMaxHeight = windowHeight;
+  if (isPortrait) {
+    channelListMaxHeight = windowHeight - videoHeight;
+  } else {
+    channelListMaxHeight = windowHeight - 35;
+  }
+
   const layoutWidths = isPortrait 
     ? {
         playerWidth: videoDimensions.width,
@@ -174,7 +182,10 @@ const PlayerScreen = () => {
               )}
             </View>
             {channels.length > 0 && (
-              <ScrollView contentContainerStyle={styles.channelList}>
+              <ScrollView 
+                style={Platform.OS === 'web' ? { maxHeight: channelListMaxHeight, overflowY: 'auto' } : {}}
+                contentContainerStyle={styles.channelList}
+              >
                 {channels.map((channel, index) => (
                   <TouchableOpacity 
                     key={channel.uri} 
@@ -269,8 +280,20 @@ const PlayerScreen = () => {
             <View style={[styles.rightColumn, { width: layoutWidths.listWidth }]}>
               {channels.length > 0 && (
                 <ScrollView 
-                  style={styles.landscapeChannelList}
-                  contentContainerStyle={[styles.channelList, styles.landscapeChannelListContainer]}
+                  style={[
+                    styles.landscapeChannelList, 
+                    { 
+                      maxHeight: channelListMaxHeight, 
+                      marginTop: 20, 
+                      marginBottom: 20, 
+                      ...(Platform.OS === 'web' ? { overflowY: 'auto' } : {})
+                    }
+                  ]}
+                  contentContainerStyle={[
+                    styles.channelList, 
+                    styles.landscapeChannelListContainer, 
+                    { flexGrow: 1 }
+                  ]}
                 >
                   {channels.map((channel, index) => (
                     <TouchableOpacity 

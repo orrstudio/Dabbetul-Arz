@@ -5,9 +5,9 @@ import { useEvent } from 'expo';
 import { useVideoPlayer, VideoView } from 'expo-video';
 import { Ionicons } from '@expo/vector-icons';
 import * as NavigationBar from 'expo-navigation-bar';
-import HLSVideoPlayer from './components/HLSVideoPlayer';
-import useLockOrientation from './hooks/useLockOrientation';
-import VideoWindow from './components/VideoWindow';
+import HLSVideoPlayer from './src/components/HLSVideoPlayer';
+import useLockOrientation from './src/hooks/useLockOrientation';
+import VideoWindow from './src/components/VideoWindow';
 import * as FileSystem from 'expo-file-system';
 import { Asset } from 'expo-asset';
 import { useWindowDimensions } from 'react-native';
@@ -15,6 +15,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './src/screens/HomeScreen';
 import PlayerScreen from './src/screens/PlayerScreen';
+import { getThemeByName } from './src/utils/theme';
+import { getPlayerStyles } from './src/utils/getPlayerStyles';
 
 // Mapping путей к логотипам, как указано в плейлисте tv.m3u8,
 // для использования локальных изображений через require.
