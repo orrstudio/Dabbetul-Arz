@@ -20,10 +20,11 @@
           "remote-notification"
         ],
         "NSUserNotificationUsageDescription": "Приложение использует уведомления для управления воспроизведением медиа",
-        "UIUserInterfaceStyle": "system",
+        "UIUserInterfaceStyle": "light",
         "UIRequiresFullScreen": true,
         "UIStatusBarHidden": false,
-        "UIViewControllerBasedStatusBarAppearance": true
+        "UIViewControllerBasedStatusBarAppearance": false,
+        "UIStatusBarStyle": "UIStatusBarStyleLightContent"
       }
     },
     "android": {
@@ -36,7 +37,17 @@
         "android.permission.WAKE_LOCK",
         "android.permission.VIBRATE",
         "android.permission.RECEIVE_BOOT_COMPLETED"
-      ]
+      ],
+      "androidStatusBar": {
+        "barStyle": "light-content",
+        "backgroundColor": "#111112",
+        "translucent": false
+      }
+    },
+    "androidNavigationBar": {
+      "backgroundColor": "#111112",
+      "barStyle": "light-content",
+      "visible": true
     },
     "web": {
       "favicon": "./assets/favicon.png"

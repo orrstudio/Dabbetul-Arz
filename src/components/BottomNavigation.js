@@ -15,7 +15,7 @@ const BottomNavigation = () => {
   const theme = getThemeByName('dark');
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background, borderTopColor: theme.text }]}>
+    <View style={[styles.container, { backgroundColor: theme.background, borderTopColor: theme.background }]}>
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}>
         <Ionicons name="home-outline" size={24} color={theme.text} />
         <Text style={[styles.buttonText, { color: theme.text }]}>Домой</Text>
@@ -42,9 +42,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     paddingVertical: 10,
-    borderTopWidth: 1,
-    borderTopColor: '#ccc',
-    backgroundColor: '#fff',
+    borderTopWidth: 0,
+    backgroundColor: '#111112',
   },
   button: {
     alignItems: 'center',

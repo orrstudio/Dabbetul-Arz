@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { 
-  StyleSheet, View, Text, ScrollView, TouchableOpacity, Image, Platform, Dimensions, StatusBar 
+  StyleSheet, View, Text, ScrollView, TouchableOpacity, Image, Platform, Dimensions 
 } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import * as FileSystem from 'expo-file-system';
@@ -149,7 +149,6 @@ const PlayerScreen = () => {
 
   return (
     <SafeAreaProvider>
-      <StatusBar barStyle={themeName === "dark" ? "light-content" : "dark-content"} />
       <SafeAreaView style={styles.container}>
         { isPortrait ? (
           <View style={{ flex: 1, flexDirection: 'column' }}>
