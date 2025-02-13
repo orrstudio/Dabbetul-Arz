@@ -51,10 +51,10 @@ const TimeDisplay = ({ timeScale = 0.21, blinkInterval = 500, style }) => {
   }
 
   return (
-    <View style={[styles.container, style, { minWidth }]}>
+    <View style={[styles.container, style, { minWidth, flexDirection: 'row', alignItems: 'center' }]}>
       <Text
         numberOfLines={1}
-        style={[styles.timeText, { fontSize, color: clockColor, opacity: clockOpacity }]}
+        style={[styles.timeText, { fontSize, color: clockColor, opacity: clockOpacity, textAlign: 'left' }]}
       >
         {formattedHours}
         <Text style={{ color: colonVisible ? clockColor : 'transparent' }}>:</Text>
@@ -66,13 +66,13 @@ const TimeDisplay = ({ timeScale = 0.21, blinkInterval = 500, style }) => {
 
 const styles = StyleSheet.create({
   container: {
-    // Центрирование по умолчанию
+    // По умолчанию выравнивание оставляем левым
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
   },
   timeText: {
     fontFamily: 'DSEG7Classic-Bold',
-    textAlign: 'center',
+    textAlign: 'left',
   },
 });
 

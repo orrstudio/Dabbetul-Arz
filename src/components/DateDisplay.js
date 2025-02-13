@@ -41,7 +41,7 @@ const DateDisplay = ({ dateScale = 0.05, style }) => {
   
   return (
     <View style={[styles.container, style]}>
-      <Text style={[styles.dateText, { fontSize, color: clockColor, opacity: clockOpacity, textAlign: 'center' }]}>
+      <Text style={[styles.dateText, { fontSize, color: clockColor, opacity: clockOpacity * 0.8, textAlign: 'center' }]}>
         {formattedDate}
       </Text>
     </View>

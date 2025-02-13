@@ -4,7 +4,7 @@
  * Глобальные настройки (цвет и яркость) изменяются посредством свайпов.
  *
  * Горизонтальный свайп -> смена цвета.
- * Вертикальный свайп -> регулировка яркости.
+ * Вертикальный свайп -> пропорциональное изменение яркости.
  *
  * @returns {JSX.Element}
  */
@@ -17,7 +17,7 @@ import { ClockSettingsContext } from '../contexts/ClockSettingsContext';
 const SplashScreen = ({ navigation }) => {
   const { clockOpacity, setClockOpacity, clockColor, setClockColor } = useContext(ClockSettingsContext);
 
-  // Создаем ref для актуального значения цвета
+  // Создаем ref для актуального значения цвета, чтобы использовать его внутри обработчика
   const clockColorRef = useRef(clockColor);
   useEffect(() => {
     clockColorRef.current = clockColor;
@@ -29,32 +29,64 @@ const SplashScreen = ({ navigation }) => {
     });
   }, [navigation]);
 
-  // Создание panResponder для обработки свайпов с дополнительными Capture-обработчиками
-  const threshold = 30;
+  /**
+   * Функция для расчёта направления и величины свайпа.
+   *
+   * @param {number} dx - горизонтальное смещение.
+   * @param {number} dy - вертикальное смещение.
+   * @param {number} threshold - минимальное смещение для активации свайпа.
+   * @param {number} ratio - пороговое соотношение смещений,
+   *        при котором свайп считается чисто горизонтальным (dx >= ratio * dy) или чисто вертикальным (dy >= ratio * dx).
+   *
+   * @returns {Object} { type: 'horizontal' | 'vertical' | 'none', delta: number }
+   */
+  const calculateSwipe = (dx, dy, threshold = 30, ratio = 1.5) => {
+    const absDx = Math.abs(dx);
+    const absDy = Math.abs(dy);
+    if (absDx < threshold && absDy < threshold) {
+      return { type: 'none', delta: 0 };
+    }
+    if (absDx >= ratio * absDy) {
+      return { type: 'horizontal', delta: dx };
+    }
+    if (absDy >= ratio * absDx) {
+      return { type: 'vertical', delta: dy };
+    }
+    // В нечетких ситуациях выбираем вертикальное действие
+    return { type: 'vertical', delta: dy };
+  };
+
+  // Создаем panResponder с использованием функции calculateSwipe
   const panResponder = useRef(
     PanResponder.create({
       onStartShouldSetPanResponder: () => true,
-      onStartShouldSetPanResponderCapture: () => true, // Захватываем жесты на старте
+      onStartShouldSetPanResponderCapture: () => true, // Захватываем жесты с начала
       onMoveShouldSetPanResponder: () => true,
-      onMoveShouldSetPanResponderCapture: () => true,   // Захватываем жесты при перемещении
+      onMoveShouldSetPanResponderCapture: () => true,
       onPanResponderRelease: (evt, gestureState) => {
         const { dx, dy } = gestureState;
-        if (Math.abs(dx) >= threshold) {
+        const swipe = calculateSwipe(dx, dy, 30, 1.5);
+        if (swipe.type === 'horizontal') {
           // Горизонтальный свайп — изменение цвета
           const colors = ['#00FF00', '#FF0000', '#FFFF00', '#00FFFF', '#FF00FF', '#FFFFFF'];
           const currentIndex = colors.indexOf(clockColorRef.current);
-          if (dx > 0) {
+          if (swipe.delta > 0) {
             setClockColor(colors[(currentIndex + 1) % colors.length]);
           } else {
             setClockColor(colors[(currentIndex - 1 + colors.length) % colors.length]);
           }
-        } else if (Math.abs(dy) >= threshold) {
-          // Вертикальный свайп — изменение яркости
-          if (dy < 0) { // свайп вверх увеличивает яркость
-            setClockOpacity(prev => Math.min(prev + 0.05, 1));
-          } else {       // свайп вниз уменьшает яркость
-            setClockOpacity(prev => Math.max(prev - 0.05, 0));
-          }
+        } else if (swipe.type === 'vertical') {
+          // Вертикальный свайп — пропорциональное изменение яркости.
+          // При свайпе вверх (swipe.delta отрицательный) яркость увеличивается,
+          // а при свайпе вниз (swipe.delta положительный) — уменьшается.
+          setClockOpacity(prev => {
+            // Инвертируем swipe.delta, чтобы изменить направление эффекта.
+            const adjustment = (-swipe.delta / 100) * 0.05;
+            let newOpacity = prev + adjustment;
+            if (newOpacity > 1) newOpacity = 1;
+            if (newOpacity < 0) newOpacity = 0;
+            return newOpacity;
+          });
         }
       },
     })
@@ -66,7 +98,9 @@ const SplashScreen = ({ navigation }) => {
       {...panResponder.panHandlers}
     >
       <TimeDisplay timeScale={0.21} />
-      <DateDisplay dateScale={0.05} />
+      <View style={{ marginTop: 30 }}>
+        <DateDisplay dateScale={0.05} />
+      </View>
     </View>
   );
 };

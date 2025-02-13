@@ -14,6 +14,7 @@ import { getThemeByName } from '../utils/theme';
 import { useNavigation } from '@react-navigation/native';
 import DigitalClock from '../components/DigitalClock';
 import TimeDisplay from '../components/TimeDisplay';
+import PlayerClock from '../components/PlayerClock';
 
 // Mapping путей к логотипам (обновлённые пути для расположения из папки screens)
 const channelLogos = {
@@ -270,13 +271,7 @@ const PlayerScreen = () => {
                 )}
               </View>
               <View style={{ flex: 1, justifyContent: 'flex-end', alignItems: 'flex-end', paddingRight: 10, paddingBottom: 10 }}>
-                <TouchableOpacity onPress={() => navigation.navigate('SplashScreen')}>
-                  <View style={{ position: 'relative', right: -50, bottom: 10 }}>
-                    <View style={{ transform: [{ rotate: '-90deg' }], alignItems: 'flex-end' }}>
-                      <TimeDisplay timeScale={0.05} textColor={theme.text} style={{ marginRight: 0, marginBottom: 0 }} />
-                    </View>
-                  </View>
-                </TouchableOpacity>
+                <PlayerClock />
               </View>
             </View>
           ) : (
