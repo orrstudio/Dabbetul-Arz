@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Dabbetül-Arz",
-    "slug": "snack-44be4cff-7c22-4b45-8ee3-b9005f5146ae",
+    "slug": "dabbetul-arz",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -60,6 +60,12 @@
           "pictureInPicture": true
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "18518719-d969-4ae4-9c1f-c4b8056b2599"
+      }
+    },
+    "owner": "orr888"
   }
 }
