@@ -37,17 +37,12 @@
         "android.permission.WAKE_LOCK",
         "android.permission.VIBRATE",
         "android.permission.RECEIVE_BOOT_COMPLETED"
-      ],
-      "androidStatusBar": {
-        "barStyle": "light-content",
-        "backgroundColor": "#111112",
-        "translucent": false
-      }
+      ]
     },
     "androidNavigationBar": {
       "backgroundColor": "#111112",
       "barStyle": "light-content",
-      "visible": true
+      "visible": "sticky-immersive"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -66,6 +61,11 @@
         "projectId": "18518719-d969-4ae4-9c1f-c4b8056b2599"
       }
     },
-    "owner": "orr888"
+    "owner": "orr888",
+    "androidStatusBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#111112",
+      "translucent": false
+    }
   }
 }
