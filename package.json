@@ -7,19 +7,22 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "deploy": "gh-pages -d web-build"
   },
   "dependencies": {
+    "@expo/metro-runtime": "~4.0.1",
     "@react-native-async-storage/async-storage": "1.23.1",
     "@react-navigation/native": "^7.0.14",
     "@react-navigation/stack": "^7.1.1",
-    "expo": "~52.0.33",
+    "expo": "~52.0.35",
     "expo-asset": "^11.0.3",
     "expo-doctor": "^1.12.5",
     "expo-file-system": "^18.0.10",
     "expo-navigation-bar": "~4.0.8",
     "expo-screen-orientation": "^8.0.4",
     "expo-status-bar": "~2.0.1",
+    "expo-updates": "~0.26.17",
     "expo-video": "^2.0.5",
     "hls.js": "^1.5.20",
     "metro-runtime": "^0.81.1",
@@ -32,7 +35,12 @@
     "react-native-web": "^0.19.13"
   },
   "devDependencies": {
-    "@babel/core": "^7.26.8"
+    "@babel/core": "^7.26.8",
+    "@expo/webpack-config": "^19.0.1",
+    "gh-pages": "^6.3.0",
+    "raw-loader": "^4.0.2",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1"
   },
   "private": true,
   "expo": {
@@ -40,6 +48,10 @@
       "reactNativeDirectoryCheck": {
         "listUnknownPackages": false
       }
+    },
+    "web": {
+      "bundler": "webpack",
+      "favicon": "./assets/favicon.png"
     }
   }
 }

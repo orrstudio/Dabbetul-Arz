@@ -9,5 +9,6 @@ module.exports = async function (env, argv) {
     test: /\.m3u8$/,
     use: 'raw-loader',
   });
+  config.output.publicPath = '/Dabbetul-Arz/_expo/';
   return config;
 }; 

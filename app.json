@@ -2,6 +2,7 @@
   "expo": {
     "name": "Dabbetül-Arz",
     "slug": "dabbetul-arz",
+    "owner": "orr888",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -15,6 +16,9 @@
       "supportsTablet": true,
       "infoPlist": {
         "UIBackgroundModes": [
+          "audio",
+          "fetch",
+          "remote-notification",
           "audio",
           "fetch",
           "remote-notification"
@@ -33,6 +37,10 @@
         "backgroundColor": "#ffffff"
       },
       "permissions": [
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.WAKE_LOCK",
+        "android.permission.VIBRATE",
+        "android.permission.RECEIVE_BOOT_COMPLETED",
         "android.permission.FOREGROUND_SERVICE",
         "android.permission.WAKE_LOCK",
         "android.permission.VIBRATE",
@@ -61,11 +69,16 @@
         "projectId": "18518719-d969-4ae4-9c1f-c4b8056b2599"
       }
     },
-    "owner": "orr888",
     "androidStatusBar": {
       "barStyle": "light-content",
       "backgroundColor": "#111112",
       "translucent": false
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/18518719-d969-4ae4-9c1f-c4b8056b2599"
     }
   }
 }
