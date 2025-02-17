@@ -125,7 +125,7 @@ const PlayerScreen = () => {
   if (isPortrait) {
     channelListMaxHeight = windowHeight - videoHeight;
   } else {
-    channelListMaxHeight = windowHeight - 35;
+    channelListMaxHeight = windowHeight - 0;
   }
 
   const layoutWidths = isPortrait 
