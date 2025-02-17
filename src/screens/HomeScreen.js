@@ -3,37 +3,67 @@ import { View, Text, TouchableOpacity, StyleSheet, Dimensions, Animated, Image }
 import { getThemeByName } from '../utils/theme';
 import { getPlayerStyles } from '../utils/getPlayerStyles';
 
-const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
+// Коэффициенты
+const CONTAINER_SCALE = 3;
+const MOVEMENT_SCALE = 0.1;
 
-const getScreenDimensions = () => {
+// Вычисляем размеры контейнера на основе текущих размеров экрана
+const getContainerDimensions = () => {
   const { width, height } = Dimensions.get('window');
+  
+  // Базовые размеры контейнера
+  const containerWidth = width * CONTAINER_SCALE;
+  const containerHeight = height * CONTAINER_SCALE;
+  
+  // Разница между размером контейнера и экрана
+  const diffX = containerWidth - width;
+  const diffY = containerHeight - height;
+  
+  // Центрируем контейнер
+  const offsetX = diffX / 2;
+  const offsetY = diffY / 2;
+  
+  // Максимальное смещение при анимации
+  const maxOffsetX = offsetX * MOVEMENT_SCALE;
+  const maxOffsetY = offsetY * MOVEMENT_SCALE;
+
   return {
-    width,
-    height,
-    planetSize: Math.min(width, height) / 1.5,
+    width: containerWidth,
+    height: containerHeight,
+    offsetX,
+    offsetY,
+    maxOffsetX,
+    maxOffsetY
   };
 };
 
 const HomeScreen = ({ navigation }) => {
   const [themeName] = useState("dark");
   const theme = getThemeByName(themeName);
-  const [dimensions, setDimensions] = useState(getScreenDimensions());
+  
+  // Состояние для хранения размеров
+  const [containerDims, setContainerDims] = useState(getContainerDimensions());
   
   // Анимация
   const translateX = useRef(new Animated.Value(0)).current;
   const translateY = useRef(new Animated.Value(0)).current;
 
-  // Для теста выведем одну звезду
-  useEffect(() => {
-    console.log('Component mounted');
-    const image = require('../../assets/images/animation/stars.png');
-    console.log('Image loaded:', image);
-  }, []);
-
   // Обновляем размеры при изменении ориентации
   useEffect(() => {
     const updateDimensions = () => {
-      setDimensions(getScreenDimensions());
+      // Останавливаем текущую анимацию
+      translateX.stopAnimation();
+      translateY.stopAnimation();
+      
+      // Обновляем размеры
+      setContainerDims(getContainerDimensions());
+      
+      // Сбрасываем позицию
+      translateX.setValue(0);
+      translateY.setValue(0);
+      
+      // Перезапускаем анимацию
+      animateContainer();
     };
 
     const subscription = Dimensions.addEventListener('change', updateDimensions);
@@ -43,15 +73,16 @@ const HomeScreen = ({ navigation }) => {
   const animateContainer = () => {
     const createCircularMotion = () => {
       const duration = 60000;
+      const { maxOffsetX, maxOffsetY } = containerDims;
       
       return Animated.sequence([
         Animated.timing(translateX, {
-          toValue: -SCREEN_WIDTH * 0.2,
+          toValue: -maxOffsetX,
           duration: duration / 4,
           useNativeDriver: true,
         }),
         Animated.timing(translateY, {
-          toValue: -SCREEN_HEIGHT * 0.2,
+          toValue: -maxOffsetY,
           duration: duration / 4,
           useNativeDriver: true,
         }),
@@ -73,17 +104,40 @@ const HomeScreen = ({ navigation }) => {
 
   useEffect(() => {
     animateContainer();
-  }, [dimensions]);
+  }, [containerDims]); // Перезапускаем анимацию при изменении размеров
+
+  const getScreenDimensions = () => {
+    const { width, height } = Dimensions.get('window');
+    return {
+      width,
+      height,
+      planetSize: Math.min(width, height) / 1.5,
+    };
+  };
+
+  const [dimensions, setDimensions] = useState(getScreenDimensions());
+
+  useEffect(() => {
+    const updateDimensions = () => {
+      setDimensions(getScreenDimensions());
+    };
+
+    const subscription = Dimensions.addEventListener('change', updateDimensions);
+    return () => subscription.remove();
+  }, []);
 
   const styles = getHomeScreenStyles(theme, dimensions);
 
   return (
     <View style={styles.container}>
-      {/* Тестовый контейнер с одной звездой */}
       <Animated.View
         style={[
           styles.starsContainer,
           {
+            width: containerDims.width,
+            height: containerDims.height,
+            left: -containerDims.offsetX,
+            top: -containerDims.offsetY,
             transform: [
               { translateX },
               { translateY }
@@ -137,8 +191,6 @@ const getHomeScreenStyles = (theme, dimensions) => StyleSheet.create({
   },
   starsContainer: {
     position: 'absolute',
-    width: SCREEN_WIDTH,
-    height: SCREEN_HEIGHT,
     zIndex: 1,
   },
   starsImage: {
