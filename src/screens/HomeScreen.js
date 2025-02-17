@@ -154,48 +154,56 @@ const HomeScreen = ({ navigation }) => {
       {/* Остальные элементы */}
       <Animated.Image
         source={require('../../assets/images/animation/earth.png')}
-        style={styles.planetImage}
+        style={[styles.planetImage, {
+          transform: [
+            { rotate: dimensions.width > dimensions.height ? '0deg' : '0deg' }
+          ]
+        }]}
       />
 
       {/* Спутник */}
       <View style={styles.dabbeContainer}>
         <Animated.Image
           source={require('../../assets/images/animation/dabbe.png')}
-          style={styles.dabbeImage}
+          style={[styles.dabbeImage, {
+            transform: [
+              { rotate: dimensions.width > dimensions.height ? '40deg' : '-2deg' }
+            ]
+          }]}
         />
       </View>
 
-      <View style={[
-        styles.titleContainer,
-        {
-          top: dimensions.width > dimensions.height 
-            ? dimensions.height * 0.08  // Для горизонтальной
-            : dimensions.height * 0.15  // Для вертикальной
-        }
-      ]}>
-        {dimensions.width > dimensions.height ? (
-          // Горизонтальная ориентация - две строки
-          <>
-            <View style={styles.textWrapper}>
-              <Text style={[styles.titleText, { fontSize: Math.min(dimensions.width * 0.1, dimensions.height * 0.08) }]}>
-                Dabbetül
-              </Text>
-            </View>
-            <View style={styles.textWrapper}>
-              <Text style={[styles.titleText, { fontSize: Math.min(dimensions.width * 0.1, dimensions.height * 0.08) }]}>
-                Arz
-              </Text>
-            </View>
-          </>
-        ) : (
-          // Вертикальная ориентация - одна строка
-          <View style={styles.textWrapper}>
-            <Text style={[styles.titleText, { fontSize: Math.min(dimensions.width * 0.09, dimensions.height * 0.07) }]}>
-              Dabbetül Arz
+      {/* Горизонтальная ориентация */}
+      {dimensions.width > dimensions.height && (
+        <View style={[styles.titleContainer, { top: dimensions.height * 0.08 }]}>
+          <View style={[styles.textWrapper, { marginTop: dimensions.height * 0.03 }]}>
+            <Text style={[styles.titleText, { fontSize: Math.min(dimensions.width * 0.1, dimensions.height * 0.08) }]}>
+              Dabbetül
             </Text>
           </View>
-        )}
-      </View>
+          <View style={[styles.textWrapper, { marginTop: dimensions.height * 0.03 }]}>
+            <Text style={[styles.titleText, { fontSize: Math.min(dimensions.width * 0.15, dimensions.height * 0.12) }]}>
+              ARZ
+            </Text>
+          </View>
+        </View>
+      )}
+
+      {/* Вертикальная ориентация */}
+      {dimensions.width <= dimensions.height && (
+        <View style={[styles.titleContainer, { top: dimensions.height * 0.15 }]}>
+          <View style={[styles.textWrapper, { marginTop: dimensions.height * -0.1 }]}>
+            <Text style={[styles.titleText, { fontSize: Math.min(dimensions.width * 0.12, dimensions.height * 0.1) }]}>
+              Dabbetül
+            </Text>
+          </View>
+          <View style={[styles.textWrapper, { marginTop: dimensions.height * 0.02 }]}>
+            <Text style={[styles.titleText, { fontSize: Math.min(dimensions.width * 0.15, dimensions.height * 0.12) }]}>
+              ARZ
+            </Text>
+          </View>
+        </View>
+      )}
 
       <View style={styles.contentContainer}>
         {/* Контейнер для кнопок */}
@@ -229,8 +237,8 @@ const getHomeScreenStyles = (theme, dimensions) => StyleSheet.create({
   },
   planetImage: {
     position: 'absolute',
-    bottom: '-13%', // Выходит за нижнюю границу
-    left: '-10%', // Выходит за левую границу
+    bottom: '-9%', // Выходит за нижнюю границу
+    left: '-7%', // Выходит за левую границу
     width: dimensions.planetSize,
     height: dimensions.planetSize,
     resizeMode: 'contain',
