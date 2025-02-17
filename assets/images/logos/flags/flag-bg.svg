@@ -26,125 +26,137 @@
      inkscape:pagecheckerboard="1"
      inkscape:deskcolor="#505050"
      inkscape:zoom="0.78812943"
-     inkscape:cx="325.45416"
-     inkscape:cy="400.94937"
+     inkscape:cx="326.08857"
+     inkscape:cy="402.85261"
      inkscape:window-width="1920"
-     inkscape:window-height="1043"
+     inkscape:window-height="1002"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg2" />
+     inkscape:current-layer="flag" />
   <defs
-     id="defs4">
-    <clipPath
-       id="clipPathFlag"
-       clipPathUnits="userSpaceOnUse">
-      <rect
-         id="rect3918"
-         fill-opacity="0.67"
-         ry="57"
-         height="511"
-         width="511"
-         y=".5"
-         x=".5" />
-    </clipPath>
-    <linearGradient
-       id="linearGradient3852-0">
-      <stop
-         id="stop3854-6"
-         stop-color="#dbe3db"
-         offset="0" />
-      <stop
-         id="stop3856-1"
-         stop-color="#dbe3db"
-         stop-opacity="0"
-         offset="1" />
-    </linearGradient>
-    <linearGradient
-       id="linearGradient5122"
-       y2="523.41"
-       xlink:href="#linearGradient3852-0"
-       gradientUnits="userSpaceOnUse"
-       x2="358.08"
-       gradientTransform="matrix(1.1571,0,0,1.3167,-91.204,-253.99)"
-       y1="705.76"
-       x1="342.19" />
-    <linearGradient
-       id="linearGradient5125"
-       y2="360.92"
-       xlink:href="#linearGradient3852-0"
-       gradientUnits="userSpaceOnUse"
-       x2="405.75"
-       gradientTransform="matrix(0.95303,0,0,0.86647,11.575,-4.5016)"
-       y1="118.06"
-       x1="405.26" />
-    <filter
-       id="filter5740"
-       x="-0.043531249"
-       y="-0.043531249"
-       width="1.0870625"
-       height="1.0870625">
-      <feGaussianBlur
-         id="feGaussianBlur5742"
-         stdDeviation="5.12" />
-    </filter>
-    <clipPath
-       id="clipPath5796"
-       clipPathUnits="userSpaceOnUse">
-      <rect
-         id="rect5798"
-         ry="57"
-         height="512"
-         width="512"
-         stroke="#00fa00"
-         y="0"
-         x="0"
-         stroke-width="20"
-         fill="none" />
-    </clipPath>
-    <filter
-       id="filter5912"
-       x="-0.088882813"
-       y="-0.088882813"
-       width="1.1777656"
-       height="1.1777656">
-      <feGaussianBlur
-         id="feGaussianBlur5914"
-         stdDeviation="17.92" />
-    </filter>
-  </defs>
-  <g
-     id="template-button"
-     transform="matrix(1.4860552,0,0,1.4860552,-186.01078,-186.41565)">&gt;
-  <g
-   id="00"
-   transform="translate(90,90)">
+     id="defs4"><linearGradient
+   id="linearGradient3852-0">
+  <stop
+     id="stop3854-6"
+     stop-color="#dbe3db"
+     offset="0" />
+  <stop
+     id="stop3856-1"
+     stop-color="#dbe3db"
+     stop-opacity="0"
+     offset="1" />
+</linearGradient>
+<linearGradient
+   id="linearGradient5122"
+   y2="523.41"
+   xlink:href="#linearGradient3852-0"
+   gradientUnits="userSpaceOnUse"
+   x2="358.08"
+   gradientTransform="matrix(1.1571,0,0,1.3167,-91.204,-253.99)"
+   y1="705.76"
+   x1="342.19" />
+<linearGradient
+   id="linearGradient5125"
+   y2="360.92"
+   xlink:href="#linearGradient3852-0"
+   gradientUnits="userSpaceOnUse"
+   x2="405.75"
+   gradientTransform="matrix(0.95303,0,0,0.86647,11.575,-4.5016)"
+   y1="118.06"
+   x1="405.26" />
+<filter
+   id="filter5740"
+   x="-0.043531249"
+   y="-0.043531249"
+   width="1.0870625"
+   height="1.0870625">
+  <feGaussianBlur
+     id="feGaussianBlur5742"
+     stdDeviation="5.12" />
+</filter>
+<clipPath
+   id="clipPath5796"
+   clipPathUnits="userSpaceOnUse">
   <rect
-     id="shadow"
-     ry="57"
-     height="512"
-     filter="url(#filter5912)"
-     width="512"
-     stroke="#a8a8a8"
-     y="56"
-     x="38"
-     stroke-width="5" />
-</g>
-<g
-   id="01"
-   clip-path="url(#clipPathFlag)"
-   transform="translate(128,128)">
-  <rect
-     id="mask"
+     id="rect5798"
      ry="57"
      height="512"
      width="512"
+     stroke="#00fa00"
      y="0"
      x="0"
-     fill="#0000ff" />
+     stroke-width="20"
+     fill="none" />
+</clipPath>
+<filter
+   id="filter5912"
+   x="-0.088882813"
+   y="-0.088882813"
+   width="1.1777656"
+   height="1.1777656">
+  <feGaussianBlur
+     id="feGaussianBlur5914"
+     stdDeviation="17.92" />
+</filter>
+
+&gt;
+  <clipPath
+   clipPathUnits="userSpaceOnUse"
+   id="clipPath1">
+  <rect
+     id="rect1"
+     fill-opacity="0.67"
+     ry="6.6797137"
+     height="59.883045"
+     width="89.824043"
+     y="0.058593985"
+     x="0.087890469"
+     style="stroke-width:0.143525" />
+</clipPath>
+<clipPath
+   clipPathUnits="userSpaceOnUse"
+   id="clipPath2">
+  <rect
+     id="rect2"
+     fill-opacity="0.67"
+     ry="84.705147"
+     height="759.37421"
+     width="759.37421"
+     y="4.5424433"
+     x="4.9473133"
+     style="stroke-width:1.48606" />
+</clipPath>
+</defs>
+  <g
+     id="00"
+     transform="matrix(1.4860552,0,0,1.4860552,-52.265812,-52.670682)">
+    <rect
+       id="shadow"
+       ry="57"
+       height="512"
+       filter="url(#filter5912)"
+       width="512"
+       stroke="#a8a8a8"
+       y="56"
+       x="38"
+       stroke-width="5"
+       style="display:none" />
+  </g>
+  <rect
+     id="mask"
+     ry="84.705147"
+     height="760.86029"
+     width="760.86029"
+     y="3.7994156"
+     x="4.2042856"
+     fill="#0000ff"
+     style="stroke-width:1.48606"
+     clip-path="url(#clipPath2)" />
   <g
      id="flag"
-     transform="scale(5.6889,8.5333)">
+     transform="matrix(8.4540194,0,0,12.680955,4.2042856,3.7994156)"
+     clip-path="url(#clipPath1)">
     <rect
        id="rect629"
        fill-rule="evenodd"
@@ -173,35 +185,34 @@
        stroke-width="1pt"
        fill="#319400" />
   </g>
-</g>
-<g
-   id="02"
-   transform="translate(0,38)">
-  <path
-     id="path3862-8"
-     style="color:#000000;fill:url(#linearGradient5125)"
-     d="m 214.21,111.21 c -45.245,0.18809 -68.716,7.7308 -64.094,83.553 l 2.8252,46.345 c 47.474,5.5124 56.664,18.445 104.36,21.914 68.073,4.9513 67.937,5.4209 130.56,-14.384 62.628,-19.805 5.8248,-65.247 207.32,-57.82 4.6033,0.16968 17.314,-3.0527 27.462,-12.15 5.5817,-46.524 -2.7842,-69.143 -66.934,-68.876 z"
-     fill="url(#linearGradient5125)" />
-  <path
-     id="path3079-9"
-     style="color:#000000;fill:url(#linearGradient5122)"
-     d="m 531.03,495.17 c -31.605,19.022 -27.601,31.26 -37.913,32.573 -94.704,12.053 -145.98,-0.72701 -165.8,-12.061 -59.588,-34.078 -68.468,-13.014 -100.22,-16.574 -20.115,-2.2551 -59.245,12.984 -73.388,44.344 3.4722,27.608 18.111,32.098 44.281,31.986 l 356.06,-1.5268 c 69.692,-0.29885 56.335,-8.4926 65.543,-56.039 -14.772,-21.671 -13.157,9.109 -44.224,-30.717 z"
-     fill="url(#linearGradient5122)" />
-  <rect
-     id="rect5734"
-     transform="translate(128,90)"
-     clip-path="url(#clipPath5796)"
-     ry="57"
-     height="512"
-     filter="url(#filter5740)"
-     width="512"
-     stroke="#000000"
-     y="0"
-     x="0"
-     stroke-width="20"
-     fill="none" />
-</g>
-</g>
+  <g
+     id="02"
+     transform="matrix(1.4860552,0,0,1.4860552,-186.01078,-129.94555)"
+     style="display:none">
+    <path
+       id="path3862-8"
+       style="color:#000000;fill:url(#linearGradient5125)"
+       d="m 214.21,111.21 c -45.245,0.18809 -68.716,7.7308 -64.094,83.553 l 2.8252,46.345 c 47.474,5.5124 56.664,18.445 104.36,21.914 68.073,4.9513 67.937,5.4209 130.56,-14.384 62.628,-19.805 5.8248,-65.247 207.32,-57.82 4.6033,0.16968 17.314,-3.0527 27.462,-12.15 5.5817,-46.524 -2.7842,-69.143 -66.934,-68.876 z"
+       fill="url(#linearGradient5125)" />
+    <path
+       id="path3079-9"
+       style="color:#000000;fill:url(#linearGradient5122)"
+       d="m 531.03,495.17 c -31.605,19.022 -27.601,31.26 -37.913,32.573 -94.704,12.053 -145.98,-0.72701 -165.8,-12.061 -59.588,-34.078 -68.468,-13.014 -100.22,-16.574 -20.115,-2.2551 -59.245,12.984 -73.388,44.344 3.4722,27.608 18.111,32.098 44.281,31.986 l 356.06,-1.5268 c 69.692,-0.29885 56.335,-8.4926 65.543,-56.039 -14.772,-21.671 -13.157,9.109 -44.224,-30.717 z"
+       fill="url(#linearGradient5122)" />
+    <rect
+       id="rect5734"
+       transform="translate(128,90)"
+       clip-path="url(#clipPath5796)"
+       ry="57"
+       height="512"
+       filter="url(#filter5740)"
+       width="512"
+       stroke="#000000"
+       y="0"
+       x="0"
+       stroke-width="20"
+       fill="none" />
+  </g>
   <metadata
      id="metadata1">
     <rdf:RDF>
