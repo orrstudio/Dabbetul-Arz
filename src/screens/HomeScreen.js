@@ -167,7 +167,7 @@ const HomeScreen = ({ navigation }) => {
           source={require('../../assets/images/animation/dabbe.png')}
           style={[styles.dabbeImage, {
             transform: [
-              { rotate: dimensions.width > dimensions.height ? '40deg' : '-2deg' }
+              { rotate: dimensions.width > dimensions.height ? '40deg' : '-15deg' }
             ]
           }]}
         />
@@ -176,14 +176,14 @@ const HomeScreen = ({ navigation }) => {
       {/* Горизонтальная ориентация */}
       {dimensions.width > dimensions.height && (
         <View style={[styles.titleContainer, { top: dimensions.height * 0.08 }]}>
-          <View style={[styles.textWrapper, { marginTop: dimensions.height * 0.03 }]}>
+          <View style={[styles.textWrapper, { marginTop: dimensions.height * 0.01 }]}>
             <Text style={[styles.titleText, { fontSize: Math.min(dimensions.width * 0.1, dimensions.height * 0.08) }]}>
               Dabbetül
             </Text>
           </View>
-          <View style={[styles.textWrapper, { marginTop: dimensions.height * 0.03 }]}>
+          <View style={[styles.textWrapper, { marginTop: dimensions.height * 0.01 }]}>
             <Text style={[styles.titleText, { fontSize: Math.min(dimensions.width * 0.15, dimensions.height * 0.12), color: '#0099CC' }]}>
-              ARZ
+              Arz
             </Text>
           </View>
         </View>
@@ -191,15 +191,15 @@ const HomeScreen = ({ navigation }) => {
 
       {/* Вертикальная ориентация */}
       {dimensions.width <= dimensions.height && (
-        <View style={[styles.titleContainer, { top: dimensions.height * 0.15 }]}>
+        <View style={[styles.titleContainer, { top: dimensions.height * 0.13 }]}>
           <View style={[styles.textWrapper, { marginTop: dimensions.height * -0.1 }]}>
             <Text style={[styles.titleText, { fontSize: Math.min(dimensions.width * 0.12, dimensions.height * 0.1) }]}>
               Dabbetül
             </Text>
           </View>
-          <View style={[styles.textWrapper, { marginTop: dimensions.height * 0.02 }]}>
-            <Text style={[styles.titleText, { fontSize: Math.min(dimensions.width * 0.15, dimensions.height * 0.12), color: '#0099CC' }]}>
-              ARZ
+          <View style={[styles.textWrapper, { marginTop: dimensions.height * -0.03 }]}>
+            <Text style={[styles.titleText, { fontSize: Math.min(dimensions.width * 0.15, dimensions.height * 0.12), color: '#b3c6e2' }]}>
+              Arz
             </Text>
           </View>
         </View>
@@ -247,16 +247,16 @@ const getHomeScreenStyles = (theme, dimensions) => StyleSheet.create({
   dabbeContainer: {
     position: 'absolute',
     top: 0,
-    right: 0,
+    right: 90,
     width: dimensions.planetSize * 1,
     height: dimensions.planetSize * 1,
-    zIndex: 3,
+    zIndex: 1,
   },
   dabbeImage: {
     width: '130%',
     height: '130%',
     resizeMode: 'contain',
-    marginTop: '0%',
+    marginTop: '3%',
   },
   titleContainer: {
     position: 'absolute',
@@ -271,8 +271,8 @@ const getHomeScreenStyles = (theme, dimensions) => StyleSheet.create({
     fontWeight: '900',
     textAlign: 'left',
     textShadowColor: 'rgba(255, 255, 255, 0.8)',
-    textShadowOffset: { width: 0, height: 0 },
-    textShadowRadius: 20,
+    textShadowOffset: { width: 1.5, height: 2 },
+    textShadowRadius: 2,
     opacity: 1,
     marginVertical: 0,
     lineHeight: dimensions.height * 0.09,
