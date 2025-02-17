@@ -131,21 +131,21 @@
      inkscape:pageshadow="2"
      inkscape:window-y="0"
      pagecolor="#ffffff"
-     inkscape:window-height="1043"
+     inkscape:window-height="1002"
      inkscape:window-maximized="1"
      inkscape:zoom="0.65494792"
      inkscape:window-x="0"
      showgrid="false"
      borderopacity="1.0"
-     inkscape:cx="558.05964"
-     inkscape:cy="476.37376"
+     inkscape:cx="313.76541"
+     inkscape:cy="477.13717"
      inkscape:window-width="1920"
      inkscape:pageopacity="0.0"
      inkscape:document-units="px"
      inkscape:showpageshadow="0"
      inkscape:pagecheckerboard="1"
      inkscape:deskcolor="#505050"
-     inkscape:current-layer="svg2" />
+     inkscape:current-layer="template-button-6" />
   <metadata
      id="metadata1">
     <rdf:RDF>
@@ -193,17 +193,14 @@
     </rdf:RDF>
   </metadata>
   <g
-     id="g1"
-     transform="matrix(1.4962728,0,0,1.4962728,-188.13933,-163.34411)">
-    <g
-       id="template-button-6"
-       inkscape:label="template-button"
-       transform="translate(3.8146972e-6,-17.999996)">&gt;
+     id="template-button-6"
+     inkscape:label="template-button"
+     transform="matrix(1.4962728,0,0,1.4962728,-188.13932,-190.27701)">&gt;
   <g
    id="00-2"
    inkscape:label="00"
    transform="translate(90,90)"
-   style="display:inline">
+   style="display:none">
   <rect
      id="shadow-9"
      style="fill:#000000;stroke:#a8a8a8;stroke-width:5;filter:url(#filter5912-3)"
@@ -222,45 +219,19 @@
    style="display:inline">
   <rect
      id="mask-2"
-     style="display:inline;fill:#0000ff"
+     style="display:inline;fill:#ff0000"
      ry="57"
      height="512"
      width="512"
      y="0"
      x="0"
      inkscape:label="#rect4203" />
-  <g
-     id="flag-7"
-     inkscape:label="#g4394"
-     transform="matrix(0.48166,0,0,0.72249,0,2.4116e-6)">
-    <rect
-       id="rect171-0"
-       style="display:inline;fill:#ff0000;fill-rule:evenodd;stroke-width:1pt"
-       height="708.65997"
-       width="1063"
-       y="0"
-       x="0" />
-    <rect
-       id="rect403-9"
-       style="display:inline;fill:#ffffff;fill-rule:evenodd;stroke-width:1pt"
-       height="472.44"
-       width="1063"
-       y="236.22"
-       x="0" />
-    <rect
-       id="rect135-3"
-       style="display:inline;fill:#008000;fill-rule:evenodd;stroke-width:1pt"
-       height="236.22"
-       width="1063"
-       y="472.44"
-       x="0" />
-  </g>
 </g>
 <g
    id="02-6"
    inkscape:label="02"
    transform="translate(0,38)"
-   style="display:inline">
+   style="display:none">
   <path
      id="path3862-8-0"
      d="m 214.21,111.21 c -45.245,0.18809 -68.716,7.7308 -64.094,83.553 l 2.8252,46.345 c 47.474,5.5124 56.664,18.445 104.36,21.914 68.073,4.9513 67.937,5.4209 130.56,-14.384 62.628,-19.805 5.8248,-65.247 207.32,-57.82 4.6033,0.16968 17.314,-3.0527 27.462,-12.15 5.5817,-46.524 -2.7842,-69.143 -66.934,-68.876 z"
@@ -285,10 +256,17 @@
      x="0"
      inkscape:label="#rect4203" />
 </g>
+<text
+   xml:space="preserve"
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:483.365px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ff0000;fill-rule:evenodd;stroke:none;stroke-width:3.22243"
+   x="173.92218"
+   y="469.09967"
+   id="text1"
+   transform="scale(0.82959345,1.2054097)"><tspan
+     sodipodi:role="line"
+     id="tspan1"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:483.365px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke:none;stroke-width:3.22243"
+     x="173.92218"
+     y="469.09967">KU</tspan></text>
 </g>
-    <path
-       id="path4524-1"
-       style="fill:#febd11;fill-rule:evenodd;stroke-width:2.86887"
-       d="m 383.99856,237.11148 9.48277,66.5587 28.62017,-60.80147 -10.51411,66.40356 45.20777,-49.64035 -29.56552,60.35617 57.81325,-34.07801 -46.00996,48.93075 65.26196,-15.48478 -58.32898,33.18167 66.92365,4.48168 -65.5198,14.45054 62.62625,24.07467 -66.83766,-5.54464 52.7711,41.513 -62.22519,-25.05145 38.18887,55.27406 -52.08352,-42.34613 20.25466,64.09377 -37.32938,-55.84863 0.51567,67.25393 -19.25201,-64.43852 -19.28062,64.43852 0.54429,-67.25393 -37.358,55.84863 20.28334,-64.09377 -52.10358,42.34613 38.20893,-55.27406 -62.22807,25.05145 52.75674,-41.513 -66.83193,5.54464 62.6148,-24.07467 -65.49401,-14.45054 66.90931,-4.48168 -58.33761,-33.18167 65.25342,15.48478 -45.98996,-48.93075 57.82193,34.07801 -29.57992,-60.35617 45.22217,49.64035 -10.51411,-66.40356 28.62018,60.80147 z" />
-  </g>
 </svg>
