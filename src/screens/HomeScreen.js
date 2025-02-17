@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Dimensions, Animated } from 'react-native';
 import { getThemeByName } from '../utils/theme';
 import { getPlayerStyles } from '../utils/getPlayerStyles';
+
+const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 /**
  * HomeScreen - начальный экран приложения.
@@ -9,42 +11,69 @@ import { getPlayerStyles } from '../utils/getPlayerStyles';
  * @returns {JSX.Element} Элемент экрана.
  */
 const HomeScreen = ({ navigation }) => {
-  const [themeName] = useState("dark"); // Всегда выбираем "dark"
+  const [themeName] = useState("dark");
   const theme = getThemeByName(themeName);
   const styles = getHomeScreenStyles(theme);
 
-  // Инициализация анимационных значений для фоновых картинок
-  const [firstOpacity] = useState(new Animated.Value(1));
-  const [secondOpacity] = useState(new Animated.Value(0));
-  const [thirdOpacity] = useState(new Animated.Value(0));
-
-  // Анимация последовательного перехода от первой картинки к третьей
-  useEffect(() => {
+  // Анимированное значение для горизонтального движения звезд
+  const starsPosition = useRef(new Animated.Value(0)).current;
+  
+  // Функция для создания анимации движения звезд
+  const animateStars = () => {
+    // Сначала двигаем влево
     Animated.sequence([
-      Animated.delay(500),
-      Animated.parallel([
-        Animated.timing(firstOpacity, { toValue: 0, duration: 1000, useNativeDriver: true }),
-        Animated.timing(secondOpacity, { toValue: 1, duration: 1000, useNativeDriver: true })
-      ]),
-      Animated.delay(500),
-      Animated.timing(thirdOpacity, { toValue: 1, duration: 1000, useNativeDriver: true })
-    ]).start();
+      // Движение влево
+      Animated.timing(starsPosition, {
+        toValue: -200, // Значение для сдвига влево
+        duration: 15000, // 15 секунд на движение
+        useNativeDriver: true,
+      }),
+      // Пауза
+      Animated.delay(3000),
+      // Движение вправо
+      Animated.timing(starsPosition, {
+        toValue: 0,
+        duration: 15000,
+        useNativeDriver: true,
+      }),
+      // Пауза перед повтором
+      Animated.delay(3000),
+    ]).start(() => {
+      // После завершения запускаем анимацию снова
+      animateStars();
+    });
+  };
+
+  // Запускаем анимацию при монтировании компонента
+  useEffect(() => {
+    animateStars();
   }, []);
 
   return (
     <View style={styles.container}>
+      {/* Фоновая картинка */}
       <Animated.Image
         source={require('../../assets/images/background-home-1.png')}
-        style={[styles.backgroundImage, { opacity: firstOpacity }]}
+        style={styles.backgroundImage}
       />
+      
+      {/* Звезды с анимацией */}
       <Animated.Image
         source={require('../../assets/images/background-home-2.png')}
-        style={[styles.backgroundImage, { opacity: secondOpacity }]}
+        style={[
+          styles.starsImage,
+          {
+            transform: [{ translateX: starsPosition }]
+          }
+        ]}
       />
+      
+      {/* Планета (статичная) */}
       <Animated.Image
         source={require('../../assets/images/background-home-3.png')}
-        style={[styles.backgroundImage, { opacity: thirdOpacity }]}
+        style={styles.planetImage}
       />
+
       <View style={styles.contentContainer}>
         <Text style={styles.title}>Welcome to the App</Text>
         <TouchableOpacity
@@ -58,14 +87,33 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 
-// Функция для генерации стилей для HomeScreen с учетом темы
 const getHomeScreenStyles = (theme) => StyleSheet.create({
   container: {
     flex: 1,
   },
   backgroundImage: {
-    ...StyleSheet.absoluteFillObject,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: SCREEN_WIDTH,
+    height: SCREEN_HEIGHT,
     resizeMode: 'cover',
+  },
+  starsImage: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: SCREEN_WIDTH + 400, // Делаем картинку шире экрана для анимации
+    height: SCREEN_HEIGHT,
+    resizeMode: 'contain',
+  },
+  planetImage: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    width: SCREEN_WIDTH,
+    height: SCREEN_WIDTH * 0.75, // Пропорционально размеру картинки
+    resizeMode: 'contain',
   },
   contentContainer: {
     flex: 1,
