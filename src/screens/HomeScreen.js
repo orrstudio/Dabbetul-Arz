@@ -5,6 +5,23 @@ import { getPlayerStyles } from '../utils/getPlayerStyles';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
+// Размеры контейнера со звездами (2 экрана в высоту, 3 в ширину)
+const STARS_CONTAINER_WIDTH = SCREEN_WIDTH * 3;
+const STARS_CONTAINER_HEIGHT = SCREEN_HEIGHT * 2;
+
+// Создаем массив позиций для звезд (9 звезд, чтобы заполнить контейнер)
+const STAR_POSITIONS = [
+  { x: 0, y: 0 },                           // Верхний левый
+  { x: SCREEN_WIDTH, y: 0 },                // Верхний центр
+  { x: SCREEN_WIDTH * 2, y: 0 },           // Верхний правый
+  { x: 0, y: SCREEN_HEIGHT * 0.5 },        // Центр левый
+  { x: SCREEN_WIDTH, y: SCREEN_HEIGHT * 0.5 }, // Центр
+  { x: SCREEN_WIDTH * 2, y: SCREEN_HEIGHT * 0.5 }, // Центр правый
+  { x: 0, y: SCREEN_HEIGHT },              // Нижний левый
+  { x: SCREEN_WIDTH, y: SCREEN_HEIGHT },   // Нижний центр
+  { x: SCREEN_WIDTH * 2, y: SCREEN_HEIGHT } // Нижний правый
+];
+
 /**
  * HomeScreen - начальный экран приложения.
  *
@@ -15,38 +32,50 @@ const HomeScreen = ({ navigation }) => {
   const theme = getThemeByName(themeName);
   const styles = getHomeScreenStyles(theme);
 
-  // Анимированное значение для горизонтального движения звезд
-  const starsPosition = useRef(new Animated.Value(0)).current;
+  // Создаем анимированное значение для движения контейнера
+  const translateX = useRef(new Animated.Value(0)).current;
+  const translateY = useRef(new Animated.Value(0)).current;
   
-  // Функция для создания анимации движения звезд
-  const animateStars = () => {
-    // Сначала двигаем влево
-    Animated.sequence([
-      // Движение влево
-      Animated.timing(starsPosition, {
-        toValue: -200, // Значение для сдвига влево
-        duration: 15000, // 15 секунд на движение
-        useNativeDriver: true,
-      }),
-      // Пауза
-      Animated.delay(3000),
-      // Движение вправо
-      Animated.timing(starsPosition, {
-        toValue: 0,
-        duration: 15000,
-        useNativeDriver: true,
-      }),
-      // Пауза перед повтором
-      Animated.delay(3000),
-    ]).start(() => {
-      // После завершения запускаем анимацию снова
-      animateStars();
-    });
+  // Функция для создания круговой анимации
+  const animateContainer = () => {
+    // Создаем последовательность движений для формирования круга
+    const createCircularMotion = () => {
+      const duration = 60000; // 60 секунд на полный круг
+      
+      return Animated.sequence([
+        // Движение вправо
+        Animated.timing(translateX, {
+          toValue: -SCREEN_WIDTH,
+          duration: duration / 4,
+          useNativeDriver: true,
+        }),
+        // Движение вверх
+        Animated.timing(translateY, {
+          toValue: -SCREEN_HEIGHT * 0.5,
+          duration: duration / 4,
+          useNativeDriver: true,
+        }),
+        // Движение влево
+        Animated.timing(translateX, {
+          toValue: 0,
+          duration: duration / 4,
+          useNativeDriver: true,
+        }),
+        // Движение вниз
+        Animated.timing(translateY, {
+          toValue: 0,
+          duration: duration / 4,
+          useNativeDriver: true,
+        }),
+      ]);
+    };
+
+    // Запускаем анимацию и повторяем её бесконечно
+    Animated.loop(createCircularMotion()).start();
   };
 
-  // Запускаем анимацию при монтировании компонента
   useEffect(() => {
-    animateStars();
+    animateContainer();
   }, []);
 
   return (
@@ -57,16 +86,33 @@ const HomeScreen = ({ navigation }) => {
         style={styles.backgroundImage}
       />
       
-      {/* Звезды с анимацией */}
-      <Animated.Image
-        source={require('../../assets/images/background-home-2.png')}
+      {/* Контейнер со звездами */}
+      <Animated.View
         style={[
-          styles.starsImage,
+          styles.starsContainer,
           {
-            transform: [{ translateX: starsPosition }]
+            transform: [
+              { translateX },
+              { translateY }
+            ]
           }
         ]}
-      />
+      >
+        {/* Размещаем звезды по всему контейнеру */}
+        {STAR_POSITIONS.map((position, index) => (
+          <Animated.Image
+            key={index}
+            source={require('../../assets/images/background-home-2.png')}
+            style={[
+              styles.starsImage,
+              {
+                left: position.x,
+                top: position.y,
+              }
+            ]}
+          />
+        ))}
+      </Animated.View>
       
       {/* Планета (статичная) */}
       <Animated.Image
@@ -90,6 +136,7 @@ const HomeScreen = ({ navigation }) => {
 const getHomeScreenStyles = (theme) => StyleSheet.create({
   container: {
     flex: 1,
+    overflow: 'hidden', // Скрываем всё, что выходит за пределы экрана
   },
   backgroundImage: {
     position: 'absolute',
@@ -99,11 +146,14 @@ const getHomeScreenStyles = (theme) => StyleSheet.create({
     height: SCREEN_HEIGHT,
     resizeMode: 'cover',
   },
+  starsContainer: {
+    position: 'absolute',
+    width: STARS_CONTAINER_WIDTH,
+    height: STARS_CONTAINER_HEIGHT,
+  },
   starsImage: {
     position: 'absolute',
-    top: 0,
-    left: 0,
-    width: SCREEN_WIDTH + 400, // Делаем картинку шире экрана для анимации
+    width: SCREEN_WIDTH,
     height: SCREEN_HEIGHT,
     resizeMode: 'contain',
   },
@@ -111,8 +161,8 @@ const getHomeScreenStyles = (theme) => StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     left: 0,
+    height: SCREEN_HEIGHT,
     width: SCREEN_WIDTH,
-    height: SCREEN_WIDTH * 0.75, // Пропорционально размеру картинки
     resizeMode: 'contain',
   },
   contentContainer: {
