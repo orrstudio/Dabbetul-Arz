@@ -170,14 +170,48 @@ const HomeScreen = ({ navigation }) => {
         />
       </View>
 
+      <View style={[
+        styles.titleContainer,
+        {
+          top: dimensions.width > dimensions.height 
+            ? dimensions.height * 0.08  // Для горизонтальной
+            : dimensions.height * 0.15  // Для вертикальной
+        }
+      ]}>
+        {dimensions.width > dimensions.height ? (
+          // Горизонтальная ориентация - две строки
+          <>
+            <View style={styles.textWrapper}>
+              <Text style={[styles.titleText, { fontSize: Math.min(dimensions.width * 0.1, dimensions.height * 0.08) }]}>
+                Dabbetül
+              </Text>
+            </View>
+            <View style={styles.textWrapper}>
+              <Text style={[styles.titleText, { fontSize: Math.min(dimensions.width * 0.1, dimensions.height * 0.08) }]}>
+                Arz
+              </Text>
+            </View>
+          </>
+        ) : (
+          // Вертикальная ориентация - одна строка
+          <View style={styles.textWrapper}>
+            <Text style={[styles.titleText, { fontSize: Math.min(dimensions.width * 0.09, dimensions.height * 0.07) }]}>
+              Dabbetül Arz
+            </Text>
+          </View>
+        )}
+      </View>
+
       <View style={styles.contentContainer}>
-        <Text style={styles.title}>Dabbetül Arz</Text>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('Player')}
-        >
-          <Text style={styles.buttonText}>Go to Player</Text>
-        </TouchableOpacity>
+        {/* Контейнер для кнопок */}
+        <View style={styles.buttonsContainer}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate('Player')}
+          >
+            <Text style={styles.buttonText}>Go to Player</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -222,7 +256,7 @@ const getHomeScreenStyles = (theme, dimensions) => StyleSheet.create({
     right: 0,
     width: dimensions.planetSize * 0.9,
     height: dimensions.planetSize * 0.9,
-    zIndex: 2,
+    zIndex: 3,
   },
   dabbeImage: {
     width: '100%',
@@ -231,26 +265,46 @@ const getHomeScreenStyles = (theme, dimensions) => StyleSheet.create({
     marginTop: '-30%',
     marginRight: '-20%',
   },
+  titleContainer: {
+    position: 'absolute',
+    left: dimensions.width * 0.08,
+    zIndex: 1,
+  },
+  textWrapper: {
+    position: 'relative',
+  },
+  titleText: {
+    color: '#FFD700',
+    fontWeight: '900',
+    textAlign: 'left',
+    opacity: 1,
+    marginVertical: 0,
+    lineHeight: dimensions.height * 0.09,
+  },
   contentContainer: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: '',
     alignItems: 'center',
-    zIndex: 4, // Контент над всеми элементами
+    zIndex: 1,
+    paddingHorizontal: 10,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: theme.text,
+  buttonsContainer: {
+    flex: 1,
+    justifyContent: 'center', // Центрирование по вертикали
+    alignItems: 'center', // Центрирование по горизонтали
   },
   button: {
-    marginTop: 20,
-    paddingHorizontal: 20,
-    paddingVertical: 10,
+    paddingHorizontal: 30,
+    paddingVertical: 15,
     backgroundColor: '#007AFF',
-    borderRadius: 5,
+    borderRadius: 10,
+    minWidth: 200, // Минимальная ширина кнопки
   },
   buttonText: {
     color: '#fff',
+    fontSize: 18,
+    fontWeight: '600',
+    textAlign: 'center',
   },
 });
 
