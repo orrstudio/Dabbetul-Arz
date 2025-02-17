@@ -157,12 +157,7 @@ const HomeScreen = ({ navigation }) => {
         style={styles.planetImage}
       />
 
-      <Animated.Image
-        source={require('../../assets/images/animation/moon.png')}
-        style={styles.moonImage}
-      />
-
-      {/* Спутник (статичный) */}
+      {/* Спутник */}
       <View style={styles.dabbeContainer}>
         <Animated.Image
           source={require('../../assets/images/animation/dabbe.png')}
@@ -241,29 +236,19 @@ const getHomeScreenStyles = (theme, dimensions) => StyleSheet.create({
     resizeMode: 'contain',
     zIndex: 2, // Планета над звездами
   },
-  moonImage: {
-    position: 'absolute',
-    bottom: '-2%', // Немного выходит за нижнюю границу
-    right: '-1%', // Немного выходит за правую границу
-    width: dimensions.planetSize * 0.3, // 30% от размера планеты
-    height: dimensions.planetSize * 0.3,
-    resizeMode: 'contain',
-    zIndex: 3, // Луна над планетой
-  },
   dabbeContainer: {
     position: 'absolute',
     top: 0,
     right: 0,
-    width: dimensions.planetSize * 0.9,
-    height: dimensions.planetSize * 0.9,
+    width: dimensions.planetSize * 1,
+    height: dimensions.planetSize * 1,
     zIndex: 3,
   },
   dabbeImage: {
-    width: '100%',
-    height: '100%',
+    width: '130%',
+    height: '130%',
     resizeMode: 'contain',
-    marginTop: '-30%',
-    marginRight: '-20%',
+    marginTop: '0%',
   },
   titleContainer: {
     position: 'absolute',
