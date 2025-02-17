@@ -182,7 +182,7 @@ const HomeScreen = ({ navigation }) => {
             </Text>
           </View>
           <View style={[styles.textWrapper, { marginTop: dimensions.height * 0.03 }]}>
-            <Text style={[styles.titleText, { fontSize: Math.min(dimensions.width * 0.15, dimensions.height * 0.12) }]}>
+            <Text style={[styles.titleText, { fontSize: Math.min(dimensions.width * 0.15, dimensions.height * 0.12), color: '#0099CC' }]}>
               ARZ
             </Text>
           </View>
@@ -198,7 +198,7 @@ const HomeScreen = ({ navigation }) => {
             </Text>
           </View>
           <View style={[styles.textWrapper, { marginTop: dimensions.height * 0.02 }]}>
-            <Text style={[styles.titleText, { fontSize: Math.min(dimensions.width * 0.15, dimensions.height * 0.12) }]}>
+            <Text style={[styles.titleText, { fontSize: Math.min(dimensions.width * 0.15, dimensions.height * 0.12), color: '#0099CC' }]}>
               ARZ
             </Text>
           </View>
@@ -267,7 +267,7 @@ const getHomeScreenStyles = (theme, dimensions) => StyleSheet.create({
     position: 'relative',
   },
   titleText: {
-    color: '#FFD700',
+    color: '#0099CC',
     fontWeight: '900',
     textAlign: 'left',
     textShadowColor: 'rgba(255, 255, 255, 0.8)',
@@ -292,7 +292,7 @@ const getHomeScreenStyles = (theme, dimensions) => StyleSheet.create({
   button: {
     paddingHorizontal: 30,
     paddingVertical: 15,
-    backgroundColor: '#007AFF',
+    backgroundColor: '#0099CC',
     borderRadius: 10,
     minWidth: 200, // Минимальная ширина кнопки
   },
