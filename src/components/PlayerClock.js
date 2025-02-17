@@ -57,17 +57,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 0,
-    paddingBottom: 20,
+    paddingBottom: 0,
   },
   text: {
-    fontSize: 30,
+    fontSize: 25,
     fontFamily: 'DSEG7Classic-Bold',
   },
   text_dash: {
-    fontSize: 9,
-    paddingBottom: 6,
+    fontSize: 7,
+    paddingBottom: 5,
     fontFamily: 'DSEG7Classic-Bold',
-    paddingHorizontal: 5,
+    paddingHorizontal: 0,
   },
 });
 
