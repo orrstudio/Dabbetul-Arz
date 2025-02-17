@@ -1,67 +1,65 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Dimensions, Animated } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Dimensions, Animated, Image } from 'react-native';
 import { getThemeByName } from '../utils/theme';
 import { getPlayerStyles } from '../utils/getPlayerStyles';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
-// Размеры контейнера со звездами (2 экрана в высоту, 3 в ширину)
-const STARS_CONTAINER_WIDTH = SCREEN_WIDTH * 3;
-const STARS_CONTAINER_HEIGHT = SCREEN_HEIGHT * 2;
+const getScreenDimensions = () => {
+  const { width, height } = Dimensions.get('window');
+  return {
+    width,
+    height,
+    planetSize: Math.min(width, height) / 1.5,
+  };
+};
 
-// Создаем массив позиций для звезд (9 звезд, чтобы заполнить контейнер)
-const STAR_POSITIONS = [
-  { x: 0, y: 0 },                           // Верхний левый
-  { x: SCREEN_WIDTH, y: 0 },                // Верхний центр
-  { x: SCREEN_WIDTH * 2, y: 0 },           // Верхний правый
-  { x: 0, y: SCREEN_HEIGHT * 0.5 },        // Центр левый
-  { x: SCREEN_WIDTH, y: SCREEN_HEIGHT * 0.5 }, // Центр
-  { x: SCREEN_WIDTH * 2, y: SCREEN_HEIGHT * 0.5 }, // Центр правый
-  { x: 0, y: SCREEN_HEIGHT },              // Нижний левый
-  { x: SCREEN_WIDTH, y: SCREEN_HEIGHT },   // Нижний центр
-  { x: SCREEN_WIDTH * 2, y: SCREEN_HEIGHT } // Нижний правый
-];
-
-/**
- * HomeScreen - начальный экран приложения.
- *
- * @returns {JSX.Element} Элемент экрана.
- */
 const HomeScreen = ({ navigation }) => {
   const [themeName] = useState("dark");
   const theme = getThemeByName(themeName);
-  const styles = getHomeScreenStyles(theme);
-
-  // Создаем анимированное значение для движения контейнера
+  const [dimensions, setDimensions] = useState(getScreenDimensions());
+  
+  // Анимация
   const translateX = useRef(new Animated.Value(0)).current;
   const translateY = useRef(new Animated.Value(0)).current;
-  
-  // Функция для создания круговой анимации
+
+  // Для теста выведем одну звезду
+  useEffect(() => {
+    console.log('Component mounted');
+    const image = require('../../assets/images/animation/stars.png');
+    console.log('Image loaded:', image);
+  }, []);
+
+  // Обновляем размеры при изменении ориентации
+  useEffect(() => {
+    const updateDimensions = () => {
+      setDimensions(getScreenDimensions());
+    };
+
+    const subscription = Dimensions.addEventListener('change', updateDimensions);
+    return () => subscription.remove();
+  }, []);
+
   const animateContainer = () => {
-    // Создаем последовательность движений для формирования круга
     const createCircularMotion = () => {
-      const duration = 60000; // 60 секунд на полный круг
+      const duration = 60000;
       
       return Animated.sequence([
-        // Движение вправо
         Animated.timing(translateX, {
-          toValue: -SCREEN_WIDTH,
+          toValue: -SCREEN_WIDTH * 0.2,
           duration: duration / 4,
           useNativeDriver: true,
         }),
-        // Движение вверх
         Animated.timing(translateY, {
-          toValue: -SCREEN_HEIGHT * 0.5,
+          toValue: -SCREEN_HEIGHT * 0.2,
           duration: duration / 4,
           useNativeDriver: true,
         }),
-        // Движение влево
         Animated.timing(translateX, {
           toValue: 0,
           duration: duration / 4,
           useNativeDriver: true,
         }),
-        // Движение вниз
         Animated.timing(translateY, {
           toValue: 0,
           duration: duration / 4,
@@ -70,23 +68,18 @@ const HomeScreen = ({ navigation }) => {
       ]);
     };
 
-    // Запускаем анимацию и повторяем её бесконечно
     Animated.loop(createCircularMotion()).start();
   };
 
   useEffect(() => {
     animateContainer();
-  }, []);
+  }, [dimensions]);
+
+  const styles = getHomeScreenStyles(theme, dimensions);
 
   return (
     <View style={styles.container}>
-      {/* Фоновая картинка */}
-      <Animated.Image
-        source={require('../../assets/images/background-home-1.png')}
-        style={styles.backgroundImage}
-      />
-      
-      {/* Контейнер со звездами */}
+      {/* Тестовый контейнер с одной звездой */}
       <Animated.View
         style={[
           styles.starsContainer,
@@ -98,30 +91,33 @@ const HomeScreen = ({ navigation }) => {
           }
         ]}
       >
-        {/* Размещаем звезды по всему контейнеру */}
-        {STAR_POSITIONS.map((position, index) => (
-          <Animated.Image
-            key={index}
-            source={require('../../assets/images/background-home-2.png')}
-            style={[
-              styles.starsImage,
-              {
-                left: position.x,
-                top: position.y,
-              }
-            ]}
-          />
-        ))}
+        <Animated.Image
+          source={require('../../assets/images/animation/stars.png')}
+          style={styles.starsImage}
+        />
       </Animated.View>
-      
-      {/* Планета (статичная) */}
+
+      {/* Остальные элементы */}
       <Animated.Image
-        source={require('../../assets/images/background-home-3.png')}
+        source={require('../../assets/images/animation/earth.png')}
         style={styles.planetImage}
       />
 
+      <Animated.Image
+        source={require('../../assets/images/animation/moon.png')}
+        style={styles.moonImage}
+      />
+
+      {/* Спутник (статичный) */}
+      <View style={styles.dabbeContainer}>
+        <Animated.Image
+          source={require('../../assets/images/animation/dabbe.png')}
+          style={styles.dabbeImage}
+        />
+      </View>
+
       <View style={styles.contentContainer}>
-        <Text style={styles.title}>Welcome to the App</Text>
+        <Text style={styles.title}>Dabbetül Arz</Text>
         <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate('Player')}
@@ -133,42 +129,61 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 
-const getHomeScreenStyles = (theme) => StyleSheet.create({
+const getHomeScreenStyles = (theme, dimensions) => StyleSheet.create({
   container: {
     flex: 1,
-    overflow: 'hidden', // Скрываем всё, что выходит за пределы экрана
-  },
-  backgroundImage: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: SCREEN_WIDTH,
-    height: SCREEN_HEIGHT,
-    resizeMode: 'cover',
+    overflow: 'hidden',
+    backgroundColor: '#00121E',
   },
   starsContainer: {
     position: 'absolute',
-    width: STARS_CONTAINER_WIDTH,
-    height: STARS_CONTAINER_HEIGHT,
-  },
-  starsImage: {
-    position: 'absolute',
     width: SCREEN_WIDTH,
     height: SCREEN_HEIGHT,
-    resizeMode: 'contain',
+    zIndex: 1,
+  },
+  starsImage: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'repeat',
   },
   planetImage: {
     position: 'absolute',
-    bottom: 0,
-    left: 0,
-    height: SCREEN_HEIGHT,
-    width: SCREEN_WIDTH,
+    bottom: '-13%', // Выходит за нижнюю границу
+    left: '-10%', // Выходит за левую границу
+    width: dimensions.planetSize,
+    height: dimensions.planetSize,
     resizeMode: 'contain',
+    zIndex: 2, // Планета над звездами
+  },
+  moonImage: {
+    position: 'absolute',
+    bottom: '-2%', // Немного выходит за нижнюю границу
+    right: '-1%', // Немного выходит за правую границу
+    width: dimensions.planetSize * 0.3, // 30% от размера планеты
+    height: dimensions.planetSize * 0.3,
+    resizeMode: 'contain',
+    zIndex: 3, // Луна над планетой
+  },
+  dabbeContainer: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    width: dimensions.planetSize * 0.9,
+    height: dimensions.planetSize * 0.9,
+    zIndex: 2,
+  },
+  dabbeImage: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'contain',
+    marginTop: '-30%',
+    marginRight: '-20%',
   },
   contentContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    zIndex: 4, // Контент над всеми элементами
   },
   title: {
     fontSize: 24,
