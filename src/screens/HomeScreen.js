@@ -217,7 +217,19 @@ const HomeScreen = ({ navigation }) => {
             style={styles.button}
             onPress={() => navigation.navigate('Player')}
           >
-            <Text style={styles.buttonText}>Go to Player</Text>
+            <Text style={styles.buttonText}>TV</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.button, { marginTop: 20 }]}
+            onPress={() => {}}
+          >
+            <Text style={styles.buttonText}>Radio</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.button, { marginTop: 20 }]}
+            onPress={() => navigation.navigate('Sosial')}
+          >
+            <Text style={styles.buttonText}>Sosial</Text>
           </TouchableOpacity>
         </View>
       </View>
