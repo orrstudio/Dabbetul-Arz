@@ -233,7 +233,7 @@ const HomeScreen = ({ navigation }) => {
           >
             <Text style={styles.buttonText}>Sosial</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.button, { marginTop: 20, height: 'auto' }]}>
+          <TouchableOpacity style={[styles.button, { marginTop: 20, height: 'auto' }]} onPress={() => navigation.reset({ index: 0, routes: [{ name: 'SplashScreen' }] })}>
             <SmallDigitalClock 
               timeScale={0.05} 
               showDate={false}
