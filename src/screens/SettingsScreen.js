@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { View, Text, Switch, StyleSheet, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { getThemeByName } from '../utils/theme';
+import { Ionicons } from '@expo/vector-icons';
 
 /**
  * Props для компонента SettingsScreen.
@@ -17,29 +18,27 @@ import { getThemeByName } from '../utils/theme';
  */
 const SettingsScreen = (props) => {
   const { navigation } = props;
-  const [isDarkMode, setIsDarkMode] = useState(true);
-
-  // Получаем тему в зависимости от выбранного режима.
-  const theme = getThemeByName(isDarkMode ? 'dark' : 'light');
-
-  // Переключатель темы
-  const toggleSwitch = () => setIsDarkMode(previousState => !previousState);
+  const theme = getThemeByName('dark');
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: theme.background }]}>
       <View style={styles.header}>
-        <Text style={[styles.title, { color: theme.text }]}>Настройки</Text>
+        <TouchableOpacity 
+          style={styles.headerButton}
+          onPress={() => navigation.goBack()}
+        >
+          <Ionicons name="checkmark" size={24} color={theme.text} />
+        </TouchableOpacity>
+        <Ionicons name="settings" size={24} color={theme.text} />
+        <TouchableOpacity 
+          style={styles.headerButton}
+          onPress={() => navigation.goBack()}
+        >
+          <Ionicons name="close" size={24} color={theme.text} />
+        </TouchableOpacity>
       </View>
       <View style={styles.content}>
-        <View style={styles.item}>
-          <Text style={[styles.itemText, { color: theme.text }]}>Темная тема</Text>
-          <Switch
-            value={isDarkMode}
-            onValueChange={toggleSwitch}
-            thumbColor={isDarkMode ? "#f4f3f4" : "#f4f3f4"}
-            trackColor={{ false: "#767577", true: "#81b0ff" }}
-          />
-        </View>
+        {/* Здесь будет содержимое настроек */}
       </View>
     </SafeAreaView>
   );
@@ -51,27 +50,19 @@ const styles = StyleSheet.create({
   },
   header: {
     padding: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
     borderBottomWidth: 1,
     borderBottomColor: '#aaa',
   },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
+  headerButton: {
+    padding: 10,
   },
   content: {
     flex: 1,
     padding: 20,
   },
-  item: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  itemText: {
-    fontSize: 18,
-  },
 });
 
-export default SettingsScreen; 
+export default SettingsScreen;
