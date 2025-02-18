@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Dimensions, Animated, Image } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Dimensions, Animated, Image, Platform } from 'react-native';
 import { getThemeByName } from '../utils/theme';
 import { getPlayerStyles } from '../utils/getPlayerStyles';
 
@@ -164,10 +164,10 @@ const HomeScreen = ({ navigation }) => {
       {/* Спутник */}
       <View style={styles.dabbeContainer}>
         <Animated.Image
-          source={require('../../assets/images/animation/dabbe.png')}
+          source={require('../../assets/images/animation/dabbe1.png')}
           style={[styles.dabbeImage, {
             transform: [
-              { rotate: dimensions.width > dimensions.height ? '40deg' : '-15deg' }
+              { rotate: dimensions.width > dimensions.height ? '-25deg' : '0deg' }
             ]
           }]}
         />
@@ -182,7 +182,7 @@ const HomeScreen = ({ navigation }) => {
             </Text>
           </View>
           <View style={[styles.textWrapper, { marginTop: dimensions.height * 0.01 }]}>
-            <Text style={[styles.titleText, { fontSize: Math.min(dimensions.width * 0.15, dimensions.height * 0.12), color: '#0099CC' }]}>
+            <Text style={[styles.titleText, { fontSize: Math.min(dimensions.width * 0.15, dimensions.height * 0.12), color: '#f3c300' }]}>
               Arz
             </Text>
           </View>
@@ -191,14 +191,19 @@ const HomeScreen = ({ navigation }) => {
 
       {/* Вертикальная ориентация */}
       {dimensions.width <= dimensions.height && (
-        <View style={[styles.titleContainer, { top: dimensions.height * 0.13 }]}>
+        <View style={[
+          styles.titleContainer,
+          {
+            top: Platform.OS === 'android' ? dimensions.height * 0.09 : dimensions.height * 0.13,
+          }
+        ]}>
           <View style={[styles.textWrapper, { marginTop: dimensions.height * -0.1 }]}>
             <Text style={[styles.titleText, { fontSize: Math.min(dimensions.width * 0.12, dimensions.height * 0.1) }]}>
               Dabbetül
             </Text>
           </View>
           <View style={[styles.textWrapper, { marginTop: dimensions.height * -0.03 }]}>
-            <Text style={[styles.titleText, { fontSize: Math.min(dimensions.width * 0.15, dimensions.height * 0.12), color: '#b3c6e2' }]}>
+            <Text style={[styles.titleText, { fontSize: Math.min(dimensions.width * 0.15, dimensions.height * 0.12), color: '#f3c300' }]}>
               Arz
             </Text>
           </View>
@@ -238,7 +243,7 @@ const getHomeScreenStyles = (theme, dimensions) => StyleSheet.create({
   planetImage: {
     position: 'absolute',
     bottom: '-9%', // Выходит за нижнюю границу
-    left: '-7%', // Выходит за левую границу
+    right: '-7%', // Выходит за левую границу
     width: dimensions.planetSize,
     height: dimensions.planetSize,
     resizeMode: 'contain',
@@ -247,7 +252,7 @@ const getHomeScreenStyles = (theme, dimensions) => StyleSheet.create({
   dabbeContainer: {
     position: 'absolute',
     top: 0,
-    right: 90,
+    left: 0,
     width: dimensions.planetSize * 1,
     height: dimensions.planetSize * 1,
     zIndex: 1,
@@ -267,7 +272,7 @@ const getHomeScreenStyles = (theme, dimensions) => StyleSheet.create({
     position: 'relative',
   },
   titleText: {
-    color: '#0099CC',
+    color: '#f3c300',
     fontWeight: '900',
     textAlign: 'left',
     textShadowColor: 'rgba(255, 255, 255, 0.8)',
