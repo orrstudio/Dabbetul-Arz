@@ -98,21 +98,6 @@ const SplashScreen = ({ navigation }) => {
       {...panResponder.panHandlers}
     >
       <View style={{ position: 'relative', alignItems: 'center' }}>
-        <Text 
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            fontSize: Dimensions.get('window').width * 0.21,
-            fontFamily: 'DSEG7Classic-Bold',
-            color: clockColor,
-            opacity: clockOpacity * 0.2,
-            textAlign: 'center',
-          }}
-        >
-          88:88
-        </Text>
         <TimeDisplay timeScale={0.21} />
       </View>
       <View style={{ marginTop: 30 }}>
