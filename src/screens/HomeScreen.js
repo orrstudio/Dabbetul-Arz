@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Dimensions, Animated, Image, Platform } from 'react-native';
 import { getThemeByName } from '../utils/theme';
 import { getPlayerStyles } from '../utils/getPlayerStyles';
+import { Ionicons } from '@expo/vector-icons';
+import SmallDigitalClock from '../components/SmallDigitalClock';
 
 // Коэффициенты
 const CONTAINER_SCALE = 3;
@@ -231,8 +233,32 @@ const HomeScreen = ({ navigation }) => {
           >
             <Text style={styles.buttonText}>Sosial</Text>
           </TouchableOpacity>
+          <TouchableOpacity style={[styles.button, { marginTop: 20, height: 'auto' }]}>
+            <SmallDigitalClock 
+              timeScale={0.05} 
+              showDate={false}
+              containerStyle={{ flex: 0, marginTop: 0 }}
+              topContainerStyle={{ marginTop: 0 }}
+            />
+          </TouchableOpacity>
         </View>
       </View>
+
+      {/* Кнопка настроек */}
+      <TouchableOpacity
+        style={styles.settingsButton}
+        onPress={() => navigation.navigate('Settings')}
+      >
+        <Ionicons name="settings" size={30} color="white" />
+      </TouchableOpacity>
+
+      {/* Кнопка информации */}
+      <TouchableOpacity
+        style={[styles.settingsButton, { left: 90 }]}
+        onPress={() => navigation.navigate('Info')}
+      >
+        <Ionicons name="information" size={30} color="white" />
+      </TouchableOpacity>
     </View>
   );
 };
@@ -318,6 +344,18 @@ const getHomeScreenStyles = (theme, dimensions) => StyleSheet.create({
     fontSize: 18,
     fontWeight: '600',
     textAlign: 'center',
+  },
+  settingsButton: {
+    position: 'absolute',
+    bottom: 20,
+    left: 20,
+    width: 50,
+    height: 50,
+    backgroundColor: '#0099CC',
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 3,
   },
 });
 
