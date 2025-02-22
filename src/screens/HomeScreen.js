@@ -49,6 +49,11 @@ const HomeScreen = ({ navigation }) => {
   // Анимация
   const translateX = useRef(new Animated.Value(0)).current;
   const translateY = useRef(new Animated.Value(0)).current;
+  const earthRotation = useRef(new Animated.Value(0)).current;
+  const earthScale = useRef(new Animated.Value(1)).current;
+  const dabbeScale = useRef(new Animated.Value(1)).current;
+  const dabbeOffset = useRef(new Animated.Value(0)).current;
+  const dabbeVerticalOffset = useRef(new Animated.Value(0)).current;
 
   // Обновляем размеры при изменении ориентации
   useEffect(() => {
@@ -101,7 +106,92 @@ const HomeScreen = ({ navigation }) => {
       ]);
     };
 
+    const createEarthRotation = () => {
+      return Animated.sequence([
+        Animated.timing(earthRotation, {
+          toValue: 1,
+          duration: 100000,
+          useNativeDriver: true,
+          easing: Animated.linear
+        }),
+        Animated.timing(earthRotation, {
+          toValue: 0,
+          duration: 0,
+          useNativeDriver: true
+        })
+      ]);
+    };
+
+    const createEarthScale = () => {
+      return Animated.sequence([
+        Animated.timing(earthScale, {
+          toValue: 2,
+          duration: 100000,
+          useNativeDriver: true,
+          easing: Animated.linear
+        }),
+        Animated.timing(earthScale, {
+          toValue: 1,
+          duration: 50000,
+          useNativeDriver: true,
+          easing: Animated.linear
+        })
+      ]);
+    };
+
+    const createDabbeAnimation = () => {
+      const scaleAnimation = Animated.sequence([
+        Animated.timing(dabbeScale, {
+          toValue: 0.5,
+          duration: 100000,
+          useNativeDriver: true,
+          easing: Animated.easeInOut
+        }),
+        Animated.timing(dabbeScale, {
+          toValue: 1,
+          duration: 100000,
+          useNativeDriver: true,
+          easing: Animated.easeInOut
+        })
+      ]);
+
+      const offsetAnimation = Animated.sequence([
+        Animated.timing(dabbeOffset, {
+          toValue: 30, // смещение на 50 единиц вправо
+          duration: 50000, // чуть дольше чем уменьшение (15000)
+          useNativeDriver: true,
+          easing: Animated.easeInOut
+        }),
+        Animated.timing(dabbeOffset, {
+          toValue: 0, // возврат в исходную позицию
+          duration: 50000,
+          useNativeDriver: true,
+          easing: Animated.easeInOut
+        })
+      ]);
+
+      const verticalAnimation = Animated.sequence([
+        Animated.timing(dabbeVerticalOffset, {
+          toValue: 30, // смещение на 30 единиц вниз
+          duration: 50000, // короче чем уменьшение (15000)
+          useNativeDriver: true,
+          easing: Animated.easeInOut
+        }),
+        Animated.timing(dabbeVerticalOffset, {
+          toValue: 0, // возврат в исходную позицию
+          duration: 50000,
+          useNativeDriver: true,
+          easing: Animated.easeInOut
+        })
+      ]);
+
+      return Animated.parallel([scaleAnimation, offsetAnimation, verticalAnimation]);
+    };
+
     Animated.loop(createCircularMotion()).start();
+    Animated.loop(createEarthRotation()).start();
+    Animated.loop(createEarthScale()).start();
+    Animated.loop(createDabbeAnimation()).start();
   };
 
   useEffect(() => {
@@ -158,7 +248,13 @@ const HomeScreen = ({ navigation }) => {
         source={require('../../assets/images/animation/earth.png')}
         style={[styles.planetImage, {
           transform: [
-            { rotate: dimensions.width > dimensions.height ? '0deg' : '0deg' }
+            {
+              rotate: earthRotation.interpolate({
+                inputRange: [0, 1],
+                outputRange: ['0deg', '360deg']
+              })
+            },
+            { scale: earthScale }
           ]
         }]}
       />
@@ -169,7 +265,10 @@ const HomeScreen = ({ navigation }) => {
           source={require('../../assets/images/animation/dabbe1.png')}
           style={[styles.dabbeImage, {
             transform: [
-              { rotate: dimensions.width > dimensions.height ? '-25deg' : '0deg' }
+              { rotate: dimensions.width > dimensions.height ? '-25deg' : '0deg' },
+              { scale: dabbeScale },
+              { translateX: dabbeOffset },
+              { translateY: dabbeVerticalOffset }
             ]
           }]}
         />
@@ -324,13 +423,14 @@ const getHomeScreenStyles = (theme, dimensions) => StyleSheet.create({
     flex: 1,
     justifyContent: '',
     alignItems: 'center',
-    zIndex: 1,
+    zIndex: 10, // Поднимаем контейнер с кнопками выше всех
     paddingHorizontal: 10,
   },
   buttonsContainer: {
     flex: 1,
     justifyContent: 'center', // Центрирование по вертикали
     alignItems: 'center', // Центрирование по горизонтали
+    zIndex: 10, // Поднимаем контейнер с кнопками выше всех
   },
   button: {
     paddingHorizontal: 30,
@@ -338,6 +438,7 @@ const getHomeScreenStyles = (theme, dimensions) => StyleSheet.create({
     backgroundColor: '#0099CC',
     borderRadius: 10,
     minWidth: 200, // Минимальная ширина кнопки
+    zIndex: 10, // Поднимаем кнопки выше всех
   },
   buttonText: {
     color: '#fff',
@@ -355,7 +456,7 @@ const getHomeScreenStyles = (theme, dimensions) => StyleSheet.create({
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    zIndex: 3,
+    zIndex: 10, // Поднимаем кнопки настроек выше всех
   },
 });
 
