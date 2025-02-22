@@ -73,10 +73,19 @@ export default function App() {
             )}
           </Stack.Screen>
           <Stack.Screen 
-            name="SplashScreen" 
-            component={SplashScreen} 
-            options={{ headerShown: false }}
-          />
+            name="SplashScreen"
+            options={{
+              presentation: 'modal',
+              animation: 'fade',
+              animationDuration: 200,
+            }}
+          >
+            {(props) => (
+              <MainLayout>
+                <SplashScreen {...props} />
+              </MainLayout>
+            )}
+          </Stack.Screen>
           <Stack.Screen name="Info">
             {(props) => (
               <MainLayout>
