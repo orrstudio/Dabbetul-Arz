@@ -40,7 +40,17 @@ export default function App() {
     <ClockSettingsProvider>
       <NavigationContainer>
         <StatusBar style="light" backgroundColor="#111112" />
-        <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
+        <Stack.Navigator 
+          initialRouteName="Home" 
+          screenOptions={{ 
+            headerShown: false,
+            contentStyle: { backgroundColor: '#111112' },
+            animation: 'fade',
+            animationDuration: 200,
+            presentation: 'card',
+            cardStyle: { backgroundColor: '#111112' },
+          }}
+        >
           <Stack.Screen name="Home">
             {(props) => (
               <MainLayout>
