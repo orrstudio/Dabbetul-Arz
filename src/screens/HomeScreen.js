@@ -460,28 +460,29 @@ const HomeScreen = ({ navigation }) => {
         {/* Контейнер для кнопок */}
         <View style={styles.buttonsContainer}>
           <TouchableOpacity
-            style={styles.button}
+            style={[styles.button, { height: 'auto' }]}
             onPress={() => navigation.navigate('Player')}
           >
-            <Text style={styles.buttonText}>TV</Text>
+            <Text style={[styles.buttonText, { fontSize: 24, lineHeight: 32 }]}>TV</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={[styles.button, { marginTop: 20 }]}
+            style={[styles.button, { marginTop: 5, height: 'auto'  }]}
             onPress={() => {}}
           >
-            <Text style={styles.buttonText}>Radio</Text>
+            <Text style={[styles.buttonText, { fontSize: 24, lineHeight: 32 }]}>Radio</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={[styles.button, { marginTop: 20 }]}
+            style={[styles.button, { marginTop: 5, height: 'auto'  }]}
             onPress={() => navigation.navigate('Sosial')}
           >
-            <Text style={styles.buttonText}>Sosial</Text>
+            <Text style={[styles.buttonText, { fontSize: 24, lineHeight: 32 }]}>Sosial</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.button, { marginTop: 20, height: 'auto' }]} onPress={() => navigation.reset({ index: 0, routes: [{ name: 'SplashScreen' }] })}>
+          <TouchableOpacity style={[styles.button, { marginTop: 5, height: 'auto' }]} onPress={() => navigation.reset({ index: 0, routes: [{ name: 'SplashScreen' }] })}>
             <SmallDigitalClock 
               timeScale={0.05} 
               showDate={false}
               containerStyle={{ flex: 0, marginTop: 0 }}
+              style={{ fontSize: 24, lineHeight: 32 }}
               topContainerStyle={{ marginTop: 0 }}
             />
           </TouchableOpacity>
@@ -579,7 +580,7 @@ const getHomeScreenStyles = (theme, dimensions) => StyleSheet.create({
   },
   button: {
     paddingHorizontal: 30,
-    paddingVertical: 15,
+    paddingVertical: 5,
     backgroundColor: '#0099CC',
     borderRadius: 10,
     minWidth: 200, // Минимальная ширина кнопки
