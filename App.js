@@ -7,6 +7,7 @@ import HomeScreen from './src/screens/HomeScreen';
 import PlayerScreen from './src/screens/PlayerScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
 import SplashScreen from './src/screens/SplashScreen';
+import InfoScreen from './src/screens/InfoScreen';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { ClockSettingsProvider } from './src/contexts/ClockSettingsContext';
@@ -66,6 +67,13 @@ export default function App() {
             component={SplashScreen} 
             options={{ headerShown: false }}
           />
+          <Stack.Screen name="Info">
+            {(props) => (
+              <MainLayout>
+                <InfoScreen {...props} />
+              </MainLayout>
+            )}
+          </Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
     </ClockSettingsProvider>
