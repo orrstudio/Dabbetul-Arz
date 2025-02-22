@@ -62,7 +62,8 @@
           "supportsBackgroundPlayback": true,
           "pictureInPicture": true
         }
-      ]
+      ],
+      "expo-audio"
     ],
     "extra": {
       "eas": {
