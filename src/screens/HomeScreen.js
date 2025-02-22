@@ -467,7 +467,7 @@ const HomeScreen = ({ navigation }) => {
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.button, { marginTop: 5, height: 'auto'  }]}
-            onPress={() => {}}
+            onPress={() => navigation.navigate('Radio')}
           >
             <Text style={[styles.buttonText, { fontSize: 24, lineHeight: 32 }]}>Radio</Text>
           </TouchableOpacity>
