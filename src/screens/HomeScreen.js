@@ -54,6 +54,34 @@ const HomeScreen = ({ navigation }) => {
   const dabbeScale = useRef(new Animated.Value(1)).current;
   const dabbeOffset = useRef(new Animated.Value(0)).current;
   const dabbeVerticalOffset = useRef(new Animated.Value(0)).current;
+  const titleTopColor = useRef(new Animated.Value(0)).current;
+  const titleBottomColor = useRef(new Animated.Value(0)).current;
+
+  const topTextColor = titleTopColor.interpolate({
+    inputRange: [0, 1, 2, 3, 4, 5, 6],
+    outputRange: [
+      '#f3c300',  // золотой
+      '#ffffff',  // белый
+      '#ffffff',  // белый
+      '#ff0000',  // красный
+      '#ff0000',  // красный
+      '#ffffff',  // белый
+      '#f3c300'   // обратно в золотой
+    ]
+  });
+
+  const bottomTextColor = titleBottomColor.interpolate({
+    inputRange: [0, 1, 2, 3, 4, 5, 6],
+    outputRange: [
+      '#f3c300',  // золотой
+      '#ffffff',  // белый
+      '#ff0000',  // красный
+      '#ff0000',  // красный
+      '#ffffff',  // белый
+      '#f3c300',  // обратно в золотой
+      '#f3c300'   // обратно в золотой
+    ]
+  });
 
   // Обновляем размеры при изменении ориентации
   useEffect(() => {
@@ -132,7 +160,7 @@ const HomeScreen = ({ navigation }) => {
         }),
         Animated.timing(earthScale, {
           toValue: 1,
-          duration: 50000,
+          duration: 100000,
           useNativeDriver: true,
           easing: Animated.linear
         })
@@ -188,10 +216,103 @@ const HomeScreen = ({ navigation }) => {
       return Animated.parallel([scaleAnimation, offsetAnimation, verticalAnimation]);
     };
 
+    const createTitleAnimation = () => {
+      const topColorAnimation = Animated.sequence([
+        Animated.timing(titleTopColor, {
+          toValue: 1,
+          duration: 10000,
+          useNativeDriver: false,
+          easing: Animated.linear
+        }),
+        Animated.timing(titleTopColor, {
+          toValue: 2,
+          duration: 10000,
+          useNativeDriver: false,
+          easing: Animated.linear
+        }),
+        Animated.timing(titleTopColor, {
+          toValue: 3,
+          duration: 10000,
+          useNativeDriver: false,
+          easing: Animated.linear
+        }),
+        Animated.timing(titleTopColor, {
+          toValue: 4,
+          duration: 10000,
+          useNativeDriver: false,
+          easing: Animated.linear
+        }),
+        Animated.timing(titleTopColor, {
+          toValue: 5,
+          duration: 10000,
+          useNativeDriver: false,
+          easing: Animated.linear
+        }),
+        Animated.timing(titleTopColor, {
+          toValue: 6,
+          duration: 10000,
+          useNativeDriver: false,
+          easing: Animated.easeInOut
+        }),
+        Animated.timing(titleTopColor, {
+          toValue: 0,
+          duration: 0,
+          useNativeDriver: false
+        })
+      ]);
+
+      const bottomColorAnimation = Animated.sequence([
+        Animated.timing(titleBottomColor, {
+          toValue: 1,
+          duration: 10000,
+          useNativeDriver: false,
+          easing: Animated.linear
+        }),
+        Animated.timing(titleBottomColor, {
+          toValue: 2,
+          duration: 10000,
+          useNativeDriver: false,
+          easing: Animated.linear
+        }),
+        Animated.timing(titleBottomColor, {
+          toValue: 3,
+          duration: 10000,
+          useNativeDriver: false,
+          easing: Animated.linear
+        }),
+        Animated.timing(titleBottomColor, {
+          toValue: 4,
+          duration: 10000,
+          useNativeDriver: false,
+          easing: Animated.linear
+        }),
+        Animated.timing(titleBottomColor, {
+          toValue: 5,
+          duration: 10000,
+          useNativeDriver: false,
+          easing: Animated.linear
+        }),
+        Animated.timing(titleBottomColor, {
+          toValue: 6,
+          duration: 10000,
+          useNativeDriver: false,
+          easing: Animated.easeInOut
+        }),
+        Animated.timing(titleBottomColor, {
+          toValue: 0,
+          duration: 0,
+          useNativeDriver: false
+        })
+      ]);
+
+      return Animated.parallel([topColorAnimation, bottomColorAnimation]);
+    };
+
     Animated.loop(createCircularMotion()).start();
     Animated.loop(createEarthRotation()).start();
     Animated.loop(createEarthScale()).start();
     Animated.loop(createDabbeAnimation()).start();
+    Animated.loop(createTitleAnimation()).start();
   };
 
   useEffect(() => {
@@ -278,14 +399,26 @@ const HomeScreen = ({ navigation }) => {
       {dimensions.width > dimensions.height && (
         <View style={[styles.titleContainer, { top: dimensions.height * 0.08 }]}>
           <View style={[styles.textWrapper, { marginTop: dimensions.height * 0.01 }]}>
-            <Text style={[styles.titleText, { fontSize: Math.min(dimensions.width * 0.1, dimensions.height * 0.08) }]}>
+            <Animated.Text style={[
+              styles.titleText, 
+              { 
+                fontSize: Math.min(dimensions.width * 0.1, dimensions.height * 0.08),
+                color: topTextColor
+              }
+            ]}>
               Dabbetül
-            </Text>
+            </Animated.Text>
           </View>
           <View style={[styles.textWrapper, { marginTop: dimensions.height * 0.01 }]}>
-            <Text style={[styles.titleText, { fontSize: Math.min(dimensions.width * 0.15, dimensions.height * 0.12), color: '#f3c300' }]}>
+            <Animated.Text style={[
+              styles.titleText, 
+              { 
+                fontSize: Math.min(dimensions.width * 0.15, dimensions.height * 0.12),
+                color: bottomTextColor
+              }
+            ]}>
               Arz
-            </Text>
+            </Animated.Text>
           </View>
         </View>
       )}
@@ -299,14 +432,26 @@ const HomeScreen = ({ navigation }) => {
           }
         ]}>
           <View style={[styles.textWrapper, { marginTop: dimensions.height * -0.1 }]}>
-            <Text style={[styles.titleText, { fontSize: Math.min(dimensions.width * 0.12, dimensions.height * 0.1) }]}>
+            <Animated.Text style={[
+              styles.titleText, 
+              { 
+                fontSize: Math.min(dimensions.width * 0.12, dimensions.height * 0.1),
+                color: topTextColor
+              }
+            ]}>
               Dabbetül
-            </Text>
+            </Animated.Text>
           </View>
           <View style={[styles.textWrapper, { marginTop: dimensions.height * -0.03 }]}>
-            <Text style={[styles.titleText, { fontSize: Math.min(dimensions.width * 0.15, dimensions.height * 0.12), color: '#f3c300' }]}>
+            <Animated.Text style={[
+              styles.titleText, 
+              { 
+                fontSize: Math.min(dimensions.width * 0.15, dimensions.height * 0.12),
+                color: bottomTextColor
+              }
+            ]}>
               Arz
-            </Text>
+            </Animated.Text>
           </View>
         </View>
       )}
