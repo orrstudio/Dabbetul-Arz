@@ -13,9 +13,35 @@ import { View, PanResponder, Dimensions, Text } from 'react-native';
 import TimeDisplay from '../components/TimeDisplay';
 import DateDisplay from '../components/DateDisplay';
 import { ClockSettingsContext } from '../contexts/ClockSettingsContext';
+import * as ScreenOrientation from 'expo-screen-orientation';
 
 const SplashScreen = ({ navigation }) => {
   const { clockOpacity, setClockOpacity, clockColor, setClockColor } = useContext(ClockSettingsContext);
+
+  // Разблокируем ориентацию при входе на экран
+  useEffect(() => {
+    async function unlockOrientation() {
+      try {
+        await ScreenOrientation.unlockAsync();
+        console.log("SplashScreen: ориентация разблокирована");
+      } catch (error) {
+        console.log("Ошибка разблокировки ориентации:", error);
+      }
+    }
+    unlockOrientation();
+
+    return () => {
+      async function lockOrientationBack() {
+        try {
+          await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+          console.log("SplashScreen: ориентация заблокирована при выходе");
+        } catch (error) {
+          console.log("Ошибка блокировки ориентации:", error);
+        }
+      }
+      lockOrientationBack();
+    };
+  }, []);
 
   // Создаем ref для актуального значения цвета, чтобы использовать его внутри обработчика
   const clockColorRef = useRef(clockColor);
