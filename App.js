@@ -9,6 +9,7 @@ import SettingsScreen from './src/screens/SettingsScreen';
 import SplashScreen from './src/screens/SplashScreen';
 import InfoScreen from './src/screens/InfoScreen';
 import SosialScreen from './src/screens/SosialScreen';
+import RadioScreen from './src/screens/RadioScreen';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { ClockSettingsProvider } from './src/contexts/ClockSettingsContext';
@@ -63,6 +64,13 @@ export default function App() {
             {(props) => (
               <MainLayout>
                 <PlayerScreen {...props} />
+              </MainLayout>
+            )}
+          </Stack.Screen>
+          <Stack.Screen name="Radio">
+            {(props) => (
+              <MainLayout>
+                <RadioScreen {...props} />
               </MainLayout>
             )}
           </Stack.Screen>
