@@ -78,10 +78,10 @@ const RadioScreen = () => {
       }
     : {
         playerWidth: Platform.OS === 'ios'
-          ? videoDimensions.width * 0.65
-          : Platform.OS === 'android'
-            ? videoDimensions.width * 0.64
-            : videoDimensions.width * 0.65,
+        ? videoDimensions.width * 0.65
+        : Platform.OS === 'android'
+          ? videoDimensions.width * 0.64
+          : videoDimensions.width * 0.65,
         listWidth: Platform.OS === 'ios'
           ? videoDimensions.width * 0.25
           : Platform.OS === 'android'
@@ -101,6 +101,9 @@ const RadioScreen = () => {
 
   const navigation = useNavigation();
   
+  // Получаем стили из отдельной функции как в PlayerScreen
+  const styles = getPlayerStyles(theme, isPortrait, videoHeight);
+
   useEffect(() => {
     loadPlaylist();
   }, []);
@@ -148,133 +151,6 @@ const RadioScreen = () => {
     }
   };
 
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: theme.background,
-    },
-    videoContainer: {
-      width: isPortrait ? dimensions.width : dimensions.width * 0.7,
-      height: videoHeight,
-      alignSelf: 'flex-start',
-      backgroundColor: "#000",
-      margin: 0,
-      padding: 0,
-    },
-    controls: {
-      alignItems: 'flex-start',
-      marginVertical: 0,
-      padding: 0,
-    },
-    currentChannelText: {
-      fontSize: 14,
-      fontWeight: 'bold',
-      color: theme.text,
-      textAlign: 'center',
-      alignSelf: 'center',
-      marginTop: 5,
-      marginBottom: 5,
-      padding: 0,
-      flexWrap: 'wrap',
-    },
-    channelList: {
-      paddingVertical: 0,
-      paddingHorizontal: 5,
-      marginHorizontal: 5,
-    },
-    channelItem: {
-      padding: 0,
-      marginBottom: 5,
-      backgroundColor: theme.channelBackground,
-      borderRadius: 20,
-    },
-    channelRow: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      paddingVertical: 5,
-      paddingHorizontal: 10,
-    },
-    leftIconContainer: {
-      justifyContent: 'center',
-      alignItems: 'center',
-      width: 50,
-    },
-    middleTextContainer: {
-      flex: 1,
-      justifyContent: 'center',
-    },
-    rightFlagContainer: {
-      justifyContent: 'center',
-      alignItems: 'flex-end',
-      width: 50,
-    },
-    channelText: {
-      fontSize: 16,
-      color: theme.channelText,
-      textAlign: 'left',
-    },
-    activeChannelItem: {
-      backgroundColor: theme.activeChannelBackground,
-    },
-    activeChannelText: {
-      fontSize: 20,
-      color: theme.activeChannelText,
-      fontWeight: 'bold',
-    },
-    iconStyle: {
-      width: 50,
-      height: 50,
-      marginRight: 8,
-      resizeMode: 'contain',
-    },
-    flagIconStyle: {
-      width: 40,
-      height: 40,
-      marginLeft: 4,
-      resizeMode: 'contain',
-    },
-    landscapeContainer: {
-      flexDirection: 'row',
-      flex: 1,
-    },
-    landscapeVideoContainer: {
-      width: '100%',
-      justifyContent: 'flex-start',
-      alignItems: 'flex-start',
-      padding: 0,
-      margin: 0,
-    },
-    landscapeChannelList: {
-      width: '100%',
-    },
-    channelLogo: {
-      width: 50,
-      height: 50,
-      marginRight: 8,
-      resizeMode: 'contain',
-    },
-    channelTitle: {
-      fontSize: 16,
-      color: theme.text,
-      textAlign: 'left',
-    },
-    channelInfo: {
-      flex: 1,
-      justifyContent: 'center',
-    },
-    rightIconContainer: {
-      justifyContent: 'center',
-      alignItems: 'flex-end',
-      width: 50,
-    },
-    flagIcon: {
-      width: 40,
-      height: 40,
-      marginLeft: 4,
-      resizeMode: 'contain',
-    },
-  });
-
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
@@ -284,7 +160,7 @@ const RadioScreen = () => {
               {currentChannel ? (
                 <VideoWindow 
                   currentChannel={currentChannel}
-                  videoWidth={layoutWidths.playerWidth}
+                  videoWidth={videoWidth}
                   videoHeight={videoHeight}
                   player={player}
                   controls={true}
@@ -362,11 +238,11 @@ const RadioScreen = () => {
           </View>
         ) : (
           <View style={{ flex: 1, flexDirection: 'row' }}>
-            <View style={{ width: layoutWidths.playerWidth }}>
+            <View style={styles.videoContainer}>
               {currentChannel ? (
                 <VideoWindow 
                   currentChannel={currentChannel}
-                  videoWidth={layoutWidths.playerWidth}
+                  videoWidth={videoWidth}
                   videoHeight={videoHeight}
                   player={player}
                   controls={true}

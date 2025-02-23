@@ -29,18 +29,6 @@ const SplashScreen = ({ navigation }) => {
       }
     }
     unlockOrientation();
-
-    return () => {
-      async function lockOrientationBack() {
-        try {
-          await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
-          console.log("SplashScreen: ориентация заблокирована при выходе");
-        } catch (error) {
-          console.log("Ошибка блокировки ориентации:", error);
-        }
-      }
-      lockOrientationBack();
-    };
   }, []);
 
   // Создаем ref для актуального значения цвета, чтобы использовать его внутри обработчика
