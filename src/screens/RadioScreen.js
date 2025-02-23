@@ -13,7 +13,7 @@ import { getThemeByName } from '../utils/theme';
 import { useNavigation } from '@react-navigation/native';
 import DigitalClock from '../components/DigitalClock';
 import TimeDisplay from '../components/TimeDisplay';
-import RadioClock from '../components/RadioClock';
+import PlayerClock from '../components/PlayerClock';
 import * as ScreenOrientation from 'expo-screen-orientation';
 
 // Mapping путей к логотипам (обновлённые пути для расположения из папки screens)
@@ -258,80 +258,30 @@ const RadioScreen = () => {
             )}
           </View>
         ) : (
-          <View style={{ flex: 1, flexDirection: 'row' }}>
-            <View style={styles.videoContainer}>
-              <RadioView 
-                width={videoWidth}
-                height={videoHeight}
-              />
-            </View>
-            <View style={{ flex: 1 }}>
-              <View style={styles.controls}>
-                {currentChannel && (
-                  <View style={{ alignItems: 'center', justifyContent: 'center', width: '100%' }}>
-                    <Text
-                      numberOfLines={1}
-                      ellipsizeMode="tail"
-                      style={[styles.currentChannelText, { textAlign: 'center' }]}
-                    >
-                      {currentChannel.metadata.title}
-                    </Text>
-                  </View>
-                )}
+          Platform.OS !== 'web' ? (
+            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+              <View style={{ flex: 9, alignItems: 'flex-start' }}>
+                <RadioView 
+                  width={videoDimensions.width * 0.9}
+                  height={videoDimensions.height - 50}
+                />
               </View>
-              {channels.length > 0 && (
-                <ScrollView 
-                  style={[
-                    Platform.OS === 'web' ? { maxHeight: channelListMaxHeight, overflowY: 'auto' } : {},
-                    styles.channelList
-                  ]}
-                >
-                  {channels.map((channel, index) => (
-                    <TouchableOpacity 
-                      key={channel.uri} 
-                      style={[
-                        styles.channelItem,
-                        channel.uri === currentChannel?.uri && styles.activeChannelItem
-                      ]}
-                      onPress={() => handleChannelChange(channel)}
-                    >
-                      <View style={styles.channelRow}>
-                        <View style={styles.leftIconContainer}>
-                          {channel.metadata?.logo && channelLogos[channel.metadata.logo] && (
-                            <Image
-                              source={channelLogos[channel.metadata.logo]}
-                              style={styles.iconStyle}
-                              resizeMode="contain"
-                            />
-                          )}
-                        </View>
-                        <View style={styles.middleTextContainer}>
-                          <Text 
-                            style={[
-                              styles.channelText,
-                              channel.uri === currentChannel?.uri && styles.activeChannelText
-                            ]}
-                            numberOfLines={1}
-                          >
-                            {channel?.metadata?.title || 'Без названия'}
-                          </Text>
-                        </View>
-                        <View style={styles.rightFlagContainer}>
-                          {(channel.metadata?.language || channel.metadata?.logo === "../assets/images/logos/mpl.png" || channel.metadata?.logo === "../assets/images/logos/nurtv.png") && (
-                            <Image
-                              source={flagIcons[channel.metadata?.language || "tr"]}
-                              style={styles.flagIconStyle}
-                              resizeMode="contain"
-                            />
-                          )}
-                        </View>
-                      </View>
-                    </TouchableOpacity>
-                  ))}
-                </ScrollView>
-              )}
+              <View style={{ flex: 1, justifyContent: 'flex-end', alignItems: 'flex-end', paddingRight: 10, paddingBottom: 10 }}>
+                <PlayerClock />
+              </View>
             </View>
-          </View>
+          ) : (
+            <View style={styles.landscapeContainer}>
+              <View style={[styles.leftColumn, { width: layoutWidths.playerWidth }]}>
+                <View style={styles.landscapeVideoContainer}>
+                  <RadioView 
+                    width={layoutWidths.playerWidth}
+                    height={videoHeight}
+                  />
+                </View>
+              </View>
+            </View>
+          )
         )}
       </SafeAreaView>
     </SafeAreaProvider>
