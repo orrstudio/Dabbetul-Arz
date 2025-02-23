@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="768"
+   height="768"
+   viewBox="0 0 768 768"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   sodipodi:docname="social-facebook.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="px"
+     inkscape:zoom="0.41796875"
+     inkscape:cx="267.96262"
+     inkscape:cy="194.99065"
+     inkscape:window-width="1920"
+     inkscape:window-height="1002"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Слой 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="XMLID_1631_"
+       transform="matrix(16.193308,0,0,16.193308,-446.31996,-1702.9045)">
+      <path
+         id="XMLID_1633_"
+         style="fill:#3e5c9a"
+         d="M 66.52,152.588 H 36.031 c -4.677,0 -8.469,-3.792 -8.469,-8.469 V 113.63 c 0,-4.677 3.792,-8.469 8.469,-8.469 H 66.52 c 4.677,0 8.469,3.792 8.469,8.469 v 30.489 c 0,4.678 -3.791,8.469 -8.469,8.469 z" />
+      <path
+         id="XMLID_1632_"
+         style="fill:#ffffff"
+         d="m 47.662,143.208 h 5.772 v -14.455 h 4.027 l 0.429,-4.84 h -4.457 c 0,0 0,-1.807 0,-2.757 0,-1.141 0.229,-1.592 1.333,-1.592 0.888,0 3.124,0 3.124,0 v -5.023 c 0,0 -3.294,0 -3.997,0 -4.295,0 -6.232,1.892 -6.232,5.513 0,3.154 0,3.859 0,3.859 H 44.66 v 4.901 h 3.003 v 14.394 z" />
+    </g>
+  </g>
+</svg>
