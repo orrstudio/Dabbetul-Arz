@@ -18,9 +18,6 @@
         "UIBackgroundModes": [
           "audio",
           "fetch",
-          "remote-notification",
-          "audio",
-          "fetch",
           "remote-notification"
         ],
         "NSUserNotificationUsageDescription": "Приложение использует уведомления для управления воспроизведением медиа",
@@ -37,10 +34,6 @@
         "backgroundColor": "#ffffff"
       },
       "permissions": [
-        "android.permission.FOREGROUND_SERVICE",
-        "android.permission.WAKE_LOCK",
-        "android.permission.VIBRATE",
-        "android.permission.RECEIVE_BOOT_COMPLETED",
         "android.permission.FOREGROUND_SERVICE",
         "android.permission.WAKE_LOCK",
         "android.permission.VIBRATE",
@@ -62,8 +55,7 @@
           "supportsBackgroundPlayback": true,
           "pictureInPicture": true
         }
-      ],
-      "expo-audio"
+      ]
     ],
     "extra": {
       "eas": {
