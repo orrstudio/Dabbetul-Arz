@@ -15,10 +15,10 @@ import DateDisplay from '../components/DateDisplay';
 import { ClockSettingsContext } from '../contexts/ClockSettingsContext';
 import * as ScreenOrientation from 'expo-screen-orientation';
 
-const SplashScreen = ({ navigation }) => {
+const SplashScreen = ({ navigation, route }) => {
   const { clockOpacity, setClockOpacity, clockColor, setClockColor } = useContext(ClockSettingsContext);
 
-  // Разблокируем ориентацию при входе на экран
+  // Разблокируем ориентацию при входе на экран и блокируем при выходе
   useEffect(() => {
     async function unlockOrientation() {
       try {
@@ -29,7 +29,26 @@ const SplashScreen = ({ navigation }) => {
       }
     }
     unlockOrientation();
-  }, []);
+
+    // Блокируем ориентацию обратно при выходе только если переходим на HomeScreen
+    return () => {
+      const nextScreen = route.params?.nextScreen;
+      
+      if (nextScreen === 'Home') {
+        async function lockOrientationBack() {
+          try {
+            await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP);
+            console.log("SplashScreen: ориентация заблокирована при выходе на HomeScreen");
+          } catch (error) {
+            console.log("Ошибка блокировки ориентации при выходе:", error);
+          }
+        }
+        lockOrientationBack();
+      } else {
+        console.log("SplashScreen: переход на плеер, оставляем ориентацию разблокированной");
+      }
+    };
+  }, [route.params, navigation]);
 
   // Создаем ref для актуального значения цвета, чтобы использовать его внутри обработчика
   const clockColorRef = useRef(clockColor);

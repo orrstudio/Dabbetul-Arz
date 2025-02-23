@@ -37,7 +37,7 @@ const RadioClock = () => {
   return (
     <TouchableOpacity 
       style={styles.container} 
-      onPress={() => navigation.navigate('SplashScreen')}
+      onPress={() => navigation.navigate('SplashScreen', { nextScreen: 'Radio' })}
     >
       <Text style={[styles.text, { color: clockColor, opacity: clockOpacity }]}>
         {formattedHours}
