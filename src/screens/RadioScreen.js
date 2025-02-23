@@ -247,12 +247,38 @@ const RadioScreen = () => {
     landscapeChannelList: {
       width: '100%',
     },
+    channelLogo: {
+      width: 50,
+      height: 50,
+      marginRight: 8,
+      resizeMode: 'contain',
+    },
+    channelTitle: {
+      fontSize: 16,
+      color: theme.text,
+      textAlign: 'left',
+    },
+    channelInfo: {
+      flex: 1,
+      justifyContent: 'center',
+    },
+    rightIconContainer: {
+      justifyContent: 'center',
+      alignItems: 'flex-end',
+      width: 50,
+    },
+    flagIcon: {
+      width: 40,
+      height: 40,
+      marginLeft: 4,
+      resizeMode: 'contain',
+    },
   });
 
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
-        { isPortrait ? (
+        {isPortrait ? (
           <View style={{ flex: 1, flexDirection: 'column' }}>
             <View style={styles.videoContainer}>
               {currentChannel ? (
@@ -277,7 +303,7 @@ const RadioScreen = () => {
                     ellipsizeMode="tail"
                     style={[styles.currentChannelText, { textAlign: 'center' }]}
                   >
-                    {currentChannel?.metadata?.title}
+                    {currentChannel.metadata.title}
                   </Text>
                 </View>
               )}
@@ -338,87 +364,19 @@ const RadioScreen = () => {
           <View style={{ flex: 1, flexDirection: 'row' }}>
             <View style={{ width: layoutWidths.playerWidth }}>
               {currentChannel ? (
-                <>
-                  <VideoWindow 
-                    currentChannel={currentChannel}
-                    videoWidth={layoutWidths.playerWidth}
-                    videoHeight={videoHeight}
-                    player={player}
-                    controls={true}
-                  />
-                  <View style={styles.controls}>
-                    <Text
-                      numberOfLines={1}
-                      ellipsizeMode="tail"
-                      style={[styles.currentChannelText, { textAlign: 'center' }]}
-                    >
-                      {currentChannel?.metadata?.title}
-                    </Text>
-                  </View>
-                </>
+                <VideoWindow 
+                  currentChannel={currentChannel}
+                  videoWidth={layoutWidths.playerWidth}
+                  videoHeight={videoHeight}
+                  player={player}
+                  controls={true}
+                />
               ) : (
                 <Text style={{ color: theme.text, textAlign: "center", padding: 10 }}>
                   Каналы не загружены
                 </Text>
               )}
-              <View style={{ position: 'absolute', bottom: 0, left: 0, right: 0 }}>
-                <DigitalClock />
-                <TimeDisplay />
-                <RadioClock />
-              </View>
             </View>
-            {channels.length > 0 && (
-              <ScrollView 
-                style={[
-                  { width: layoutWidths.listWidth },
-                  Platform.OS === 'web' ? { overflowY: 'auto' } : {},
-                  styles.landscapeChannelList
-                ]}
-              >
-                {channels.map((channel, index) => (
-                  <TouchableOpacity 
-                    key={channel.uri} 
-                    style={[
-                      styles.channelItem,
-                      channel.uri === currentChannel?.uri && styles.activeChannelItem
-                    ]}
-                    onPress={() => handleChannelChange(channel)}
-                  >
-                    <View style={styles.channelRow}>
-                      <View style={styles.leftIconContainer}>
-                        {channel.metadata?.logo && channelLogos[channel.metadata.logo] && (
-                          <Image
-                            source={channelLogos[channel.metadata.logo]}
-                            style={styles.iconStyle}
-                            resizeMode="contain"
-                          />
-                        )}
-                      </View>
-                      <View style={styles.middleTextContainer}>
-                        <Text 
-                          style={[
-                            styles.channelText,
-                            channel.uri === currentChannel?.uri && styles.activeChannelText
-                          ]}
-                          numberOfLines={1}
-                        >
-                          {channel?.metadata?.title || 'Без названия'}
-                        </Text>
-                      </View>
-                      <View style={styles.rightFlagContainer}>
-                        {(channel.metadata?.language || channel.metadata?.logo === "../assets/images/logos/mpl.png" || channel.metadata?.logo === "../assets/images/logos/nurtv.png") && (
-                          <Image
-                            source={flagIcons[channel.metadata?.language || "tr"]}
-                            style={styles.flagIconStyle}
-                            resizeMode="contain"
-                          />
-                        )}
-                      </View>
-                    </View>
-                  </TouchableOpacity>
-                ))}
-              </ScrollView>
-            )}
           </View>
         )}
       </SafeAreaView>
