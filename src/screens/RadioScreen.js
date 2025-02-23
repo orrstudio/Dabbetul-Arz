@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { 
-  StyleSheet, View, Text, ScrollView, TouchableOpacity, Image, Platform, Dimensions 
+  StyleSheet, View, Text, ScrollView, TouchableOpacity, Image, Platform, Dimensions, useWindowDimensions 
 } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import * as FileSystem from 'expo-file-system';
 import { Asset } from 'expo-asset';
-import { useWindowDimensions } from 'react-native';
 import { useVideoPlayer } from 'expo-video';
 import useLockOrientation from '../hooks/useLockOrientation';
 import VideoWindow from '../components/VideoWindow';
 import { getPlayerStyles } from '../utils/getPlayerStyles';
+import { getThemeByName } from '../utils/theme';
 import { useNavigation } from '@react-navigation/native';
 import DigitalClock from '../components/DigitalClock';
 import TimeDisplay from '../components/TimeDisplay';
@@ -48,28 +48,48 @@ const flagIcons = {
   "bg": require("../../assets/images/logos/flags/flag-bg.png"),
   "nl": require("../../assets/images/logos/flags/flag-nl.png"),
   "fa": require("../../assets/images/logos/flags/flag-fa.png"),
-  "tr": require("../../assets/images/logos/flags/flag-tr.png"),
+  "tr": require("../../assets/images/logos/flags/flag-tr.png")
 };
 
 const RadioScreen = () => {
   const [themeName] = useState("dark");
-  const theme = {
-    colors: {
-      background: '#111112',
-      surface: '#1E1E1E',
-      primary: '#2196F3',
-      text: '#FFFFFF'
-    }
-  };
+  const theme = getThemeByName(themeName);
   const [channels, setChannels] = useState([]);
   const [currentChannel, setCurrentChannel] = useState(null);
 
   const dimensions = Dimensions.get('window');
+  const videoDimensions = useWindowDimensions();
   const isPortrait = dimensions.height >= dimensions.width;
   const videoWidth = isPortrait ? dimensions.width : dimensions.width * 0.7;
   const videoHeight = videoWidth / (16 / 9);
 
-  const player = useVideoPlayer(currentChannel, (player) => {
+  const windowHeight = videoDimensions.height;
+  let channelListMaxHeight = windowHeight;
+  if (isPortrait) {
+    channelListMaxHeight = windowHeight - videoHeight - 100; // 100px для заголовка и отступов
+  } else {
+    channelListMaxHeight = windowHeight - 0;
+  }
+
+  const layoutWidths = isPortrait 
+    ? {
+        playerWidth: videoDimensions.width,
+        listWidth: videoDimensions.width,
+      }
+    : {
+        playerWidth: Platform.OS === 'ios'
+          ? videoDimensions.width * 0.65
+          : Platform.OS === 'android'
+            ? videoDimensions.width * 0.64
+            : videoDimensions.width * 0.65,
+        listWidth: Platform.OS === 'ios'
+          ? videoDimensions.width * 0.25
+          : Platform.OS === 'android'
+            ? videoDimensions.width * 0.35
+            : videoDimensions.width * 0.34,
+      };
+
+  const player = useVideoPlayer(currentChannel?.uri, (player) => {
     if (player) {
       player.loop = true;
       player.staysActiveInBackground = true;
@@ -79,11 +99,8 @@ const RadioScreen = () => {
   
   useLockOrientation();
 
-  const videoDimensions = useWindowDimensions();
-  const SYSTEM_TRAY_HEIGHT = 48;
-
   const navigation = useNavigation();
-
+  
   useEffect(() => {
     loadPlaylist();
   }, []);
@@ -97,120 +114,313 @@ const RadioScreen = () => {
       } else {
         const asset = Asset.fromModule(require("../../assets/playlists/radio.m3u8"));
         await asset.downloadAsync();
-        text = await FileSystem.readAsStringAsync(asset.localUri);
+        const fileUri = asset.localUri || asset.uri;
+        text = await FileSystem.readAsStringAsync(fileUri);
       }
-
-      const lines = text.split('\n');
-      const parsedChannels = [];
-      let currentEntry = {};
-
+      const lines = text.split(/\r?\n/);
+      const loadedChannels = [];
       for (let i = 0; i < lines.length; i++) {
-        const line = lines[i].trim();
-        if (line.startsWith('#EXTINF:')) {
-          const match = line.match(/tvg-logo="([^"]*)"[^,]*,(.*)/);
-          if (match) {
-            currentEntry = {
-              logo: match[1],
-              title: match[2].trim(),
-            };
+        if (lines[i].startsWith('#EXTINF:')) {
+          const info = lines[i];
+          const title = info.substring(info.indexOf(',') + 1).trim();
+          const logoMatch = info.match(/tvg-logo="([^"]+)"/);
+          const logo = logoMatch ? logoMatch[1] : null;
+          const langMatch = info.match(/tvg-language="([^"]+)"/);
+          const language = langMatch ? langMatch[1] : null;
+          const uri = lines[i + 1] ? lines[i + 1].trim() : '';
+          if (uri) {
+            loadedChannels.push({ uri, metadata: { title, logo, language } });
           }
-        } else if (line.startsWith('http')) {
-          currentEntry.url = line;
-          parsedChannels.push({ ...currentEntry });
-          currentEntry = {};
         }
       }
-
-      setChannels(parsedChannels);
-      if (parsedChannels.length > 0) {
-        setCurrentChannel(parsedChannels[0]);
+      setChannels(loadedChannels);
+      if (loadedChannels.length > 0) {
+        setCurrentChannel(loadedChannels[0]);
       }
     } catch (error) {
-      console.error('Error loading playlist:', error);
+      console.error("Ошибка при загрузке плейлиста:", error);
+    }
+  };
+
+  const handleChannelChange = (channel) => {
+    if (channel?.uri && (!currentChannel || channel.uri !== currentChannel.uri)) {
+      setCurrentChannel(channel);
     }
   };
 
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: theme.colors.background,
+      backgroundColor: theme.background,
     },
     videoContainer: {
-      width: videoWidth,
+      width: isPortrait ? dimensions.width : dimensions.width * 0.7,
       height: videoHeight,
-      backgroundColor: '#000',
-      justifyContent: 'center',
-      alignItems: 'center',
+      alignSelf: 'flex-start',
+      backgroundColor: "#000",
+      margin: 0,
+      padding: 0,
+    },
+    controls: {
+      alignItems: 'flex-start',
+      marginVertical: 0,
+      padding: 0,
+    },
+    currentChannelText: {
+      fontSize: 14,
+      fontWeight: 'bold',
+      color: theme.text,
+      textAlign: 'center',
+      alignSelf: 'center',
+      marginTop: 5,
+      marginBottom: 5,
+      padding: 0,
+      flexWrap: 'wrap',
     },
     channelList: {
-      flex: 1,
-      padding: 10,
+      paddingVertical: 0,
+      paddingHorizontal: 5,
+      marginHorizontal: 5,
     },
     channelItem: {
+      padding: 0,
+      marginBottom: 5,
+      backgroundColor: theme.channelBackground,
+      borderRadius: 20,
+    },
+    channelRow: {
       flexDirection: 'row',
       alignItems: 'center',
-      padding: 10,
-      marginVertical: 5,
-      backgroundColor: theme.colors.surface,
-      borderRadius: 5,
+      paddingVertical: 5,
+      paddingHorizontal: 10,
     },
-    channelLogo: {
+    leftIconContainer: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: 50,
+    },
+    middleTextContainer: {
+      flex: 1,
+      justifyContent: 'center',
+    },
+    rightFlagContainer: {
+      justifyContent: 'center',
+      alignItems: 'flex-end',
+      width: 50,
+    },
+    channelText: {
+      fontSize: 16,
+      color: theme.channelText,
+      textAlign: 'left',
+    },
+    activeChannelItem: {
+      backgroundColor: theme.activeChannelBackground,
+    },
+    activeChannelText: {
+      fontSize: 20,
+      color: theme.activeChannelText,
+      fontWeight: 'bold',
+    },
+    iconStyle: {
+      width: 50,
+      height: 50,
+      marginRight: 8,
+      resizeMode: 'contain',
+    },
+    flagIconStyle: {
       width: 40,
       height: 40,
-      marginRight: 10,
+      marginLeft: 4,
+      resizeMode: 'contain',
     },
-    channelTitle: {
-      color: theme.colors.text,
-      fontSize: 16,
+    landscapeContainer: {
+      flexDirection: 'row',
+      flex: 1,
     },
-    activeChannel: {
-      backgroundColor: theme.colors.primary,
+    landscapeVideoContainer: {
+      width: '100%',
+      justifyContent: 'flex-start',
+      alignItems: 'flex-start',
+      padding: 0,
+      margin: 0,
     },
-    flagIcon: {
-      width: 24,
-      height: 24,
-      marginLeft: 10,
+    landscapeChannelList: {
+      width: '100%',
     },
   });
 
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
-        <View style={{ flex: 1 }}>
-          <VideoWindow
-            url={currentChannel?.url}
-            style={styles.videoContainer}
-          />
-          <ScrollView style={styles.channelList}>
-            {channels.map((channel, index) => (
-              <TouchableOpacity
-                key={index}
+        { isPortrait ? (
+          <View style={{ flex: 1, flexDirection: 'column' }}>
+            <View style={styles.videoContainer}>
+              {currentChannel ? (
+                <VideoWindow 
+                  currentChannel={currentChannel}
+                  videoWidth={layoutWidths.playerWidth}
+                  videoHeight={videoHeight}
+                  player={player}
+                  controls={true}
+                />
+              ) : (
+                <Text style={{ color: theme.text, textAlign: "center", padding: 10 }}>
+                  Каналы не загружены
+                </Text>
+              )}
+            </View>
+            <View style={styles.controls}>
+              {currentChannel && (
+                <View style={{ alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+                  <Text
+                    numberOfLines={1}
+                    ellipsizeMode="tail"
+                    style={[styles.currentChannelText, { textAlign: 'center' }]}
+                  >
+                    {currentChannel?.metadata?.title}
+                  </Text>
+                </View>
+              )}
+            </View>
+            {channels.length > 0 && (
+              <ScrollView 
                 style={[
-                  styles.channelItem,
-                  currentChannel?.url === channel.url && styles.activeChannel,
+                  Platform.OS === 'web' ? { maxHeight: channelListMaxHeight, overflowY: 'auto' } : {},
+                  styles.channelList
                 ]}
-                onPress={() => setCurrentChannel(channel)}
               >
-                {channel.logo && channelLogos[channel.logo] && (
-                  <Image
-                    source={channelLogos[channel.logo]}
-                    style={styles.channelLogo}
-                    resizeMode="contain"
+                {channels.map((channel, index) => (
+                  <TouchableOpacity 
+                    key={channel.uri} 
+                    style={[
+                      styles.channelItem,
+                      channel.uri === currentChannel?.uri && styles.activeChannelItem
+                    ]}
+                    onPress={() => handleChannelChange(channel)}
+                  >
+                    <View style={styles.channelRow}>
+                      <View style={styles.leftIconContainer}>
+                        {channel.metadata?.logo && channelLogos[channel.metadata.logo] && (
+                          <Image
+                            source={channelLogos[channel.metadata.logo]}
+                            style={styles.iconStyle}
+                            resizeMode="contain"
+                          />
+                        )}
+                      </View>
+                      <View style={styles.middleTextContainer}>
+                        <Text 
+                          style={[
+                            styles.channelText,
+                            channel.uri === currentChannel?.uri && styles.activeChannelText
+                          ]}
+                          numberOfLines={1}
+                        >
+                          {channel?.metadata?.title || 'Без названия'}
+                        </Text>
+                      </View>
+                      <View style={styles.rightFlagContainer}>
+                        {(channel.metadata?.language || channel.metadata?.logo === "../assets/images/logos/mpl.png" || channel.metadata?.logo === "../assets/images/logos/nurtv.png") && (
+                          <Image
+                            source={flagIcons[channel.metadata?.language || "tr"]}
+                            style={styles.flagIconStyle}
+                            resizeMode="contain"
+                          />
+                        )}
+                      </View>
+                    </View>
+                  </TouchableOpacity>
+                ))}
+              </ScrollView>
+            )}
+          </View>
+        ) : (
+          <View style={{ flex: 1, flexDirection: 'row' }}>
+            <View style={{ width: layoutWidths.playerWidth }}>
+              {currentChannel ? (
+                <>
+                  <VideoWindow 
+                    currentChannel={currentChannel}
+                    videoWidth={layoutWidths.playerWidth}
+                    videoHeight={videoHeight}
+                    player={player}
+                    controls={true}
                   />
-                )}
-                <Text style={styles.channelTitle}>{channel.title}</Text>
-                {channel.title.includes('[') && channel.title.includes(']') && (
-                  <Image
-                    source={flagIcons[channel.title.match(/\[(.*?)\]/)[1]]}
-                    style={styles.flagIcon}
-                    resizeMode="contain"
-                  />
-                )}
-              </TouchableOpacity>
-            ))}
-          </ScrollView>
-          <RadioClock />
-        </View>
+                  <View style={styles.controls}>
+                    <Text
+                      numberOfLines={1}
+                      ellipsizeMode="tail"
+                      style={[styles.currentChannelText, { textAlign: 'center' }]}
+                    >
+                      {currentChannel?.metadata?.title}
+                    </Text>
+                  </View>
+                </>
+              ) : (
+                <Text style={{ color: theme.text, textAlign: "center", padding: 10 }}>
+                  Каналы не загружены
+                </Text>
+              )}
+              <View style={{ position: 'absolute', bottom: 0, left: 0, right: 0 }}>
+                <DigitalClock />
+                <TimeDisplay />
+                <RadioClock />
+              </View>
+            </View>
+            {channels.length > 0 && (
+              <ScrollView 
+                style={[
+                  { width: layoutWidths.listWidth },
+                  Platform.OS === 'web' ? { overflowY: 'auto' } : {},
+                  styles.landscapeChannelList
+                ]}
+              >
+                {channels.map((channel, index) => (
+                  <TouchableOpacity 
+                    key={channel.uri} 
+                    style={[
+                      styles.channelItem,
+                      channel.uri === currentChannel?.uri && styles.activeChannelItem
+                    ]}
+                    onPress={() => handleChannelChange(channel)}
+                  >
+                    <View style={styles.channelRow}>
+                      <View style={styles.leftIconContainer}>
+                        {channel.metadata?.logo && channelLogos[channel.metadata.logo] && (
+                          <Image
+                            source={channelLogos[channel.metadata.logo]}
+                            style={styles.iconStyle}
+                            resizeMode="contain"
+                          />
+                        )}
+                      </View>
+                      <View style={styles.middleTextContainer}>
+                        <Text 
+                          style={[
+                            styles.channelText,
+                            channel.uri === currentChannel?.uri && styles.activeChannelText
+                          ]}
+                          numberOfLines={1}
+                        >
+                          {channel?.metadata?.title || 'Без названия'}
+                        </Text>
+                      </View>
+                      <View style={styles.rightFlagContainer}>
+                        {(channel.metadata?.language || channel.metadata?.logo === "../assets/images/logos/mpl.png" || channel.metadata?.logo === "../assets/images/logos/nurtv.png") && (
+                          <Image
+                            source={flagIcons[channel.metadata?.language || "tr"]}
+                            style={styles.flagIconStyle}
+                            resizeMode="contain"
+                          />
+                        )}
+                      </View>
+                    </View>
+                  </TouchableOpacity>
+                ))}
+              </ScrollView>
+            )}
+          </View>
+        )}
       </SafeAreaView>
     </SafeAreaProvider>
   );
