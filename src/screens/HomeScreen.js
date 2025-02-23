@@ -4,6 +4,7 @@ import { getThemeByName } from '../utils/theme';
 import { getPlayerStyles } from '../utils/getPlayerStyles';
 import { Ionicons } from '@expo/vector-icons';
 import SmallDigitalClock from '../components/SmallDigitalClock';
+import * as ScreenOrientation from 'expo-screen-orientation';
 
 // Коэффициенты
 const CONTAINER_SCALE = 3;
@@ -339,6 +340,19 @@ const HomeScreen = ({ navigation }) => {
     return () => subscription.remove();
   }, []);
 
+  // Блокируем ориентацию в портретном режиме при монтировании
+  useEffect(() => {
+    async function lockOrientation() {
+      try {
+        await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP);
+        console.log("HomeScreen: ориентация заблокирована в портретном режиме");
+      } catch (error) {
+        console.log("Ошибка блокировки ориентации:", error);
+      }
+    }
+    lockOrientation();
+  }, []);
+
   const styles = getHomeScreenStyles(theme, dimensions);
 
   return (
@@ -477,7 +491,7 @@ const HomeScreen = ({ navigation }) => {
           >
             <Text style={[styles.buttonText, { fontSize: 24, lineHeight: 32 }]}>Sosial</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.button, { marginTop: 5, height: 'auto' }]} onPress={() => navigation.navigate('SplashScreen')}>
+          <TouchableOpacity style={[styles.button, { marginTop: 5, height: 'auto' }]} onPress={() => navigation.navigate('SplashScreen', { nextScreen: 'Home' })}>
             <SmallDigitalClock 
               timeScale={0.05} 
               showDate={false}
