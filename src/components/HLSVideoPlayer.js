@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { Dimensions, StyleSheet } from 'react-native';
 import Hls from 'hls.js';
 import * as ScreenOrientation from 'expo-screen-orientation';
+import OnAirImage from '../../assets/images/OnAir.png';
 
 const HLSVideoPlayer = ({ source, style, controls = true, ...restProps }) => {
   const videoRef = useRef(null);
@@ -74,6 +75,7 @@ const HLSVideoPlayer = ({ source, style, controls = true, ...restProps }) => {
       ref={videoRef}
       style={mergedStyle}
       controls={controls}
+      poster={OnAirImage}
       {...restProps}
     />
   );
