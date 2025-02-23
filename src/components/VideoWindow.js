@@ -50,16 +50,16 @@ const VideoWindow = ({ currentChannel, videoWidth, videoHeight, player, controls
         controls={controls}
       />
     );
-  } else {
-    return (
-      <VideoView
-        player={player}
-        style={{ width: videoWidth, height: videoHeight }}
-        useNativeControls={true}
-        resizeMode="contain"
-      />
-    );
   }
+
+  return (
+    <VideoView
+      player={player}
+      style={{ width: videoWidth, height: videoHeight }}
+      useNativeControls={true}
+      resizeMode="contain"
+    />
+  );
 };
 
-export default VideoWindow; 
+export default VideoWindow;

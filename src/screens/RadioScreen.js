@@ -7,13 +7,14 @@ import * as FileSystem from 'expo-file-system';
 import { Asset } from 'expo-asset';
 import { useVideoPlayer } from 'expo-video';
 import useLockOrientation from '../hooks/useLockOrientation';
-import VideoWindow from '../components/VideoWindow';
+import RadioView from '../components/RadioView';
 import { getPlayerStyles } from '../utils/getPlayerStyles';
 import { getThemeByName } from '../utils/theme';
 import { useNavigation } from '@react-navigation/native';
 import DigitalClock from '../components/DigitalClock';
 import TimeDisplay from '../components/TimeDisplay';
 import RadioClock from '../components/RadioClock';
+import * as ScreenOrientation from 'expo-screen-orientation';
 
 // Mapping путей к логотипам (обновлённые пути для расположения из папки screens)
 const channelLogos = {
@@ -97,12 +98,41 @@ const RadioScreen = () => {
     }
   });
   
-  useLockOrientation();
-
   const navigation = useNavigation();
   
   // Получаем стили из отдельной функции как в PlayerScreen
-  const styles = getPlayerStyles(theme, isPortrait, videoHeight);
+  const styles = StyleSheet.create({
+    ...getPlayerStyles(theme, isPortrait, videoHeight),
+    videoPlaceholder: {
+      position: 'absolute',
+      width: '100%',
+      height: '100%',
+    },
+  });
+
+  useEffect(() => {
+    async function unlockOrientation() {
+      try {
+        await ScreenOrientation.unlockAsync();
+        console.log("Радио экран: ориентация разблокирована");
+      } catch (error) {
+        console.log("Ошибка разблокировки ориентации:", error);
+      }
+    }
+    unlockOrientation();
+
+    return () => {
+      async function lockOrientationBack() {
+        try {
+          await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+          console.log("Радио экран: ориентация снова заблокирована");
+        } catch (error) {
+          console.log("Ошибка повторной блокировки ориентации:", error);
+        }
+      }
+      lockOrientationBack();
+    };
+  }, []);
 
   useEffect(() => {
     loadPlaylist();
@@ -157,19 +187,10 @@ const RadioScreen = () => {
         {isPortrait ? (
           <View style={{ flex: 1, flexDirection: 'column' }}>
             <View style={styles.videoContainer}>
-              {currentChannel ? (
-                <VideoWindow 
-                  currentChannel={currentChannel}
-                  videoWidth={videoWidth}
-                  videoHeight={videoHeight}
-                  player={player}
-                  controls={true}
-                />
-              ) : (
-                <Text style={{ color: theme.text, textAlign: "center", padding: 10 }}>
-                  Каналы не загружены
-                </Text>
-              )}
+              <RadioView 
+                width={videoWidth}
+                height={videoHeight}
+              />
             </View>
             <View style={styles.controls}>
               {currentChannel && (
@@ -239,18 +260,75 @@ const RadioScreen = () => {
         ) : (
           <View style={{ flex: 1, flexDirection: 'row' }}>
             <View style={styles.videoContainer}>
-              {currentChannel ? (
-                <VideoWindow 
-                  currentChannel={currentChannel}
-                  videoWidth={videoWidth}
-                  videoHeight={videoHeight}
-                  player={player}
-                  controls={true}
-                />
-              ) : (
-                <Text style={{ color: theme.text, textAlign: "center", padding: 10 }}>
-                  Каналы не загружены
-                </Text>
+              <RadioView 
+                width={videoWidth}
+                height={videoHeight}
+              />
+            </View>
+            <View style={{ flex: 1 }}>
+              <View style={styles.controls}>
+                {currentChannel && (
+                  <View style={{ alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+                    <Text
+                      numberOfLines={1}
+                      ellipsizeMode="tail"
+                      style={[styles.currentChannelText, { textAlign: 'center' }]}
+                    >
+                      {currentChannel.metadata.title}
+                    </Text>
+                  </View>
+                )}
+              </View>
+              {channels.length > 0 && (
+                <ScrollView 
+                  style={[
+                    Platform.OS === 'web' ? { maxHeight: channelListMaxHeight, overflowY: 'auto' } : {},
+                    styles.channelList
+                  ]}
+                >
+                  {channels.map((channel, index) => (
+                    <TouchableOpacity 
+                      key={channel.uri} 
+                      style={[
+                        styles.channelItem,
+                        channel.uri === currentChannel?.uri && styles.activeChannelItem
+                      ]}
+                      onPress={() => handleChannelChange(channel)}
+                    >
+                      <View style={styles.channelRow}>
+                        <View style={styles.leftIconContainer}>
+                          {channel.metadata?.logo && channelLogos[channel.metadata.logo] && (
+                            <Image
+                              source={channelLogos[channel.metadata.logo]}
+                              style={styles.iconStyle}
+                              resizeMode="contain"
+                            />
+                          )}
+                        </View>
+                        <View style={styles.middleTextContainer}>
+                          <Text 
+                            style={[
+                              styles.channelText,
+                              channel.uri === currentChannel?.uri && styles.activeChannelText
+                            ]}
+                            numberOfLines={1}
+                          >
+                            {channel?.metadata?.title || 'Без названия'}
+                          </Text>
+                        </View>
+                        <View style={styles.rightFlagContainer}>
+                          {(channel.metadata?.language || channel.metadata?.logo === "../assets/images/logos/mpl.png" || channel.metadata?.logo === "../assets/images/logos/nurtv.png") && (
+                            <Image
+                              source={flagIcons[channel.metadata?.language || "tr"]}
+                              style={styles.flagIconStyle}
+                              resizeMode="contain"
+                            />
+                          )}
+                        </View>
+                      </View>
+                    </TouchableOpacity>
+                  ))}
+                </ScrollView>
               )}
             </View>
           </View>
