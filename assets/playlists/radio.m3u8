@@ -1,5 +1,15 @@
 #EXTM3U
-#EXTINF:-1 tvg-logo="../assets/images/logos/nurtv.png" tvg-name="",RADİO NUR
+#EXTINF:-1 tvg-logo="../assets/images/logos/nurtv.png" tvg-name="",RADYO NUR
 https://canli.hidayetradyolari.com/listen/radyo_nur/radio.mp3
-#EXTINF:-1 tvg-logo="../assets/images/logos/mpl.png" tvg-name="",MPL RADİO
+#EXTINF:-1 tvg-logo="../assets/images/logos/mpl.png" tvg-name="",MPL RADYO
 https://canli.hidayetradyolari.com/listen/mpl_radyo/radio.mp3
+#EXTINF:-1 tvg-logo="../assets/images/logos/MIHR-logo.png" tvg-name="" tvg-language="tr",RADYO HİDAYET ÇAĞI
+https://radio.mihr.com/radio/8000/radio.mp3
+#EXTINF:-1 tvg-logo="../assets/images/logos/MIHR-logo.png" tvg-name="" tvg-language="tr",RADYO HAKKIN SESİ
+https://radio.mihr.com/radio/8010/hakkinsesi
+#EXTINF:-1 tvg-logo="../assets/images/logos/MIHR-logo.png" tvg-name="" tvg-language="de",RADIO GLUECKSELIGKEIT
+https://radio.mihr.com/radio/8030/radio.mp3
+#EXTINF:-1 tvg-logo="../assets/images/logos/MIHR-logo.png" tvg-name="" tvg-language="en",THE WAY TO HAPPINESS
+https://radio.mihr.com/radio/8040/radio.mp3
+#EXTINF:-1 tvg-logo="../assets/images/logos/MIHR-logo.png" tvg-name="" tvg-language="tr",HERAN KURAN HERAN MUTLULUK
+https://radio.mihr.com/radio/8050/radio.mp3

@@ -13,11 +13,11 @@ http://ibrahimiptv.com:1935/kuran/kuran/playlist.m3u8
 http://ibrahimiptv.com:1935/abraham/abraham/playlist.m3u8
 #EXTINF:-1 tvg-logo="../assets/images/logos/ibrahimlive_en.png" tvg-name="",IBRAHIM TV ENGLISH
 http://ibrahimiptv.com:1935/hak_en/hak_en/playlist.m3u8
-#EXTINF:-1 tvg-logo="../assets/images/logos/ibrahimlive_ru.png" tvg-name="",ИБРАГИМ ТВ НА РУССКОМ
+#EXTINF:-1 tvg-logo="../assets/images/logos/ibrahimlive_ru.png" tvg-name="",АВРААМ ТВ НА РУССКОМ
 http://ibrahimiptv.com:1935/hak_ru/hak_ru/playlist.m3u8
 #EXTINF:-1 tvg-logo="../assets/images/logos/ibrahimlive_ar.png" tvg-name="",قناة إبراهيم العربية
 http://ibrahimiptv.com:1935/hak_ar/hak_ar/playlist.m3u8
-#EXTINF:-1 tvg-logo="../assets/images/logos/ibrahimlive_ku.png" tvg-name="",IBRAHIM TV KURDISH
+#EXTINF:-1 tvg-logo="../assets/images/logos/ibrahimlive_ku.png" tvg-name="",İBRAHİM TV KURDİ
 http://ibrahimiptv.com:1935/hak_kr/hak_kr/playlist.m3u8
 #EXTINF:-1 tvg-logo="../assets/images/logos/ibrahimlive_fr.png" tvg-name="",IBRAHIM TV FRANÇAISE
 http://ibrahimiptv.com:1935/hak_fr/hak_fr/playlist.m3u8
