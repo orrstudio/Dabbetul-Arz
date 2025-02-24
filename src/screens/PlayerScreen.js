@@ -34,6 +34,7 @@ const channelLogos = {
   "../assets/images/logos/ibrahimlive_bg.png": require("../../assets/images/logos/ibrahimlive_bg.png"),
   "../assets/images/logos/ibrahimlive_nl.png": require("../../assets/images/logos/ibrahimlive_nl.png"),
   "../assets/images/logos/ibrahimlive_fa.png": require("../../assets/images/logos/ibrahimlive_fa.png"),
+  "../assets/images/logos/MIHR-logo.png": require("../../assets/images/logos/MIHR-logo.png"),
 };
 
 // Mapping для флаговых иконок (обновлённые пути)
