@@ -6,6 +6,7 @@ const socialLogos = {
   "instagram": require("../../assets/images/logos/social-instagram.png"),
   "facebook": require("../../assets/images/logos/social-facebook.png"),
   "tiktok": require("../../assets/images/logos/social-tiktok.png"),
+  "web": require("../../assets/images/logos/social-web.png"),
 };
 
 const flagIcons = {
@@ -120,6 +121,30 @@ const SosialScreen = ({ navigation }) => {
             <View style={styles.leftIconContainer}>
               <Image
                 source={socialLogos.tiktok}
+                style={styles.iconStyle}
+                resizeMode="contain"
+              />
+            </View>
+            <View style={styles.middleTextContainer}>
+              <Text style={styles.buttonText}>İBRAHİM TV TÜRKÇE</Text>
+            </View>
+            <View style={styles.rightIconContainer}>
+              <Image
+                source={flagIcons.tr}
+                style={styles.flagIconStyle}
+                resizeMode="contain"
+              />
+            </View>
+          </View>
+        </Pressable>
+        <Pressable 
+          style={[styles.button, { backgroundColor: '#333' }]}
+          onPress={() => handleSocialPress('https://herankuranheranmutluluk.com/', 'Web')}
+        >
+          <View style={styles.buttonRow}>
+            <View style={styles.leftIconContainer}>
+              <Image
+                source={socialLogos.web}
                 style={styles.iconStyle}
                 resizeMode="contain"
               />
