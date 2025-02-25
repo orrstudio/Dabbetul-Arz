@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Pressable, Linking, Modal } from 'react-native';
+import { View, Text, StyleSheet, Pressable, Linking, Modal, ScrollView } from 'react-native';
 
 /**
  * SosialScreen
@@ -28,30 +28,64 @@ const SosialScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Sosial Screen</Text>
-      <Pressable 
-        style={[styles.button, { backgroundColor: '#333' }]}
-        onPress={() => handleSocialPress('https://www.youtube.com/@HeranKuranHeranMutluluk', 'YouTube')}
-      >
-        <Text style={styles.buttonText}>İBRAHİM TV TÜRKÇE</Text>
-      </Pressable>
-      <Pressable 
-        style={[styles.button, { backgroundColor: '#333' }]}
-        onPress={() => handleSocialPress('https://www.instagram.com/herankuranheranmutluluk', 'Instagram')}
-      >
-        <Text style={styles.buttonText}>İBRAHİM TV TÜRKÇE</Text>
-      </Pressable>
-      <Pressable 
-        style={[styles.button, { backgroundColor: '#333' }]}
-        onPress={() => handleSocialPress('https://www.facebook.com/hkuranhmutluluk', 'Facebook')}
-      >
-        <Text style={styles.buttonText}>İBRAHİM TV TÜRKÇE</Text>
-      </Pressable>
-      <Pressable 
-        style={[styles.button, { backgroundColor: '#333' }]}
-        onPress={() => handleSocialPress('https://www.tiktok.com/@herankuranheranmutluluk', 'TikTok')}
-      >
-        <Text style={styles.buttonText}>İBRAHİM TV TÜRKÇE</Text>
-      </Pressable>
+      <ScrollView style={styles.buttonList}>
+        <Pressable 
+          style={[styles.button, { backgroundColor: '#333' }]}
+          onPress={() => handleSocialPress('https://www.youtube.com/@HeranKuranHeranMutluluk', 'YouTube')}
+        >
+          <View style={styles.buttonRow}>
+            <View style={styles.leftIconContainer}>
+            </View>
+            <View style={styles.middleTextContainer}>
+              <Text style={styles.buttonText}>İBRAHİM TV TÜRKÇE</Text>
+            </View>
+            <View style={styles.rightIconContainer}>
+            </View>
+          </View>
+        </Pressable>
+        <Pressable 
+          style={[styles.button, { backgroundColor: '#333' }]}
+          onPress={() => handleSocialPress('https://www.instagram.com/herankuranheranmutluluk', 'Instagram')}
+        >
+          <View style={styles.buttonRow}>
+            <View style={styles.leftIconContainer}>
+            </View>
+            <View style={styles.middleTextContainer}>
+              <Text style={styles.buttonText}>İBRAHİM TV TÜRKÇE</Text>
+            </View>
+            <View style={styles.rightIconContainer}>
+            </View>
+          </View>
+        </Pressable>
+        <Pressable 
+          style={[styles.button, { backgroundColor: '#333' }]}
+          onPress={() => handleSocialPress('https://www.facebook.com/hkuranhmutluluk', 'Facebook')}
+        >
+          <View style={styles.buttonRow}>
+            <View style={styles.leftIconContainer}>
+            </View>
+            <View style={styles.middleTextContainer}>
+              <Text style={styles.buttonText}>İBRAHİM TV TÜRKÇE</Text>
+            </View>
+            <View style={styles.rightIconContainer}>
+            </View>
+          </View>
+        </Pressable>
+        <Pressable 
+          style={[styles.button, { backgroundColor: '#333' }]}
+          onPress={() => handleSocialPress('https://www.tiktok.com/@herankuranheranmutluluk', 'TikTok')}
+        >
+          <View style={styles.buttonRow}>
+            <View style={styles.leftIconContainer}>
+            </View>
+            <View style={styles.middleTextContainer}>
+              <Text style={styles.buttonText}>İBRAHİM TV TÜRKÇE</Text>
+            </View>
+            <View style={styles.rightIconContainer}>
+            </View>
+          </View>
+        </Pressable>
+      </ScrollView>
 
       <Modal
         animationType="fade"
@@ -89,26 +123,48 @@ const SosialScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#111112',
   },
   text: {
     color: '#FFFFFF',
     fontSize: 24,
-    marginBottom: 20,
+    textAlign: 'center',
+    marginVertical: 20,
+  },
+  buttonList: {
+    paddingVertical: 0,
+    paddingHorizontal: 5,
+    marginHorizontal: 5,
   },
   button: {
+    padding: 0,
+    marginBottom: 5,
+    backgroundColor: '#333',
+    borderRadius: 20,
+  },
+  buttonRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingVertical: 5,
     paddingHorizontal: 10,
-    borderRadius: 20,
-    marginBottom: 5,
-    minWidth: 200,
+  },
+  leftIconContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 50,
+  },
+  middleTextContainer: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  rightIconContainer: {
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+    width: 50,
   },
   buttonText: {
     color: '#ffd700',
     fontSize: 16,
-    textAlign: 'left',
   },
   modalOverlay: {
     flex: 1,
