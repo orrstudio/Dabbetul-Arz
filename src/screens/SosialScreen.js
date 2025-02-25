@@ -1,5 +1,16 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Pressable, Linking, Modal, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Pressable, Linking, Modal, ScrollView, Image } from 'react-native';
+
+const socialLogos = {
+  "youtube": require("../../assets/images/logos/social-youtube.png"),
+  "instagram": require("../../assets/images/logos/social-instagram.png"),
+  "facebook": require("../../assets/images/logos/social-facebook.png"),
+  "tiktok": require("../../assets/images/logos/social-tiktok.png"),
+};
+
+const flagIcons = {
+  "tr": require("../../assets/images/logos/flags/flag-tr.png"),
+};
 
 /**
  * SosialScreen
@@ -35,11 +46,21 @@ const SosialScreen = ({ navigation }) => {
         >
           <View style={styles.buttonRow}>
             <View style={styles.leftIconContainer}>
+              <Image
+                source={socialLogos.youtube}
+                style={styles.iconStyle}
+                resizeMode="contain"
+              />
             </View>
             <View style={styles.middleTextContainer}>
               <Text style={styles.buttonText}>İBRAHİM TV TÜRKÇE</Text>
             </View>
             <View style={styles.rightIconContainer}>
+              <Image
+                source={flagIcons.tr}
+                style={styles.flagIconStyle}
+                resizeMode="contain"
+              />
             </View>
           </View>
         </Pressable>
@@ -49,11 +70,21 @@ const SosialScreen = ({ navigation }) => {
         >
           <View style={styles.buttonRow}>
             <View style={styles.leftIconContainer}>
+              <Image
+                source={socialLogos.instagram}
+                style={styles.iconStyle}
+                resizeMode="contain"
+              />
             </View>
             <View style={styles.middleTextContainer}>
               <Text style={styles.buttonText}>İBRAHİM TV TÜRKÇE</Text>
             </View>
             <View style={styles.rightIconContainer}>
+              <Image
+                source={flagIcons.tr}
+                style={styles.flagIconStyle}
+                resizeMode="contain"
+              />
             </View>
           </View>
         </Pressable>
@@ -63,11 +94,21 @@ const SosialScreen = ({ navigation }) => {
         >
           <View style={styles.buttonRow}>
             <View style={styles.leftIconContainer}>
+              <Image
+                source={socialLogos.facebook}
+                style={styles.iconStyle}
+                resizeMode="contain"
+              />
             </View>
             <View style={styles.middleTextContainer}>
               <Text style={styles.buttonText}>İBRAHİM TV TÜRKÇE</Text>
             </View>
             <View style={styles.rightIconContainer}>
+              <Image
+                source={flagIcons.tr}
+                style={styles.flagIconStyle}
+                resizeMode="contain"
+              />
             </View>
           </View>
         </Pressable>
@@ -77,11 +118,21 @@ const SosialScreen = ({ navigation }) => {
         >
           <View style={styles.buttonRow}>
             <View style={styles.leftIconContainer}>
+              <Image
+                source={socialLogos.tiktok}
+                style={styles.iconStyle}
+                resizeMode="contain"
+              />
             </View>
             <View style={styles.middleTextContainer}>
               <Text style={styles.buttonText}>İBRAHİM TV TÜRKÇE</Text>
             </View>
             <View style={styles.rightIconContainer}>
+              <Image
+                source={flagIcons.tr}
+                style={styles.flagIconStyle}
+                resizeMode="contain"
+              />
             </View>
           </View>
         </Pressable>
@@ -165,6 +216,16 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#ffd700',
     fontSize: 16,
+  },
+  iconStyle: {
+    width: 40,
+    height: 40,
+    marginRight: 8,
+  },
+  flagIconStyle: {
+    width: 40,
+    height: 40,
+    marginRight: 4,
   },
   modalOverlay: {
     flex: 1,
