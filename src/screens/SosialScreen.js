@@ -1187,7 +1187,7 @@ const SosialScreen = ({ navigation }) => {
           </Pressable>
 
           <View style={styles.sectionHeader}>
-            <Text style={styles.sectionHeaderText}>NUR TV & MPL TV</Text>
+            <Text style={styles.sectionHeaderText}>LIVE TV</Text>
           </View>
 
           <Pressable 
@@ -1217,7 +1217,7 @@ const SosialScreen = ({ navigation }) => {
 
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://mpltv.tv/', 'web', 'MPL TV')}
+            onPress={() => handleSocialPress('https://mpltv.tv/', 'web', 'MPL TV', 'tr')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
@@ -1229,6 +1229,13 @@ const SosialScreen = ({ navigation }) => {
               </View>
               <View style={styles.middleTextContainer}>
                 <Text style={styles.buttonText}>MPL TV</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.tr}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
               </View>
             </View>
           </Pressable>
@@ -1260,7 +1267,7 @@ const SosialScreen = ({ navigation }) => {
 
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://instagram.com/nurtv.tv', 'instagram', 'NUR TV')}
+            onPress={() => handleSocialPress('https://instagram.com/nurtv.tv', 'instagram', 'NUR TV', 'tr')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
@@ -1273,12 +1280,19 @@ const SosialScreen = ({ navigation }) => {
               <View style={styles.middleTextContainer}>
                 <Text style={styles.buttonText}>NUR TV</Text>
               </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.tr}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
             </View>
           </Pressable>
 
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://facebook.com/nurtv.tv', 'facebook', 'NUR TV')}
+            onPress={() => handleSocialPress('https://facebook.com/nurtv.tv', 'facebook', 'NUR TV', 'tr')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
@@ -1291,12 +1305,19 @@ const SosialScreen = ({ navigation }) => {
               <View style={styles.middleTextContainer}>
                 <Text style={styles.buttonText}>NUR TV</Text>
               </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.tr}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
             </View>
           </Pressable>
 
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://nurtv.tv/', 'web', 'NUR TV')}
+            onPress={() => handleSocialPress('https://nurtv.tv/', 'web', 'NUR TV', 'tr')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
@@ -1308,6 +1329,13 @@ const SosialScreen = ({ navigation }) => {
               </View>
               <View style={styles.middleTextContainer}>
                 <Text style={styles.buttonText}>NUR TV</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.tr}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
               </View>
             </View>
           </Pressable>
