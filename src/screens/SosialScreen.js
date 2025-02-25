@@ -7,6 +7,7 @@ const socialLogos = {
   "facebook": require("../../assets/images/logos/social-facebook.png"),
   "tiktok": require("../../assets/images/logos/social-tiktok.png"),
   "web": require("../../assets/images/logos/social-web.png"),
+  "mihrVakfi": require("../../assets/images/logos/mihr-vakfi.png"),
 };
 
 const flagIcons = {
@@ -935,12 +936,12 @@ const SosialScreen = ({ navigation }) => {
 
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://www.mihr.com/', 'web', 'MİHR VAKFI', 'tr')}
+            onPress={() => handleSocialPress('https://www.mihr.com/', 'web', 'MİHR VAKFI')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
                 <Image
-                  source={socialLogos.web}
+                  source={socialLogos.mihrVakfi}
                   style={styles.iconStyle}
                   resizeMode="contain"
                 />
@@ -948,24 +949,17 @@ const SosialScreen = ({ navigation }) => {
               <View style={styles.middleTextContainer}>
                 <Text style={styles.buttonText}>MİHR VAKFI</Text>
               </View>
-              <View style={styles.rightIconContainer}>
-                <Image
-                  source={flagIcons.tr}
-                  style={styles.flagIconStyle}
-                  resizeMode="contain"
-                />
-              </View>
             </View>
           </Pressable>
 
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://www.mihr.com/sohbetler', 'web', 'SOHBETLER', 'tr')}
+            onPress={() => handleSocialPress('https://www.mihr.com/sohbetler', 'web', 'SOHBETLER')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
                 <Image
-                  source={socialLogos.web}
+                  source={socialLogos.mihrVakfi}
                   style={styles.iconStyle}
                   resizeMode="contain"
                 />
@@ -973,24 +967,17 @@ const SosialScreen = ({ navigation }) => {
               <View style={styles.middleTextContainer}>
                 <Text style={styles.buttonText}>SOHBETLER</Text>
               </View>
-              <View style={styles.rightIconContainer}>
-                <Image
-                  source={flagIcons.tr}
-                  style={styles.flagIconStyle}
-                  resizeMode="contain"
-                />
-              </View>
             </View>
           </Pressable>
 
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://www.mihr.com/sorucevap', 'web', 'SORULAR', 'tr')}
+            onPress={() => handleSocialPress('https://www.mihr.com/sorucevap', 'web', 'SORULAR')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
                 <Image
-                  source={socialLogos.web}
+                  source={socialLogos.mihrVakfi}
                   style={styles.iconStyle}
                   resizeMode="contain"
                 />
@@ -998,24 +985,17 @@ const SosialScreen = ({ navigation }) => {
               <View style={styles.middleTextContainer}>
                 <Text style={styles.buttonText}>SORULAR</Text>
               </View>
-              <View style={styles.rightIconContainer}>
-                <Image
-                  source={flagIcons.tr}
-                  style={styles.flagIconStyle}
-                  resizeMode="contain"
-                />
-              </View>
             </View>
           </Pressable>
 
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://www.mihr.com/yazilieserler/100/hacet-namazi-ve-tovbe-6-language', 'web', 'YAZILI ESERLER', 'tr')}
+            onPress={() => handleSocialPress('https://www.mihr.com/yazilieserler/100/hacet-namazi-ve-tovbe-6-language', 'web', 'YAZILI ESERLER')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
                 <Image
-                  source={socialLogos.web}
+                  source={socialLogos.mihrVakfi}
                   style={styles.iconStyle}
                   resizeMode="contain"
                 />
@@ -1023,24 +1003,17 @@ const SosialScreen = ({ navigation }) => {
               <View style={styles.middleTextContainer}>
                 <Text style={styles.buttonText}>YAZILI ESERLER</Text>
               </View>
-              <View style={styles.rightIconContainer}>
-                <Image
-                  source={flagIcons.tr}
-                  style={styles.flagIconStyle}
-                  resizeMode="contain"
-                />
-              </View>
             </View>
           </Pressable>
 
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://www.mihr.com/sohbetler/27/0/konferanslar', 'web', 'KONFERANSLAR', 'tr')}
+            onPress={() => handleSocialPress('https://www.mihr.com/sohbetler/27/0/konferanslar', 'web', 'KONFERANSLAR')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
                 <Image
-                  source={socialLogos.web}
+                  source={socialLogos.mihrVakfi}
                   style={styles.iconStyle}
                   resizeMode="contain"
                 />
@@ -1048,24 +1021,17 @@ const SosialScreen = ({ navigation }) => {
               <View style={styles.middleTextContainer}>
                 <Text style={styles.buttonText}>KONFERANSLAR</Text>
               </View>
-              <View style={styles.rightIconContainer}>
-                <Image
-                  source={flagIcons.tr}
-                  style={styles.flagIconStyle}
-                  resizeMode="contain"
-                />
-              </View>
             </View>
           </Pressable>
 
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://www.mihr.com/sohbetler/5/0/goruntu-kalitesi-yuksek-sohbetler', 'web', 'GORUNTU KALITESI YUKSEK SOHBETLER', 'tr')}
+            onPress={() => handleSocialPress('https://www.mihr.com/sohbetler/5/0/goruntu-kalitesi-yuksek-sohbetler', 'web', 'GORUNTU KALITESI YUKSEK SOHBETLER')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
                 <Image
-                  source={socialLogos.web}
+                  source={socialLogos.mihrVakfi}
                   style={styles.iconStyle}
                   resizeMode="contain"
                 />
@@ -1073,24 +1039,17 @@ const SosialScreen = ({ navigation }) => {
               <View style={styles.middleTextContainer}>
                 <Text style={styles.buttonText}>GORUNTU KALITESI YUKSEK SOHBETLER</Text>
               </View>
-              <View style={styles.rightIconContainer}>
-                <Image
-                  source={flagIcons.tr}
-                  style={styles.flagIconStyle}
-                  resizeMode="contain"
-                />
-              </View>
             </View>
           </Pressable>
 
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://www.mihr.com/sohbetler/200/0/altyazili-sohbetler', 'web', 'ALTYAZILI SOHBETLER', 'tr')}
+            onPress={() => handleSocialPress('https://www.mihr.com/sohbetler/200/0/altyazili-sohbetler', 'web', 'ALTYAZILI SOHBETLER')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
                 <Image
-                  source={socialLogos.web}
+                  source={socialLogos.mihrVakfi}
                   style={styles.iconStyle}
                   resizeMode="contain"
                 />
@@ -1098,24 +1057,17 @@ const SosialScreen = ({ navigation }) => {
               <View style={styles.middleTextContainer}>
                 <Text style={styles.buttonText}>ALTYAZILI SOHBETLER</Text>
               </View>
-              <View style={styles.rightIconContainer}>
-                <Image
-                  source={flagIcons.tr}
-                  style={styles.flagIconStyle}
-                  resizeMode="contain"
-                />
-              </View>
             </View>
           </Pressable>
 
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://www.mihr.com/Kuran/Meal', 'web', "KUR'ÂN-I KERIM LAFZI VE RUHU (TEFSIR)", 'tr')}
+            onPress={() => handleSocialPress('https://www.mihr.com/Kuran/Meal', 'web', "KUR'ÂN-I KERIM LAFZI VE RUHU (TEFSIR)")}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
                 <Image
-                  source={socialLogos.web}
+                  source={socialLogos.mihrVakfi}
                   style={styles.iconStyle}
                   resizeMode="contain"
                 />
@@ -1123,24 +1075,17 @@ const SosialScreen = ({ navigation }) => {
               <View style={styles.middleTextContainer}>
                 <Text style={styles.buttonText}>KUR'ÂN-I KERIM LAFZI VE RUHU (TEFSIR)</Text>
               </View>
-              <View style={styles.rightIconContainer}>
-                <Image
-                  source={flagIcons.tr}
-                  style={styles.flagIconStyle}
-                  resizeMode="contain"
-                />
-              </View>
             </View>
           </Pressable>
 
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://www.mihr.com/Home/Takvim', 'web', 'TAKVIM (ÖZEL GÜNLER VE GECELER)', 'tr')}
+            onPress={() => handleSocialPress('https://www.mihr.com/Home/Takvim', 'web', 'TAKVIM (ÖZEL GÜNLER VE GECELER)')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
                 <Image
-                  source={socialLogos.web}
+                  source={socialLogos.mihrVakfi}
                   style={styles.iconStyle}
                   resizeMode="contain"
                 />
@@ -1148,24 +1093,17 @@ const SosialScreen = ({ navigation }) => {
               <View style={styles.middleTextContainer}>
                 <Text style={styles.buttonText}>TAKVIM (ÖZEL GÜNLER VE GECELER)</Text>
               </View>
-              <View style={styles.rightIconContainer}>
-                <Image
-                  source={flagIcons.tr}
-                  style={styles.flagIconStyle}
-                  resizeMode="contain"
-                />
-              </View>
             </View>
           </Pressable>
 
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://www.mihr.com/Home/Publishment/0', 'web', 'MIHR VAKFI YAZILI ESERLER', 'tr')}
+            onPress={() => handleSocialPress('https://www.mihr.com/Home/Publishment/0', 'web', 'MIHR VAKFI YAZILI ESERLER')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
                 <Image
-                  source={socialLogos.web}
+                  source={socialLogos.mihrVakfi}
                   style={styles.iconStyle}
                   resizeMode="contain"
                 />
@@ -1173,24 +1111,17 @@ const SosialScreen = ({ navigation }) => {
               <View style={styles.middleTextContainer}>
                 <Text style={styles.buttonText}>MIHR VAKFI YAZILI ESERLER</Text>
               </View>
-              <View style={styles.rightIconContainer}>
-                <Image
-                  source={flagIcons.tr}
-                  style={styles.flagIconStyle}
-                  resizeMode="contain"
-                />
-              </View>
             </View>
           </Pressable>
 
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://mihrdergisi.com', 'web', 'MİHR DERGİSİ', 'tr')}
+            onPress={() => handleSocialPress('https://mihrdergisi.com', 'web', 'MİHR DERGİSİ')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
                 <Image
-                  source={socialLogos.web}
+                  source={socialLogos.mihrVakfi}
                   style={styles.iconStyle}
                   resizeMode="contain"
                 />
@@ -1198,24 +1129,17 @@ const SosialScreen = ({ navigation }) => {
               <View style={styles.middleTextContainer}>
                 <Text style={styles.buttonText}>MİHR DERGİSİ</Text>
               </View>
-              <View style={styles.rightIconContainer}>
-                <Image
-                  source={flagIcons.tr}
-                  style={styles.flagIconStyle}
-                  resizeMode="contain"
-                />
-              </View>
             </View>
           </Pressable>
 
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://www.mihr.com/home/AbrahamDocuments', 'web', 'İBRAHIMLIVE DÖKÜMANLAR', 'tr')}
+            onPress={() => handleSocialPress('https://www.mihr.com/home/AbrahamDocuments', 'web', 'İBRAHIMLIVE DÖKÜMANLAR')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
                 <Image
-                  source={socialLogos.web}
+                  source={socialLogos.mihrVakfi}
                   style={styles.iconStyle}
                   resizeMode="contain"
                 />
@@ -1223,24 +1147,17 @@ const SosialScreen = ({ navigation }) => {
               <View style={styles.middleTextContainer}>
                 <Text style={styles.buttonText}>İBRAHIMLIVE DÖKÜMANLAR</Text>
               </View>
-              <View style={styles.rightIconContainer}>
-                <Image
-                  source={flagIcons.tr}
-                  style={styles.flagIconStyle}
-                  resizeMode="contain"
-                />
-              </View>
             </View>
           </Pressable>
 
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://www.mihr.com/yazilieserler/1/kitaplar', 'web', 'MIHR VAKFI KITAPLAR', 'tr')}
+            onPress={() => handleSocialPress('https://www.mihr.com/yazilieserler/1/kitaplar', 'web', 'MIHR VAKFI KITAPLAR')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
                 <Image
-                  source={socialLogos.web}
+                  source={socialLogos.mihrVakfi}
                   style={styles.iconStyle}
                   resizeMode="contain"
                 />
@@ -1248,37 +1165,23 @@ const SosialScreen = ({ navigation }) => {
               <View style={styles.middleTextContainer}>
                 <Text style={styles.buttonText}>MIHR VAKFI KITAPLAR</Text>
               </View>
-              <View style={styles.rightIconContainer}>
-                <Image
-                  source={flagIcons.tr}
-                  style={styles.flagIconStyle}
-                  resizeMode="contain"
-                />
-              </View>
             </View>
           </Pressable>
 
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://www.mihr.com/yazilieserler/7/ihtarlar', 'web', 'MIHR VAKFI İHTARLAR', 'tr')}
+            onPress={() => handleSocialPress('https://www.mihr.com/yazilieserler/7/ihtarlar', 'web', 'MIHR VAKFI İHTARLAR')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
                 <Image
-                  source={socialLogos.web}
+                  source={socialLogos.mihrVakfi}
                   style={styles.iconStyle}
                   resizeMode="contain"
                 />
               </View>
               <View style={styles.middleTextContainer}>
                 <Text style={styles.buttonText}>MIHR VAKFI İHTARLAR</Text>
-              </View>
-              <View style={styles.rightIconContainer}>
-                <Image
-                  source={flagIcons.tr}
-                  style={styles.flagIconStyle}
-                  resizeMode="contain"
-                />
               </View>
             </View>
           </Pressable>
@@ -1314,7 +1217,7 @@ const SosialScreen = ({ navigation }) => {
 
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://mpltv.tv/', 'web', 'MPL TV', 'tr')}
+            onPress={() => handleSocialPress('https://mpltv.tv/', 'web', 'MPL TV')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
@@ -1326,13 +1229,6 @@ const SosialScreen = ({ navigation }) => {
               </View>
               <View style={styles.middleTextContainer}>
                 <Text style={styles.buttonText}>MPL TV</Text>
-              </View>
-              <View style={styles.rightIconContainer}>
-                <Image
-                  source={flagIcons.tr}
-                  style={styles.flagIconStyle}
-                  resizeMode="contain"
-                />
               </View>
             </View>
           </Pressable>
@@ -1364,7 +1260,7 @@ const SosialScreen = ({ navigation }) => {
 
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://instagram.com/nurtv.tv', 'instagram', 'NUR TV', 'tr')}
+            onPress={() => handleSocialPress('https://instagram.com/nurtv.tv', 'instagram', 'NUR TV')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
@@ -1377,19 +1273,12 @@ const SosialScreen = ({ navigation }) => {
               <View style={styles.middleTextContainer}>
                 <Text style={styles.buttonText}>NUR TV</Text>
               </View>
-              <View style={styles.rightIconContainer}>
-                <Image
-                  source={flagIcons.tr}
-                  style={styles.flagIconStyle}
-                  resizeMode="contain"
-                />
-              </View>
             </View>
           </Pressable>
 
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://facebook.com/nurtv.tv', 'facebook', 'NUR TV', 'tr')}
+            onPress={() => handleSocialPress('https://facebook.com/nurtv.tv', 'facebook', 'NUR TV')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
@@ -1402,19 +1291,12 @@ const SosialScreen = ({ navigation }) => {
               <View style={styles.middleTextContainer}>
                 <Text style={styles.buttonText}>NUR TV</Text>
               </View>
-              <View style={styles.rightIconContainer}>
-                <Image
-                  source={flagIcons.tr}
-                  style={styles.flagIconStyle}
-                  resizeMode="contain"
-                />
-              </View>
             </View>
           </Pressable>
 
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://nurtv.tv/', 'web', 'NUR TV', 'tr')}
+            onPress={() => handleSocialPress('https://nurtv.tv/', 'web', 'NUR TV')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
@@ -1426,13 +1308,6 @@ const SosialScreen = ({ navigation }) => {
               </View>
               <View style={styles.middleTextContainer}>
                 <Text style={styles.buttonText}>NUR TV</Text>
-              </View>
-              <View style={styles.rightIconContainer}>
-                <Image
-                  source={flagIcons.tr}
-                  style={styles.flagIconStyle}
-                  resizeMode="contain"
-                />
               </View>
             </View>
           </Pressable>
@@ -1500,11 +1375,13 @@ const SosialScreen = ({ navigation }) => {
                 style={styles.modalIcon}
                 resizeMode="contain"
               />
-              <Image
-                source={flagIcons[currentLanguage]}
-                style={styles.modalFlag}
-                resizeMode="contain"
-              />
+              {currentPlatform === 'youtube' && (
+                <Image
+                  source={flagIcons[currentLanguage]}
+                  style={styles.modalFlag}
+                  resizeMode="contain"
+                />
+              )}
             </View>
             <Text style={styles.modalText}>
               {currentChannelName}
