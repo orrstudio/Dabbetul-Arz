@@ -39,128 +39,130 @@ const SosialScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Sosial Screen</Text>
       <ScrollView style={styles.buttonList}>
-        <Pressable 
-          style={[styles.button, { backgroundColor: '#333' }]}
-          onPress={() => handleSocialPress('https://www.youtube.com/@HeranKuranHeranMutluluk', 'YouTube')}
-        >
-          <View style={styles.buttonRow}>
-            <View style={styles.leftIconContainer}>
-              <Image
-                source={socialLogos.youtube}
-                style={styles.iconStyle}
-                resizeMode="contain"
-              />
+        <View style={styles.sectionContainer}>
+          <Text style={styles.sectionTitle}>IBRAHIMLIVE</Text>
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.youtube.com/@HeranKuranHeranMutluluk', 'YouTube')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.youtube}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>İBRAHİM TV TÜRKÇE</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.tr}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
             </View>
-            <View style={styles.middleTextContainer}>
-              <Text style={styles.buttonText}>İBRAHİM TV TÜRKÇE</Text>
+          </Pressable>
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.instagram.com/herankuranheranmutluluk', 'Instagram')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.instagram}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>İBRAHİM TV TÜRKÇE</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.tr}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
             </View>
-            <View style={styles.rightIconContainer}>
-              <Image
-                source={flagIcons.tr}
-                style={styles.flagIconStyle}
-                resizeMode="contain"
-              />
+          </Pressable>
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.facebook.com/hkuranhmutluluk', 'Facebook')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.facebook}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>İBRAHİM TV TÜRKÇE</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.tr}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
             </View>
-          </View>
-        </Pressable>
-        <Pressable 
-          style={[styles.button, { backgroundColor: '#333' }]}
-          onPress={() => handleSocialPress('https://www.instagram.com/herankuranheranmutluluk', 'Instagram')}
-        >
-          <View style={styles.buttonRow}>
-            <View style={styles.leftIconContainer}>
-              <Image
-                source={socialLogos.instagram}
-                style={styles.iconStyle}
-                resizeMode="contain"
-              />
+          </Pressable>
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.tiktok.com/@herankuranheranmutluluk', 'TikTok')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.tiktok}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>İBRAHİM TV TÜRKÇE</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.tr}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
             </View>
-            <View style={styles.middleTextContainer}>
-              <Text style={styles.buttonText}>İBRAHİM TV TÜRKÇE</Text>
+          </Pressable>
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://herankuranheranmutluluk.com/', 'Web')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.web}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>İBRAHİM TV TÜRKÇE</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.tr}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
             </View>
-            <View style={styles.rightIconContainer}>
-              <Image
-                source={flagIcons.tr}
-                style={styles.flagIconStyle}
-                resizeMode="contain"
-              />
-            </View>
-          </View>
-        </Pressable>
-        <Pressable 
-          style={[styles.button, { backgroundColor: '#333' }]}
-          onPress={() => handleSocialPress('https://www.facebook.com/hkuranhmutluluk', 'Facebook')}
-        >
-          <View style={styles.buttonRow}>
-            <View style={styles.leftIconContainer}>
-              <Image
-                source={socialLogos.facebook}
-                style={styles.iconStyle}
-                resizeMode="contain"
-              />
-            </View>
-            <View style={styles.middleTextContainer}>
-              <Text style={styles.buttonText}>İBRAHİM TV TÜRKÇE</Text>
-            </View>
-            <View style={styles.rightIconContainer}>
-              <Image
-                source={flagIcons.tr}
-                style={styles.flagIconStyle}
-                resizeMode="contain"
-              />
-            </View>
-          </View>
-        </Pressable>
-        <Pressable 
-          style={[styles.button, { backgroundColor: '#333' }]}
-          onPress={() => handleSocialPress('https://www.tiktok.com/@herankuranheranmutluluk', 'TikTok')}
-        >
-          <View style={styles.buttonRow}>
-            <View style={styles.leftIconContainer}>
-              <Image
-                source={socialLogos.tiktok}
-                style={styles.iconStyle}
-                resizeMode="contain"
-              />
-            </View>
-            <View style={styles.middleTextContainer}>
-              <Text style={styles.buttonText}>İBRAHİM TV TÜRKÇE</Text>
-            </View>
-            <View style={styles.rightIconContainer}>
-              <Image
-                source={flagIcons.tr}
-                style={styles.flagIconStyle}
-                resizeMode="contain"
-              />
-            </View>
-          </View>
-        </Pressable>
-        <Pressable 
-          style={[styles.button, { backgroundColor: '#333' }]}
-          onPress={() => handleSocialPress('https://herankuranheranmutluluk.com/', 'Web')}
-        >
-          <View style={styles.buttonRow}>
-            <View style={styles.leftIconContainer}>
-              <Image
-                source={socialLogos.web}
-                style={styles.iconStyle}
-                resizeMode="contain"
-              />
-            </View>
-            <View style={styles.middleTextContainer}>
-              <Text style={styles.buttonText}>İBRAHİM TV TÜRKÇE</Text>
-            </View>
-            <View style={styles.rightIconContainer}>
-              <Image
-                source={flagIcons.tr}
-                style={styles.flagIconStyle}
-                resizeMode="contain"
-              />
-            </View>
-          </View>
-        </Pressable>
+          </Pressable>
+        </View>
       </ScrollView>
 
       <Modal
@@ -201,16 +203,21 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#111112',
   },
-  text: {
-    color: '#FFFFFF',
-    fontSize: 24,
-    textAlign: 'center',
-    marginVertical: 20,
-  },
   buttonList: {
     paddingVertical: 0,
     paddingHorizontal: 5,
     marginHorizontal: 5,
+  },
+  sectionContainer: {
+    marginTop: 10,
+    marginBottom: 20,
+  },
+  sectionTitle: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    textAlign: 'center',
   },
   button: {
     padding: 0,
@@ -239,18 +246,21 @@ const styles = StyleSheet.create({
     width: 50,
   },
   buttonText: {
-    color: '#ffd700',
     fontSize: 16,
+    color: '#ffd700',
+    textAlign: 'left',
   },
   iconStyle: {
-    width: 40,
-    height: 40,
+    width: 50,
+    height: 50,
     marginRight: 8,
+    resizeMode: 'contain',
   },
   flagIconStyle: {
     width: 40,
     height: 40,
     marginRight: 4,
+    resizeMode: 'contain',
   },
   modalOverlay: {
     flex: 1,
