@@ -29,28 +29,28 @@ const SosialScreen = ({ navigation }) => {
     <View style={styles.container}>
       <Text style={styles.text}>Sosial Screen</Text>
       <Pressable 
-        style={[styles.button, { backgroundColor: '#FF0000' }]}
+        style={[styles.button, { backgroundColor: '#333' }]}
         onPress={() => handleSocialPress('https://www.youtube.com/@HeranKuranHeranMutluluk', 'YouTube')}
       >
         <Text style={styles.buttonText}>İBRAHİM TV TÜRKÇE</Text>
       </Pressable>
       <Pressable 
-        style={[styles.button, { backgroundColor: '#E1306C' }]}
+        style={[styles.button, { backgroundColor: '#333' }]}
         onPress={() => handleSocialPress('https://www.instagram.com/herankuranheranmutluluk', 'Instagram')}
       >
         <Text style={styles.buttonText}>İBRAHİM TV TÜRKÇE</Text>
       </Pressable>
       <Pressable 
-        style={[styles.button, { backgroundColor: '#1877F2' }]}
+        style={[styles.button, { backgroundColor: '#333' }]}
         onPress={() => handleSocialPress('https://www.facebook.com/hkuranhmutluluk', 'Facebook')}
       >
         <Text style={styles.buttonText}>İBRAHİM TV TÜRKÇE</Text>
       </Pressable>
       <Pressable 
-        style={[styles.button, { backgroundColor: '#00F2EA' }]}
+        style={[styles.button, { backgroundColor: '#333' }]}
         onPress={() => handleSocialPress('https://www.tiktok.com/@herankuranheranmutluluk', 'TikTok')}
       >
-        <Text style={[styles.buttonText, { color: '#000000' }]}>İBRAHİM TV TÜRKÇE</Text>
+        <Text style={styles.buttonText}>İBRAHİM TV TÜRKÇE</Text>
       </Pressable>
 
       <Modal
@@ -99,14 +99,16 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   button: {
-    padding: 15,
-    borderRadius: 8,
-    marginTop: 10,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    borderRadius: 20,
+    marginBottom: 5,
+    minWidth: 200,
   },
   buttonText: {
-    color: '#FFFFFF',
+    color: '#ffd700',
     fontSize: 16,
-    fontWeight: 'bold',
+    textAlign: 'left',
   },
   modalOverlay: {
     flex: 1,
