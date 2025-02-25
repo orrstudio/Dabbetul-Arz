@@ -11,6 +11,8 @@ const socialLogos = {
 
 const flagIcons = {
   "tr": require("../../assets/images/logos/flags/flag-tr.png"),
+  "en": require("../../assets/images/logos/flags/flag-en.png"),
+  "es": require("../../assets/images/logos/flags/flag-es.png"),
 };
 
 /**
@@ -156,6 +158,150 @@ const SosialScreen = ({ navigation }) => {
               <View style={styles.rightIconContainer}>
                 <Image
                   source={flagIcons.tr}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.youtube.com/@ibrahimsTVofficial', 'YouTube')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.youtube}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>IBRAHIM TV ENGLISH</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.en}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.instagram.com/ibrahimsTVofficial', 'Instagram')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.instagram}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>IBRAHIM TV ENGLISH</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.en}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.facebook.com/ibrahimstvofficial/', 'Facebook')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.facebook}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>IBRAHIM TV ENGLISH</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.en}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.youtube.com/@abrahamtv.espanyol', 'YouTube')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.youtube}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>IBRAHIM TV ESPAÑOL</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.es}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.instagram.com/abrahamtv.espanyol', 'Instagram')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.instagram}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>IBRAHIM TV ESPAÑOL</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.es}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.facebook.com/abrahamtv.espanyol', 'Facebook')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.facebook}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>IBRAHIM TV ESPAÑOL</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.es}
                   style={styles.flagIconStyle}
                   resizeMode="contain"
                 />
