@@ -905,6 +905,160 @@ const SosialScreen = ({ navigation }) => {
           </Pressable>
 
           <View style={styles.sectionHeader}>
+            <Text style={styles.sectionHeaderText}>NUR TV & MPL TV</Text>
+          </View>
+
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.youtube.com/@mpl_tv', 'youtube', 'MPL TV', 'tr')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.youtube}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>MPL TV</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.tr}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://mpltv.tv/', 'web', 'MPL TV', 'tr')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.web}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>MPL TV</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.tr}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.youtube.com/@nurtv_yayin', 'youtube', 'NUR TV', 'tr')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.youtube}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>NUR TV</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.tr}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://instagram.com/nurtv.tv', 'instagram', 'NUR TV', 'tr')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.instagram}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>NUR TV</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.tr}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://facebook.com/nurtv.tv', 'facebook', 'NUR TV', 'tr')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.facebook}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>NUR TV</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.tr}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://nurtv.tv/', 'web', 'NUR TV', 'tr')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.web}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>NUR TV</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.tr}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+
+          <View style={styles.sectionHeader}>
             <Text style={styles.sectionHeaderText}>WWW</Text>
           </View>
 
