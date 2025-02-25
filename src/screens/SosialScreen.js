@@ -1474,13 +1474,13 @@ const styles = StyleSheet.create({
   buttonRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 5,
-    paddingHorizontal: 10,
+    paddingVertical: 2,
+    paddingHorizontal: 8,
   },
   leftIconContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: 50,
+    width: 40,
   },
   middleTextContainer: {
     flex: 1,
@@ -1489,22 +1489,22 @@ const styles = StyleSheet.create({
   rightIconContainer: {
     justifyContent: 'center',
     alignItems: 'flex-end',
-    width: 50,
+    width: 40,
   },
   buttonText: {
-    fontSize: 16,
+    fontSize: 14,
     color: '#ffd700',
     textAlign: 'left',
   },
   iconStyle: {
-    width: 50,
-    height: 50,
-    marginRight: 8,
+    width: 35,
+    height: 35,
+    marginRight: 6,
     resizeMode: 'contain',
   },
   flagIconStyle: {
-    width: 40,
-    height: 40,
+    width: 25,
+    height: 25,
     marginRight: 4,
     resizeMode: 'contain',
   },
