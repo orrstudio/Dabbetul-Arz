@@ -13,6 +13,14 @@ const flagIcons = {
   "tr": require("../../assets/images/logos/flags/flag-tr.png"),
   "en": require("../../assets/images/logos/flags/flag-en.png"),
   "es": require("../../assets/images/logos/flags/flag-es.png"),
+  "de": require("../../assets/images/logos/flags/flag-de.png"),
+  "fr": require("../../assets/images/logos/flags/flag-fr.png"),
+  "ru": require("../../assets/images/logos/flags/flag-ru.png"),
+  "ar": require("../../assets/images/logos/flags/flag-ar.png"),
+  "ku": require("../../assets/images/logos/flags/flag-ku.png"),
+  "zh": require("../../assets/images/logos/flags/flag-zh.png"),
+  "nl": require("../../assets/images/logos/flags/flag-nl.png"),
+  "fa": require("../../assets/images/logos/flags/flag-fa.png"),
 };
 
 /**
@@ -306,6 +314,589 @@ const SosialScreen = ({ navigation }) => {
               <View style={styles.rightIconContainer}>
                 <Image
                   source={flagIcons.es}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.youtube.com/@HeranKuranHeranMutluluk', 'youtube', 'IBRAHIM TV DEUTSCH', 'de')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.youtube}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>IBRAHIM TV DEUTSCH</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.de}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.instagram.com/herankuranheranmutluluk', 'instagram', 'IBRAHIM TV DEUTSCH', 'de')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.instagram}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>IBRAHIM TV DEUTSCH</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.de}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.facebook.com/hkuranhmutluluk', 'facebook', 'IBRAHIM TV DEUTSCH', 'de')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.facebook}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>IBRAHIM TV DEUTSCH</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.de}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.youtube.com/@abrahamTVofficial', 'youtube', 'IBRAHIM TV FRANÇAISE', 'fr')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.youtube}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>IBRAHIM TV FRANÇAISE</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.fr}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.instagram.com/abrahamTVofficial', 'instagram', 'IBRAHIM TV FRANÇAISE', 'fr')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.instagram}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>IBRAHIM TV FRANÇAISE</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.fr}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.facebook.com/abrahamtvofficial/', 'facebook', 'IBRAHIM TV FRANÇAISE', 'fr')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.facebook}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>IBRAHIM TV FRANÇAISE</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.fr}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.youtube.com/@avraamTB', 'youtube', 'ИБРАГИМ ТВ НА РУССКОМ', 'ru')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.youtube}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>ИБРАГИМ ТВ НА РУССКОМ</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.ru}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.instagram.com/avraamTB', 'instagram', 'ИБРАГИМ ТВ НА РУССКОМ', 'ru')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.instagram}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>ИБРАГИМ ТВ НА РУССКОМ</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.ru}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.facebook.com/avraamTB', 'facebook', 'ИБРАГИМ ТВ НА РУССКОМ', 'ru')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.facebook}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>ИБРАГИМ ТВ НА РУССКОМ</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.ru}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.youtube.com/@ibrahimuTVofficial', 'youtube', 'قناة إبراهيم العربية', 'ar')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.youtube}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>قناة إبراهيم العربية</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.ar}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.instagram.com/ibrahimuTVofficial', 'instagram', 'قناة إبراهيم العربية', 'ar')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.instagram}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>قناة إبراهيم العربية</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.ar}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.facebook.com/ibrahimuTVofficial', 'facebook', 'قناة إبراهيم العربية', 'ar')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.facebook}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>قناة إبراهيم العربية</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.ar}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.youtube.com/@ibrahimTVofficial', 'youtube', 'İBRAHİM TV KURDİ', 'ku')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.youtube}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>İBRAHİM TV KURDİ</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.ku}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.instagram.com/ibrahimTVofficial', 'instagram', 'İBRAHİM TV KURDİ', 'ku')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.instagram}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>İBRAHİM TV KURDİ</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.ku}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.facebook.com/ibrahimtvofficial/', 'facebook', 'İBRAHİM TV KURDİ', 'ku')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.facebook}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>İBRAHİM TV KURDİ</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.ku}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.youtube.com/@ibrahimlive.Chinese', 'youtube', '易卜拉欣電視中文', 'zh')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.youtube}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>易卜拉欣電視中文</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.zh}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.instagram.com/ibrahimlive.chinese/', 'instagram', '易卜拉欣電視中文', 'zh')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.instagram}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>易卜拉欣電視中文</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.zh}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.facebook.com/ibrahimlive.Chinese', 'facebook', '易卜拉欣電視中文', 'zh')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.facebook}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>易卜拉欣電視中文</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.zh}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.youtube.com/@ibrahimlive_Nederlands', 'youtube', 'IBRAHIM TV NEDERLANDS', 'nl')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.youtube}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>IBRAHIM TV NEDERLANDS</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.nl}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.instagram.com/ibrahimlive_Nederlands', 'instagram', 'IBRAHIM TV NEDERLANDS', 'nl')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.instagram}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>IBRAHIM TV NEDERLANDS</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.nl}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.facebook.com/ibrahimlive.Nederlands', 'facebook', 'IBRAHIM TV NEDERLANDS', 'nl')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.facebook}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>IBRAHIM TV NEDERLANDS</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.nl}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.youtube.com/@ibrahimTV.farsca', 'youtube', 'ابراهیم تی وی فارسی', 'fa')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.youtube}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>ابراهیم تی وی فارسی</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.fa}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.instagram.com/ibrahimTV.farsca', 'instagram', 'ابراهیم تی وی فارسی', 'fa')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.instagram}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>ابراهیم تی وی فارسی</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.fa}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.facebook.com/ibrahimTV.farsca', 'facebook', 'ابراهیم تی وی فارسی', 'fa')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.facebook}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>ابراهیم تی وی فارسی</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.fa}
                   style={styles.flagIconStyle}
                   resizeMode="contain"
                 />
