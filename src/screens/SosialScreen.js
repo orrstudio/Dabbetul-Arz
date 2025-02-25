@@ -27,10 +27,14 @@ const SosialScreen = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [currentUrl, setCurrentUrl] = useState('');
   const [currentPlatform, setCurrentPlatform] = useState('');
+  const [currentChannelName, setCurrentChannelName] = useState('');
+  const [currentLanguage, setCurrentLanguage] = useState('');
 
-  const handleSocialPress = (url, platform) => {
+  const handleSocialPress = (url, platform, channelName, language) => {
     setCurrentUrl(url);
     setCurrentPlatform(platform);
+    setCurrentChannelName(channelName);
+    setCurrentLanguage(language);
     setModalVisible(true);
   };
 
@@ -46,7 +50,7 @@ const SosialScreen = ({ navigation }) => {
           <Text style={styles.sectionTitle}>IBRAHIMLIVE</Text>
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://www.youtube.com/@HeranKuranHeranMutluluk', 'YouTube')}
+            onPress={() => handleSocialPress('https://www.youtube.com/@HeranKuranHeranMutluluk', 'youtube', 'İBRAHİM TV TÜRKÇE', 'tr')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
@@ -70,7 +74,7 @@ const SosialScreen = ({ navigation }) => {
           </Pressable>
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://www.instagram.com/herankuranheranmutluluk', 'Instagram')}
+            onPress={() => handleSocialPress('https://www.instagram.com/herankuranheranmutluluk', 'instagram', 'İBRAHİM TV TÜRKÇE', 'tr')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
@@ -94,7 +98,7 @@ const SosialScreen = ({ navigation }) => {
           </Pressable>
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://www.facebook.com/hkuranhmutluluk', 'Facebook')}
+            onPress={() => handleSocialPress('https://www.facebook.com/hkuranhmutluluk', 'facebook', 'İBRAHİM TV TÜRKÇE', 'tr')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
@@ -118,7 +122,7 @@ const SosialScreen = ({ navigation }) => {
           </Pressable>
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://www.tiktok.com/@herankuranheranmutluluk', 'TikTok')}
+            onPress={() => handleSocialPress('https://www.tiktok.com/@herankuranheranmutluluk', 'tiktok', 'İBRAHİM TV TÜRKÇE', 'tr')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
@@ -142,7 +146,7 @@ const SosialScreen = ({ navigation }) => {
           </Pressable>
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://herankuranheranmutluluk.com/', 'Web')}
+            onPress={() => handleSocialPress('https://herankuranheranmutluluk.com/', 'web', 'İBRAHİM TV TÜRKÇE', 'tr')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
@@ -166,7 +170,7 @@ const SosialScreen = ({ navigation }) => {
           </Pressable>
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://www.youtube.com/@ibrahimsTVofficial', 'YouTube')}
+            onPress={() => handleSocialPress('https://www.youtube.com/@ibrahimsTVofficial', 'youtube', 'IBRAHIM TV ENGLISH', 'en')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
@@ -190,7 +194,7 @@ const SosialScreen = ({ navigation }) => {
           </Pressable>
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://www.instagram.com/ibrahimsTVofficial', 'Instagram')}
+            onPress={() => handleSocialPress('https://www.instagram.com/ibrahimsTVofficial', 'instagram', 'IBRAHIM TV ENGLISH', 'en')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
@@ -214,7 +218,7 @@ const SosialScreen = ({ navigation }) => {
           </Pressable>
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://www.facebook.com/ibrahimstvofficial/', 'Facebook')}
+            onPress={() => handleSocialPress('https://www.facebook.com/ibrahimstvofficial/', 'facebook', 'IBRAHIM TV ENGLISH', 'en')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
@@ -238,7 +242,7 @@ const SosialScreen = ({ navigation }) => {
           </Pressable>
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://www.youtube.com/@abrahamtv.espanyol', 'YouTube')}
+            onPress={() => handleSocialPress('https://www.youtube.com/@abrahamtv.espanyol', 'youtube', 'IBRAHIM TV ESPAÑOL', 'es')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
@@ -262,7 +266,7 @@ const SosialScreen = ({ navigation }) => {
           </Pressable>
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://www.instagram.com/abrahamtv.espanyol', 'Instagram')}
+            onPress={() => handleSocialPress('https://www.instagram.com/abrahamtv.espanyol', 'instagram', 'IBRAHIM TV ESPAÑOL', 'es')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
@@ -286,7 +290,7 @@ const SosialScreen = ({ navigation }) => {
           </Pressable>
           <Pressable 
             style={[styles.button, { backgroundColor: '#333' }]}
-            onPress={() => handleSocialPress('https://www.facebook.com/abrahamtv.espanyol', 'Facebook')}
+            onPress={() => handleSocialPress('https://www.facebook.com/abrahamtv.espanyol', 'facebook', 'IBRAHIM TV ESPAÑOL', 'es')}
           >
             <View style={styles.buttonRow}>
               <View style={styles.leftIconContainer}>
@@ -319,9 +323,20 @@ const SosialScreen = ({ navigation }) => {
       >
         <View style={styles.modalOverlay}>
           <View style={styles.modalContent}>
-            <Text style={styles.modalTitle}>İBRAHİM TV TÜRKÇE</Text>
+            <View style={styles.modalHeader}>
+              <Image
+                source={socialLogos[currentPlatform]}
+                style={styles.modalIcon}
+                resizeMode="contain"
+              />
+              <Image
+                source={flagIcons[currentLanguage]}
+                style={styles.modalFlag}
+                resizeMode="contain"
+              />
+            </View>
             <Text style={styles.modalText}>
-              Открыть İBRAHİM TV TÜRKÇE на {currentPlatform}?
+              {currentChannelName}
             </Text>
             <View style={styles.modalButtons}>
               <Pressable 
@@ -421,11 +436,20 @@ const styles = StyleSheet.create({
     width: '80%',
     alignItems: 'center',
   },
-  modalTitle: {
-    color: '#FFFFFF',
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 10,
+  modalHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 15,
+    justifyContent: 'center',
+  },
+  modalIcon: {
+    width: 40,
+    height: 40,
+    marginRight: 10,
+  },
+  modalFlag: {
+    width: 40,
+    height: 40,
   },
   modalText: {
     color: '#FFFFFF',
