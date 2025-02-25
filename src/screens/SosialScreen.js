@@ -903,6 +903,53 @@ const SosialScreen = ({ navigation }) => {
               </View>
             </View>
           </Pressable>
+
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionHeaderText}>WWW</Text>
+          </View>
+
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('https://www.ibrahimlive.com/', 'web', 'IBRAHIM LIVE')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.web}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>IBRAHIM LIVE</Text>
+              </View>
+            </View>
+          </Pressable>
+
+          <Pressable 
+            style={[styles.button, { backgroundColor: '#333' }]}
+            onPress={() => handleSocialPress('http://www.zwwa.de/', 'web', 'ZWWA', 'de')}
+          >
+            <View style={styles.buttonRow}>
+              <View style={styles.leftIconContainer}>
+                <Image
+                  source={socialLogos.web}
+                  style={styles.iconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+              <View style={styles.middleTextContainer}>
+                <Text style={styles.buttonText}>ZWWA</Text>
+              </View>
+              <View style={styles.rightIconContainer}>
+                <Image
+                  source={flagIcons.de}
+                  style={styles.flagIconStyle}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </Pressable>
         </View>
       </ScrollView>
 
@@ -969,6 +1016,15 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 10,
+    textAlign: 'center',
+  },
+  sectionHeader: {
+    marginBottom: 10,
+  },
+  sectionHeaderText: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    fontWeight: 'bold',
     textAlign: 'center',
   },
   button: {
