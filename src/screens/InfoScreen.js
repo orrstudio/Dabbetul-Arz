@@ -39,30 +39,30 @@ const InfoScreen = ({ navigation }) => {
       
       <View style={styles.content}>
         <Text style={[styles.title, { color: theme.text }]}>
-          О приложении
+          Uygulama Hakkında
         </Text>
         
         <View style={styles.section}>
           <Text style={[styles.text, { color: theme.text }]}>
-            Dabbetul Arz - это приложение для просмотра и воспроизведения медиаконтента.
+            Dabbetul Arz - medya içeriğini görüntülemek ve oynatmak için bir uygulamadır.
           </Text>
         </View>
 
         <View style={styles.section}>
           <Text style={[styles.subtitle, { color: theme.text }]}>
-            Возможности
+            Özellikler
           </Text>
           <Text style={[styles.text, { color: theme.text }]}>
-            • Просмотр видео{'\n'}
-            • Воспроизведение аудио{'\n'}
-            • Настройка параметров воспроизведения{'\n'}
-            • Поддержка различных форматов медиафайлов
+            • Video izleme{'\n'}
+            • Ses oynatma{'\n'}
+            • Oynatma ayarlarını yapılandırma{'\n'}
+            • Çeşitli medya formatları desteği
           </Text>
         </View>
 
         <View style={styles.section}>
           <Text style={[styles.subtitle, { color: theme.text }]}>
-            Версия
+            Sürüm
           </Text>
           <Text style={[styles.text, { color: theme.text }]}>
             1.0.0
