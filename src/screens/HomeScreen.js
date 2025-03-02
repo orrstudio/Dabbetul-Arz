@@ -472,7 +472,7 @@ const HomeScreen = ({ navigation }) => {
 
       <View style={styles.contentContainer}>
         {/* Контейнер для кнопок */}
-        <View style={styles.buttonsContainer}>
+        <View style={[styles.buttonsContainer, { marginTop: dimensions.height * 0.1 }]}>
           <TouchableOpacity
             style={[styles.button, { height: 'auto' }]}
             onPress={() => navigation.navigate('Player')}
@@ -480,18 +480,18 @@ const HomeScreen = ({ navigation }) => {
             <Text style={[styles.buttonText, { fontSize: 24, lineHeight: 32 }]}>TV</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={[styles.button, { marginTop: 5, height: 'auto'  }]}
+            style={[styles.button, { marginTop: 20, height: 'auto'  }]}
             onPress={() => navigation.navigate('Radio')}
           >
             <Text style={[styles.buttonText, { fontSize: 24, lineHeight: 32 }]}>Radio</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={[styles.button, { marginTop: 5, height: 'auto'  }]}
+            style={[styles.button, { marginTop: 20, height: 'auto'  }]}
             onPress={() => navigation.navigate('Sosial')}
           >
             <Text style={[styles.buttonText, { fontSize: 24, lineHeight: 32 }]}>Sosial</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.button, { marginTop: 5, height: 'auto' }]} onPress={() => navigation.navigate('SplashScreen', { nextScreen: 'Home' })}>
+          <TouchableOpacity style={[styles.button, { marginTop: 20, height: 'auto', display: 'none' }]} onPress={() => navigation.navigate('SplashScreen', { nextScreen: 'Home' })}>
             <SmallDigitalClock 
               timeScale={0.05} 
               showDate={false}
@@ -505,7 +505,7 @@ const HomeScreen = ({ navigation }) => {
 
       {/* Кнопка настроек */}
       <TouchableOpacity
-        style={styles.settingsButton}
+        style={[styles.settingsButton, { display: 'none' }]}
         onPress={() => navigation.navigate('Settings')}
       >
         <Ionicons name="settings" size={30} color="white" />
@@ -513,7 +513,7 @@ const HomeScreen = ({ navigation }) => {
 
       {/* Кнопка информации */}
       <TouchableOpacity
-        style={[styles.settingsButton, { left: 90 }]}
+        style={[styles.settingsButton, { left: 90, display: 'none' }]}
         onPress={() => navigation.navigate('Info')}
       >
         <Ionicons name="information" size={30} color="white" />
