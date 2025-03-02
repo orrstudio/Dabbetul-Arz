@@ -224,9 +224,15 @@ const RadioScreen = () => {
                   >
                     <View style={styles.channelRow}>
                       <View style={styles.leftIconContainer}>
-                        {channel.metadata?.logo && channelLogos[channel.metadata.logo] && (
+                        {channel.metadata?.logo && channelLogos[channel.metadata.logo] ? (
                           <Image
                             source={channelLogos[channel.metadata.logo]}
+                            style={styles.iconStyle}
+                            resizeMode="contain"
+                          />
+                        ) : (
+                          <Image
+                            source={channelLogos["../assets/images/logos/mihr-vakfi.png"]}
                             style={styles.iconStyle}
                             resizeMode="contain"
                           />
