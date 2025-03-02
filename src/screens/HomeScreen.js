@@ -548,7 +548,7 @@ const getHomeScreenStyles = (theme, dimensions) => StyleSheet.create({
   },
   dabbeContainer: {
     position: 'absolute',
-    top: 0,
+    top: dimensions.height * 0.05, // Опускаем на 10% от высоты экрана
     left: 0,
     width: dimensions.planetSize * 1,
     height: dimensions.planetSize * 1,
