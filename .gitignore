@@ -34,3 +34,4 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+my-upload-key.keystore
