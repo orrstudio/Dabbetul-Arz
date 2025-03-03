@@ -9,8 +9,7 @@ cd ~/GitHub/Dabbetul-Arz/.tools/bundletool
 wget https://github.com/google/bundletool/releases/download/1.15.6/bundletool-all-1.15.6.jar
 ```
 
-### Очистка проекта
-1. Удалить кэш и временные файлы и файлы от старой сборки:
+### Очистка проекта перед сборкой
 ```bash
 cd ~/GitHub/Dabbetul-Arz/
 rm -rf android/app/build
@@ -20,19 +19,34 @@ rm -rf .tools/extracted_apks/*
 rm -rf .tools/artifacts/*.apks
 rm -rf .tools/artifacts/*.aab
 npm cache clean --force
-```
-
-2. Обновить зависимости:
-```bash
 npm install
 ```
 
 ## Сборка приложения
 
-### Удаленная сборка
+### Сборка standalone APK
 ```bash
 npx eas build -p android
 ```
+
+**Важно**: 
+- Команда автоматически увеличивает `versionCode`
+- Использует удаленные Android-credentials
+- Генерирует AAB-файл на серверах Expo
+- Артефакт сборки можно скачать по ссылке из логов
+
+### Скачивание AAB-файла
+
+**Способ 1**: Скачивание по прямой ссылке из логов сборки
+```bash
+wget [ССЫЛКА_ИЗ_ЛОГОВ_СБОРКИ] -O ~/GitHub/Dabbetul-Arz/.tools/artifacts/app.aab
+```
+
+**Важно**:
+- НЕ использовать `expo download:android`
+- НЕ использовать `npx expo download:android`
+- Всегда проверять актуальность ссылки
+- Сохранять в директорию `.tools/artifacts/`
 
 ### Сохранение артефактов
 1. Скачать AAB-файл с сервера Expo:
@@ -42,13 +56,16 @@ wget -O ~/GitHub/Dabbetul-Arz/.tools/artifacts/app.aab [ССЫЛКА_НА_AAB]
 ```
 
 ### Использование bundletool
-1. После сборки обязательно конвертировать AAB в APK:
+1. После сборки обязательно конвертировать AAB в APK с подписью:
 ```bash
 java -jar ~/GitHub/Dabbetul-Arz/.tools/bundletool/bundletool-all-1.15.6.jar build-apks \
   --bundle=~/GitHub/Dabbetul-Arz/.tools/artifacts/app.aab \
   --output=~/GitHub/Dabbetul-Arz/.tools/artifacts/app.apks \
-  --device-spec=~/GitHub/Dabbetul-Arz/.tools/device-spec.json
+  --device-spec=~/GitHub/Dabbetul-Arz/.tools/device-spec.json \
+  --ks=~/GitHub/Dabbetul-Arz/.tools/my-upload-key.keystore \
+  --ks-key-alias=my-key-alias
 ```
+**Важно**: При выполнении команды будет интерактивный запрос на ввод пароля от keystore.
 
 2. Извлечение APK:
 ```bash
@@ -64,17 +81,6 @@ java -jar ~/GitHub/Dabbetul-Arz/.tools/bundletool/bundletool-all-1.15.6.jar extr
 - Распространение приложения вне официальных магазинов
 - Обновление существующей версии приложения
 - Тестирование на устройствах с включенной проверкой подписи
-
-Команда подписи:
-```bash
-java -jar ~/GitHub/Dabbetul-Arz/.tools/bundletool/bundletool-all-1.15.6.jar build-apks \
-  --bundle=~/GitHub/Dabbetul-Arz/.tools/artifacts/app.aab \
-  --output=~/GitHub/Dabbetul-Arz/.tools/artifacts/app.apks \
-  --device-spec=~/GitHub/Dabbetul-Arz/.tools/device-spec.json \
-  --ks=~/GitHub/Dabbetul-Arz/.tools/my-upload-key.keystore \
-  --ks-pass=pass:ваш_пароль \
-  --ks-key-alias=ваш_алиас
-```
 
 ## Установка на устройство
 
