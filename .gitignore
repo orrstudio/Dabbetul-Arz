@@ -38,3 +38,8 @@ my-upload-key.keystore
 
 /android
 /ios
+
+# Ignore build artifacts
+.tools/artifacts/*.aab
+.tools/artifacts/*.apks
+.tools/extracted_apks/*
