@@ -51,4 +51,10 @@ my-upload-key.keystore
 *.tmp
 
 # Ignore .tools contents
-.tools/
+.tools/artifacts/
+.tools/extracted_apks/
+.tools/my-upload-key.keystore
+.tools/bundletool/*.jar
+
+# Keep device specification
+!.tools/device-spec.json
