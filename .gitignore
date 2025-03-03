@@ -36,16 +36,22 @@ yarn-error.*
 *.tsbuildinfo
 
 # Ignore keystore files
+.tools/my-upload-key.keystore
 my-upload-key.keystore
 
 /android
 /ios
 
 # Ignore build artifacts
+.tools/artifacts/*.aab
+.tools/artifacts/*.apks
 *.aab
 *.apks
 
 # Ignore additional build and system artifacts
+.tools/bundletool/*.jar
+.tools/artifacts/*
+.tools/extracted_apks/*
 *.log
 *.bak
 *.tmp

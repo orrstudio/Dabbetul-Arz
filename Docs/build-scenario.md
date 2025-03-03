@@ -47,17 +47,33 @@ wget -O ~/GitHub/Dabbetul-Arz/.tools/artifacts/app.aab [ССЫЛКА_НА_AAB]
 java -jar ~/GitHub/Dabbetul-Arz/.tools/bundletool/bundletool-all-1.15.6.jar build-apks \
   --bundle=~/GitHub/Dabbetul-Arz/.tools/artifacts/app.aab \
   --output=~/GitHub/Dabbetul-Arz/.tools/artifacts/app.apks \
-  --device-spec=~/GitHub/Dabbetul-Arz/.tools/device-spec.json \
-  --ks=~/GitHub/Dabbetul-Arz/.tools/my-upload-key.keystore \
-  --ks-pass=pass:ваш_пароль \
-  --ks-key-alias=ваш_алиас
+  --device-spec=~/GitHub/Dabbetul-Arz/.tools/device-spec.json
 ```
 
 2. Извлечение APK:
 ```bash
 java -jar ~/GitHub/Dabbetul-Arz/.tools/bundletool/bundletool-all-1.15.6.jar extract-apks \
   --apks=~/GitHub/Dabbetul-Arz/.tools/artifacts/app.apks \
-  --output-dir=~/GitHub/Dabbetul-Arz/.tools/extracted_apks
+  --output-dir=~/GitHub/Dabbetul-Arz/.tools/extracted_apks \
+  --device-spec=~/GitHub/Dabbetul-Arz/.tools/device-spec.json
+```
+
+### Подпись APK (опционально)
+Подпись требуется в следующих случаях:
+- Публикация в Google Play Store
+- Распространение приложения вне официальных магазинов
+- Обновление существующей версии приложения
+- Тестирование на устройствах с включенной проверкой подписи
+
+Команда подписи:
+```bash
+java -jar ~/GitHub/Dabbetul-Arz/.tools/bundletool/bundletool-all-1.15.6.jar build-apks \
+  --bundle=~/GitHub/Dabbetul-Arz/.tools/artifacts/app.aab \
+  --output=~/GitHub/Dabbetul-Arz/.tools/artifacts/app.apks \
+  --device-spec=~/GitHub/Dabbetul-Arz/.tools/device-spec.json \
+  --ks=~/GitHub/Dabbetul-Arz/.tools/my-upload-key.keystore \
+  --ks-pass=pass:ваш_пароль \
+  --ks-key-alias=ваш_алиас
 ```
 
 ## Установка на устройство
