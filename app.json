@@ -21,6 +21,12 @@
           "remote-notification",
           "audio",
           "fetch",
+          "remote-notification",
+          "audio",
+          "fetch",
+          "remote-notification",
+          "audio",
+          "fetch",
           "remote-notification"
         ],
         "NSUserNotificationUsageDescription": "Приложение использует уведомления для управления воспроизведением медиа",
@@ -28,7 +34,8 @@
         "UIRequiresFullScreen": true,
         "UIStatusBarHidden": false,
         "UIViewControllerBasedStatusBarAppearance": false,
-        "UIStatusBarStyle": "UIStatusBarStyleLightContent"
+        "UIStatusBarStyle": "UIStatusBarStyleLightContent",
+        "ITSAppUsesNonExemptEncryption": false
       },
       "bundleIdentifier": "com.orr888.dabbetularz"
     },
