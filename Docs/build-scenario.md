@@ -38,14 +38,8 @@ eas login
 
 ### Сборка приложения
 
-#### Превью сборка (для тестирования)
 ```bash
-npx eas build -p android --profile preview
-```
-
-#### Продакшн сборка
-```bash
-npx eas build -p android --profile production
+eas build --platform android
 ```
 
 ### Скачивание артефактов
