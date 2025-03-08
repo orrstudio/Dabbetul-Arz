@@ -32,7 +32,7 @@
       "autoIncrement": true,
       "channel": "production",
       "android": {
-        "gradleCommand": ":app:bundleRelease",
+        "gradleCommand": ":app:assembleRelease",
         "withoutCredentials": false,
         "buildType": "apk"
       },
