@@ -34,7 +34,7 @@
       "android": {
         "gradleCommand": ":app:bundleRelease",
         "withoutCredentials": false,
-        "buildType": "app-bundle"
+        "buildType": "apk"
       },
       "ios": {
         "buildConfiguration": "Release"
