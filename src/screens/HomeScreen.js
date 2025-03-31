@@ -442,7 +442,7 @@ const HomeScreen = ({ navigation }) => {
         <View style={[
           styles.titleContainer,
           {
-            top: Platform.OS === 'android' ? dimensions.height * 0.12 : dimensions.height * 0.16,
+            top: Platform.OS === 'android' ? dimensions.height * 0.16 : dimensions.height * 0.18,
           }
         ]}>
           <View style={[styles.textWrapper, { marginTop: dimensions.height * -0.1 }]}>
