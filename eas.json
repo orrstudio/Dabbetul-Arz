@@ -24,7 +24,7 @@
       },
       "ios": {
         "buildConfiguration": "Release",
-        "distribution": "ad-hoc",
+        "distribution": "internal",
         "simulator": false
       }
     },
