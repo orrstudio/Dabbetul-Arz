@@ -35,7 +35,10 @@
         "UIStatusBarHidden": false,
         "UIViewControllerBasedStatusBarAppearance": false,
         "UIStatusBarStyle": "UIStatusBarStyleLightContent",
-        "ITSAppUsesNonExemptEncryption": false
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSAppTransportSecurity": {
+          "NSAllowsArbitraryLoads": true
+        }
       },
       "bundleIdentifier": "com.orr888.dabbetularz"
     },
@@ -50,7 +53,9 @@
         "android.permission.VIBRATE",
         "android.permission.RECEIVE_BOOT_COMPLETED"
       ],
-      "package": "com.orr888.dabbetularz"
+      "package": "com.orr888.dabbetularz",
+      "networkSecurityConfig": "./network_security_config.xml",
+      "usesCleartextTraffic": true
     },
     "androidNavigationBar": {
       "backgroundColor": "#111112",

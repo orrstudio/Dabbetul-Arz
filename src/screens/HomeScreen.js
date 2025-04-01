@@ -491,6 +491,12 @@ const HomeScreen = ({ navigation }) => {
           >
             <Text style={[styles.buttonText, { fontSize: 24, lineHeight: 32 }]}>Sosial</Text>
           </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.button, { marginTop: 20, height: 'auto', backgroundColor: '#1976d2' }]}
+            onPress={() => navigation.navigate('WebViewTest')}
+          >
+            <Text style={[styles.buttonText, { fontSize: 24, lineHeight: 32 }]}>HTTP Тест</Text>
+          </TouchableOpacity>
           <TouchableOpacity style={[styles.button, { marginTop: 20, height: 'auto', display: 'none' }]} onPress={() => navigation.navigate('SplashScreen', { nextScreen: 'Home' })}>
             <SmallDigitalClock 
               timeScale={0.05} 

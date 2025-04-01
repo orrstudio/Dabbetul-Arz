@@ -11,6 +11,7 @@ import SplashScreen from './src/screens/SplashScreen';
 import InfoScreen from './src/screens/InfoScreen';
 import SosialScreen from './src/screens/SosialScreen';
 import RadioScreen from './src/screens/RadioScreen';
+import WebViewTestScreen from './src/screens/WebViewTestScreen';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { ClockSettingsProvider } from './src/contexts/ClockSettingsContext';
@@ -107,6 +108,13 @@ export default function App() {
             {(props) => (
               <MainLayout>
                 <SosialScreen {...props} />
+              </MainLayout>
+            )}
+          </Stack.Screen>
+          <Stack.Screen name="WebViewTest">
+            {(props) => (
+              <MainLayout>
+                <WebViewTestScreen {...props} />
               </MainLayout>
             )}
           </Stack.Screen>
