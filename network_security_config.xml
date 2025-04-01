@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
+  <!-- Разрешаем HTTP трафик для всех доменов -->
   <base-config cleartextTrafficPermitted="true">
     <trust-anchors>
       <certificates src="system" />
     </trust-anchors>
   </base-config>
+
+  <!-- Явно разрешаем незащищенный HTTP трафик для конкретных доменов -->
+  <domain-config cleartextTrafficPermitted="true">
+    <domain includeSubdomains="true">ibrahimiptv.com</domain>
+    <domain includeSubdomains="true">localhost</domain>
+    <domain includeSubdomains="true">127.0.0.1</domain>
+  </domain-config>
 </network-security-config>

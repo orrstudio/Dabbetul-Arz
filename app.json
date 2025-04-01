@@ -49,13 +49,16 @@
       },
       "permissions": [
         "android.permission.FOREGROUND_SERVICE",
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_NETWORK_STATE",
         "android.permission.WAKE_LOCK",
         "android.permission.VIBRATE",
         "android.permission.RECEIVE_BOOT_COMPLETED"
       ],
       "package": "com.orr888.dabbetularz",
       "networkSecurityConfig": "./network_security_config.xml",
-      "usesCleartextTraffic": true
+      "usesCleartextTraffic": true,
+      "allowBackup": true
     },
     "androidNavigationBar": {
       "backgroundColor": "#111112",

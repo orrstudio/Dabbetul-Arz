@@ -235,6 +235,8 @@ const WebViewPlayer = ({ source, style, controls = true, onError, onReady, hlsCo
         onMessage={handleMessage}
         originWhitelist={['*']}
         allowsFullscreenVideo={true}
+        mixedContentMode="always"
+        useWebView2={true}
       />
       {loading && (
         <View style={styles.loadingContainer}>

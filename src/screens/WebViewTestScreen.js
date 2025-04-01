@@ -18,91 +18,57 @@ import WebViewPlayer from '../components/WebViewPlayer';
 const WebViewTestScreen = () => {
   // Реальные URL из плейлиста tv.m3u8 для тестирования с разными конфигурациями
   const testUrls = [
-    // Стандартные настройки (без таймаута)
+    // HTTPS-потоки (гарантированно работающие)
     {
-      uri: 'http://ibrahimiptv.com:1935/mpltv/mpltv/playlist.m3u8',
-      name: 'MPL TV',
+      uri: 'https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8',
+      name: 'Тестовый поток (HTTPS)',
       config: 'стандартная'
     },
-    // Быстрая настройка (как было раньше)
     {
-      uri: 'http://ibrahimiptv.com:1935/nurtv/nurtv/playlist.m3u8',
-      name: 'NUR TV',
+      uri: 'https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8',
+      name: 'Akamai тест (HTTPS)',
       config: 'быстрая'
     },
-    
-    // С таймаутом 1 секунда (новая конфигурация)
     {
-      uri: 'http://ibrahimiptv.com:1935/herankuran/herankuran/playlist.m3u8',
-      name: 'HERAN KURAN HERAN MUTLULUK',
+      uri: 'https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8',
+      name: 'Apple тест (HTTPS)',
       config: 'таймаут 1 сек'
     },
     
-    // С 5 повторными попытками (без таймаута)
+    // Стандартные настройки (без таймаута)
+    {
+      uri: 'http://ibrahimiptv.com:1935/mpltv/mpltv/playlist.m3u8',
+      name: 'MPL TV (HTTP)',
+      config: 'стандартная'
+    },
+    
+    // Быстрая настройка
+    {
+      uri: 'http://ibrahimiptv.com:1935/nurtv/nurtv/playlist.m3u8',
+      name: 'NUR TV (HTTP)',
+      config: 'быстрая'
+    },
+    
+    // С таймаутом 1 секунда
+    {
+      uri: 'http://ibrahimiptv.com:1935/herankuran/herankuran/playlist.m3u8',
+      name: 'HERAN KURAN (HTTP)',
+      config: 'таймаут 1 сек'
+    },
+    
+    // С 5 повторными попытками
     {
       uri: 'http://ibrahimiptv.com:1935/heranzikir/heranzikir/playlist.m3u8',
-      name: 'HERAN KURAN HERAN ZİKİR',
+      name: 'HERAN ZİKİR (HTTP)',
       config: '5 повторных попыток'
     },
     
     // Со стандартными настройками
     {
       uri: 'http://ibrahimiptv.com:1935/kuran/kuran/playlist.m3u8',
-      name: 'KURAN LAFZI VE 7 RUHU',
+      name: 'KURAN LAFZI (HTTP)',
       config: 'стандартная'
-    },
-    
-    // Дополнительные каналы из плейлиста
-    {
-      uri: 'http://ibrahimiptv.com:1935/abraham/abraham/playlist.m3u8',
-      name: 'IBRAHIM TV DEUTSCH',
-      config: 'быстрая'
-    },
-    {
-      uri: 'http://ibrahimiptv.com:1935/hak_en/hak_en/playlist.m3u8',
-      name: 'IBRAHIM TV ENGLISH',
-      config: 'таймаут 1 сек'
-    },
-    {
-      uri: 'http://ibrahimiptv.com:1935/hak_ru/hak_ru/playlist.m3u8',
-      name: 'АВРААМ ТВ НА РУССКОМ',
-      config: 'стандартная'
-    },
-    {
-      uri: 'http://ibrahimiptv.com:1935/hak_ar/hak_ar/playlist.m3u8',
-      name: 'قناة إبراهيم العربية',
-      config: 'таймаут 1 сек'
-    },
-    {
-      uri: 'http://ibrahimiptv.com:1935/hak_kr/hak_kr/playlist.m3u8',
-      name: 'İBRAHİM TV KURDİ',
-      config: '5 повторных попыток'
-    },
-    {
-      uri: 'http://ibrahimiptv.com:1935/hak_fr/hak_fr/playlist.m3u8',
-      name: 'IBRAHIM TV FRANÇAISE',
-      config: 'быстрая'
-    },
-    {
-      uri: 'http://ibrahimiptv.com:1935/hak_es/hak_es/playlist.m3u8',
-      name: 'IBRAHIM TV ESPAÑOL',
-      config: 'таймаут 1 сек'
-    },
-    {
-      uri: 'http://ibrahimiptv.com:1935/hak_ch/hak_ch/playlist.m3u8',
-      name: '易卜拉欣電視中文',
-      config: '5 повторных попыток'
-    },
-    {
-      uri: 'http://ibrahimiptv.com:1935/haberyorum/haberyorum/playlist.m3u8',
-      name: 'HABER YORUM',
-      config: 'задержка 1000мс'
-    },
-    {
-      uri: 'http://ibrahimiptv.com:1935/hakikat/hakikat/playlist.m3u8',
-      name: 'HAKİKAT TV',
-      config: 'комбо 500мс/5x'
-    },
+    }
   ];
   
   const [currentUrlIndex, setCurrentUrlIndex] = useState(0);
